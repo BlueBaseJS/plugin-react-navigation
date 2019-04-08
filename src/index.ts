@@ -1,6 +1,6 @@
-import { createPlugin } from '@bluebase/core';
 import { Navigation } from './Navigation';
 import { NavigationActions } from './NavigationActions';
+import { createPlugin } from '@bluebase/core';
 
 export default createPlugin({
 	description: 'Use React Navigation in BlueBase apps!',

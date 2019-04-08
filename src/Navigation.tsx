@@ -1,18 +1,45 @@
-import { NavigationProps, ThemeContext, ThemeContextData } from '@bluebase/core';
+import { NavigationOptions, NavigationProps, Theme, resolveThunk } from '@bluebase/core';
 import React from 'react';
 import { createContainer } from './lib/index';
 import { createNavigator } from './helpers/createNavigator';
 
+/**
+ * Navigation
+ * This serves as an entry point where BlueBase passes routes and navigation
+ * configs to this component.
+ */
 export class Navigation extends React.Component<NavigationProps> {
-
-	static contextType = ThemeContext;
 
 	render() {
 
-		const { navigator } = this.props;
-		const { theme }: ThemeContextData = this.context;
+		// navigator prop from BlueBase
+		const { styles, navigator } = this.props;
 
-		const Router = createContainer(createNavigator(navigator, theme));
+		// Build global default NavigationOptions
+		const defaultNavigationOptions: NavigationOptions = {
+			...styles,
+			...resolveThunk(navigator.defaultNavigationOptions || {})
+		};
+
+		// Create a React Navigation container component
+		const Router = createContainer(createNavigator( navigator, defaultNavigationOptions));
+
+		// Render it!
 		return <Router />;
 	}
 }
+
+(Navigation as any).defaultStyles = (theme: Theme) => ({
+	headerBackTitleStyle: {
+		color: theme.palette.primary.contrastText,
+	},
+	headerStyle: {
+		backgroundColor: theme.palette.primary.main,
+		...theme.elevation(4)
+	},
+	headerTitleStyle: {
+		color: theme.palette.primary.contrastText,
+	},
+
+	headerTintColor: theme.palette.primary.contrastText,
+});

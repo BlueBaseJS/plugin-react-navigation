@@ -1,23 +1,31 @@
+import { NavigationOptions, NavigatorProps, RouteConfig, getComponent, resolveThunk } from '@bluebase/core';
 import { NavigationRouteConfig, NavigationRouteConfigMap } from 'react-navigation';
-import { NavigatorProps, RouteConfig, Theme, getComponent } from '@bluebase/core';
-import React from 'react';
+import { createWrappedNavigator } from './createWrappedNavigator';
 import { getNavigatorFn } from './getNavigatorFn';
 import { navigationConverterHoc } from './navigationConverterHoc';
-import { navigationToActionObject } from './navigationToActionObject';
 
-export const createNavigator = (options: NavigatorProps, theme: Theme) => {
+/**
+ * This function is responsible to create a React Navigation "navigator"
+ * component, and return it.
+ *
+ * @param options NavigatorProps
+ * @param defaultNavigationOptions NavigationOptions
+ */
+export const createNavigator = (options: NavigatorProps, globalDefaultNavigationOptions: NavigationOptions) => {
 
-	const { type, routes, ...rest } = options;
+	const { defaultNavigationOptions: _defaultNavigationOptions, routes: _routes, type, ...rest } = options;
 
 	// If routes is a thunk, resolve it
-	const resolvedRoutes: RouteConfig[] = (typeof routes === 'function') ? routes() : routes;
+	const routes: RouteConfig[] = resolveThunk(_routes);
 
 	// Get appropriate navigator creator function
 	const createNavigatorFn = getNavigatorFn(type);
 
+	// Create an empty routes map
 	const navigatorRoutes: NavigationRouteConfigMap = {};
 
-	resolvedRoutes.forEach((element: RouteConfig) => {
+	// Fill that navigatorRoutes map
+	routes.forEach((element: RouteConfig) => {
 
 		// react-navigation's route object
 		const route: NavigationRouteConfig = {
@@ -29,32 +37,12 @@ export const createNavigator = (options: NavigatorProps, theme: Theme) => {
 		const Component = (typeof element.screen === 'string') ? getComponent(element.screen) : element.screen;
 
 		// Create navigator
-		const Navigator = (element.navigator) ? createNavigator(element.navigator, theme) : null;
+		const Navigator = (element.navigator) ? createNavigator(element.navigator, globalDefaultNavigationOptions) : null;
 
 		// If we have both, a navigator and a screen, we wrap the navigator inside
 		// the screen component
 		if (Component && Navigator) {
-			route.screen = class WrappedNavigator extends React.PureComponent<any> {
-
-				static router = Navigator.router;
-
-				render() {
-
-					const { navigation: n, ...others } = this.props;
-					const navigation = this.props.navigation
-					? navigationToActionObject(this.props.navigation)
-					: undefined;
-
-					const props = { ...this.props, navigation };
-
-					return (
-						<Component {...others} navigation={navigation}>
-							<Navigator {...props} />
-						</Component>
-					);
-				}
-			};
-
+			route.screen = createWrappedNavigator(Navigator, Component);
 		}
 		// If we have only a navigator, use it
 		else if (Navigator) {
@@ -71,23 +59,12 @@ export const createNavigator = (options: NavigatorProps, theme: Theme) => {
 		}
 	});
 
-	// Add Theme styles
-	const defaultNavigationOptions = theme? {
-		headerBackTitleStyle: {
-			color: theme.palette.primary.contrastText,
-		},
-		headerStyle: {
-			backgroundColor: theme.palette.primary.main,
-			...theme.elevation(4)
-		},
-		headerTitleStyle: {
-			color: theme.palette.primary.contrastText,
-		},
+	// Create defaultNavigationOptions for navigator
+	const defaultNavigationOptions = {
+		...globalDefaultNavigationOptions,
+		...resolveThunk(rest.defaultNavigationOptions)
+	};
 
-		headerTintColor: theme.palette.primary.contrastText,
-
-		...rest.defaultNavigationOptions,
-	} : {};
-
+	// Create and return navigator
 	return createNavigatorFn(navigatorRoutes, { ...rest, defaultNavigationOptions });
 };

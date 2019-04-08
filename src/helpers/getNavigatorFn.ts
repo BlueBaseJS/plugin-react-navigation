@@ -4,8 +4,12 @@ import {
   createMaterialTopTabNavigator,
   createStackNavigator,
   createSwitchNavigator,
-} from '../lib/index';
+} from '../lib';
 
+/**
+ * Return react navigation's createNavigator based on the navigator type
+ * @param type
+ */
 export function getNavigatorFn(type?: string) {
 	switch (type) {
 		case 'stack':
