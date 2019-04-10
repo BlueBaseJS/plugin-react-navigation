@@ -880,10 +880,10 @@
     react-native-web "^0.9.10"
     webpack "^4.28.2"
 
-"@bluebase/code-standards@^1.0.2":
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@bluebase/code-standards/-/code-standards-1.0.3.tgz#566dd410275aad875d01c48ff8de93df410a86a9"
-  integrity sha512-AEczEgJ0vofYQcL4Hz1mgiFJtSaCq34XAKjMJwuC5r2ZbLjVsRis7aJmcmypaPl1kr0npO4klB/xw/JQ3/eztw==
+"@bluebase/code-standards@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@bluebase/code-standards/-/code-standards-1.1.0.tgz#e3d6629b3a1511214885129a60660b71b0467259"
+  integrity sha512-b7PYStNWEltRdpW7/PmTOZzSNUNlmRuP1t/QdZc9OBXS/p6Sub5I8S2vZdYp2lyBNtbZIE6nyS+UJHty9AU0MA==
   dependencies:
     "@babel/plugin-proposal-class-properties" "^7.2.1"
     "@babel/plugin-proposal-object-rest-spread" "^7.2.0"
@@ -2105,7 +2105,7 @@ babel-core@^7.0.0-bridge.0:
   resolved "https://registry.yarnpkg.com/babel-core/-/babel-core-7.0.0-bridge.0.tgz#95a492ddd90f9b4e9a4a1da14eb335b87b634ece"
   integrity sha512-poPX9mZH/5CSanm50Q+1toVci6pv5KSRv/5TWCwtzQS5XEwn40BcCrgIeMFWP9CKKIniKXNxoIOnOq4VVlGXhg==
 
-babel-jest@^24.3.1, babel-jest@^24.7.1:
+babel-jest@^24.7.1:
   version "24.7.1"
   resolved "https://registry.yarnpkg.com/babel-jest/-/babel-jest-24.7.1.tgz#73902c9ff15a7dfbdc9994b0b17fcefd96042178"
   integrity sha512-GPnLqfk8Mtt0i4OemjWkChi73A3ALs4w2/QbG64uAj8b5mmwzxc7jbJVRZt8NJkxi6FopVHog9S3xX6UJKb2qg==
