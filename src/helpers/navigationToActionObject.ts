@@ -79,9 +79,13 @@ const execPathAction =
 (router: NavigationRouter) =>
 (fn: ((...a: any[]) => void), path: string, params?: NavigationParams) => {
 
+	let url = path;
+	let search = '';
 
-	const url = path.substring(0, path.indexOf('?'));
-	const search = path.substring(path.indexOf('?'));
+	if (path.indexOf('?') >= 0) {
+		url = path.substring(0, path.indexOf('?'));
+		search = path.substring(path.indexOf('?'));
+	}
 
 	const finalParams = {
 		...params,
