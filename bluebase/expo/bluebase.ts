@@ -1,5 +1,13 @@
+import App1 from './apps/app1';
+import App2 from './apps/app2';
+import App3 from './apps/app3';
+import App4 from './apps/app4';
+import App5 from './apps/app5';
 import { BootOptions } from '@bluebase/core';
-import DemoApp from './plugin-settings-app';
+import DemoApp from './apps/plugin-settings-app';
+import Launcher from '@bluebase/plugin-launcher';
+import { MaterialIcons } from '@bluebase/plugin-vector-icons';
+import ResponsiveGrid from '@bluebase/plugin-responsive-grid';
 import commonBootOptions from '../common/bluebase';
 import deepmerge from 'deepmerge';
 
@@ -10,7 +18,18 @@ import deepmerge from 'deepmerge';
  */
 const bootOptions: Partial<BootOptions> = {
 
-	plugins: [DemoApp],
+	plugins: [
+		// Launcher,
+		ResponsiveGrid,
+		MaterialIcons,
+
+		DemoApp,
+		App1,
+		App2,
+		App3,
+		App4,
+		App5,
+	],
 
 };
 

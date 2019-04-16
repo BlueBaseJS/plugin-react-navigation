@@ -829,7 +829,7 @@
     pirates "^4.0.0"
     source-map-support "^0.5.9"
 
-"@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2":
+"@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.4.3":
   version "7.4.3"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.4.3.tgz#79888e452034223ad9609187a0ad1fe0d2ad4bdc"
   integrity sha512-9lsJwJLxDh/T3Q3SZszfWOTkk3pHbkmH+3KY+zwIDmsNlxsumuhS2TH3NIpktU4kNvfzy+k3eLT7aTJSPTo0OA==
@@ -921,6 +921,51 @@
     lodash.kebabcase "^4.1.1"
     react-loadable "^5.5.0"
     rtl-detect "^1.0.2"
+    tslib "^1.9.3"
+
+"@bluebase/plugin-launcher@^0.0.1":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@bluebase/plugin-launcher/-/plugin-launcher-0.0.1.tgz#5c16bce40ad56b457dab269fbe8e0fc36325ed83"
+  integrity sha512-HBQDr94jTBRKc4wUmatetQCPcFE/Dk8AgcnilDAOQZr00409iFlxgTkT5D2ORIJF78nmBCI+0OAe/nMb1rInFQ==
+  dependencies:
+    "@babel/runtime" "^7.4.3"
+    "@bluebase/components" "^4.1.1"
+    "@bluebase/plugin-react-navigation" "^0.0.1-alpha.1"
+    compression "^1.7.4"
+    deepmerge "^3.2.0"
+    metro-react-native-babel-preset "^0.53.1"
+    source-map-support "^0.5.12"
+    tslib "^1.9.3"
+    uuid "^3.3.2"
+
+"@bluebase/plugin-react-navigation@^0.0.1-alpha.1":
+  version "0.0.1-alpha.1"
+  resolved "https://registry.yarnpkg.com/@bluebase/plugin-react-navigation/-/plugin-react-navigation-0.0.1-alpha.1.tgz#b1e9c50b9b9470aad3c33c4a49ed468c0fd1e660"
+  integrity sha512-DlObR7kHoJgHm6D6QyPSV52mPU2oHQ1heZOI8TZ6rCyan8rZeOz2vQOa+xc/0sKtWuioihKE9x6hJ8FyA0EbEA==
+  dependencies:
+    "@react-navigation/core" "^3.2.1"
+    "@react-navigation/web" "^1.0.0-alpha.7"
+    deepmerge "^3.2.0"
+    react-navigation "^3.6.1"
+    tslib "^1.9.3"
+
+"@bluebase/plugin-responsive-grid@^0.0.5":
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/@bluebase/plugin-responsive-grid/-/plugin-responsive-grid-0.0.5.tgz#7ce705a9409306a6210cd0c62b02325d484c3ebf"
+  integrity sha512-n/hTMWI1N/Kwcd9gOmLBRkk+iuHObSLlzSAyYliODmZcM1MOcqRinNUPfYXVCq2vWPE2H+JMbdYqU0/JjkgpNg==
+  dependencies:
+    "@bluebase/components" "^4.1.1"
+    deepmerge "^3.2.0"
+    react-native "^0.57.8"
+    tslib "^1.9.3"
+
+"@bluebase/plugin-vector-icons@^0.0.3":
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/@bluebase/plugin-vector-icons/-/plugin-vector-icons-0.0.3.tgz#a2cd395e90deff2c0c8819d743eabeb033f47415"
+  integrity sha512-G+2kZcxi0/ZjFfWcVHMDbZgg2t/q75cOrz+m4hjv1fQCaemJeRYFXH6BzZHVfMvPhlKqhsWBSRciC8vS+5M3KA==
+  dependencies:
+    deepmerge "^3.2.0"
+    react-native-vector-icons "^6.4.2"
     tslib "^1.9.3"
 
 "@bluebase/storybook-addon@^3.0.0":
@@ -3088,7 +3133,7 @@ compression-webpack-plugin@^2.0.0:
     serialize-javascript "^1.4.0"
     webpack-sources "^1.0.1"
 
-compression@^1.7.1:
+compression@^1.7.1, compression@^1.7.4:
   version "1.7.4"
   resolved "https://registry.yarnpkg.com/compression/-/compression-1.7.4.tgz#95523eff170ca57c29a0ca41e6fe131f41e5bb8f"
   integrity sha512-jaSIDzP9pZVS4ZfQ+TzvtiWhdpFhE2RDHz8QJkpX9SIpLq88VueF5jJw6t+6CUQcAoA6t+x89MLrWAqpfDE8iQ==
@@ -7896,7 +7941,7 @@ metro-react-native-babel-preset@^0.49.0:
     metro-babel7-plugin-react-transform "0.49.2"
     react-transform-hmr "^1.0.4"
 
-metro-react-native-babel-preset@^0.53.0:
+metro-react-native-babel-preset@^0.53.0, metro-react-native-babel-preset@^0.53.1:
   version "0.53.1"
   resolved "https://registry.yarnpkg.com/metro-react-native-babel-preset/-/metro-react-native-babel-preset-0.53.1.tgz#6cd9e41a1b9a6e210e71ef2adf114219b4eaf2ec"
   integrity sha512-Uf8EGL8kIPhDkoSdAAysNPxPQclUS2R1QC4cwnc8bkk2f6yqGn+1CorfiY9AaqlLEth5mKQqdtRYFDTFfB9QyA==
@@ -9986,6 +10031,15 @@ react-native-vector-icons@6.0.0:
     prop-types "^15.6.2"
     yargs "^8.0.2"
 
+react-native-vector-icons@^6.4.2:
+  version "6.4.2"
+  resolved "https://registry.yarnpkg.com/react-native-vector-icons/-/react-native-vector-icons-6.4.2.tgz#ee0b097e783387544ed160a3192a437c097e551d"
+  integrity sha512-G7Y5HksOQkCanFWKJ+fjwP38XL8tQREOSnw7jrbq28AFrrv41YtafOF4uDSDS7HxMRXs17HeEzn24OzJb63iuA==
+  dependencies:
+    lodash "^4.0.0"
+    prop-types "^15.6.2"
+    yargs "^13.2.2"
+
 react-native-view-shot@2.5.0:
   version "2.5.0"
   resolved "https://registry.yarnpkg.com/react-native-view-shot/-/react-native-view-shot-2.5.0.tgz#428a997f470d3148d0067c5b46abd988ef1aa4c0"
@@ -11247,7 +11301,7 @@ source-map-resolve@^0.5.0:
     source-map-url "^0.4.0"
     urix "^0.1.0"
 
-source-map-support@^0.5.3, source-map-support@^0.5.6, source-map-support@^0.5.9, source-map-support@~0.5.10:
+source-map-support@^0.5.12, source-map-support@^0.5.3, source-map-support@^0.5.6, source-map-support@^0.5.9, source-map-support@~0.5.10:
   version "0.5.12"
   resolved "https://registry.yarnpkg.com/source-map-support/-/source-map-support-0.5.12.tgz#b4f3b10d51857a5af0138d3ce8003b201613d599"
   integrity sha512-4h2Pbvyy15EE02G+JOZpUCmqWJuqrs+sEkzewTm++BPi7Hvn/HwcqLAcNxYAyI0x13CpPPn+kMjl+hplXMHITQ==

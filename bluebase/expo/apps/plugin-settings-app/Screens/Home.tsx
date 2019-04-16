@@ -16,6 +16,11 @@ export class HomeScreen extends React.Component<any> {
 							onPress={() => this.props.navigation.navigate('Settings')}
 						/>
 						<Button
+							title="Setting (path)"
+							// description="Go to Settings Page"
+							onPress={() => this.props.navigation.navigate({ path: 'p/settings' })}
+						/>
+						<Button
 							title="Tabs"
 							onPress={() => this.props.navigation.navigate('SettingsTabs')}
 						/>
@@ -26,6 +31,16 @@ export class HomeScreen extends React.Component<any> {
 						<Button
 							title="Drawer"
 							onPress={() => this.props.navigation.navigate('SettingsDrawer')}
+						/>
+						<Button
+							title="App 1 (route name)"
+							// description="Go to Settings Page"
+							onPress={() => this.props.navigation.navigate('App1')}
+						/>
+						<Button
+							title="App 1 (path)"
+							// description="Go to Settings Page"
+							onPress={() => this.props.navigation.navigate({ path: 'p/app-1?foo=bar' })}
 						/>
 				</ScrollView>
       </View>
