@@ -1,4 +1,5 @@
-import { NavigationOptions, NavigationProps, Theme, resolveThunk } from '@bluebase/core';
+import { NavigationOptions, NavigationProps } from '@bluebase/components';
+import { Theme, resolveThunk } from '@bluebase/core';
 import React from 'react';
 import { createContainer } from './lib/index';
 import { createNavigator } from './helpers/createNavigator';
