@@ -1,5 +1,14 @@
-import { NavigationActionPayload, NavigationActionsObject } from '@bluebase/core';
-import { NavigationInjectedProps, NavigationParams, NavigationRouter } from 'react-navigation';
+import {
+	NavigationActionPathPayload,
+	NavigationActionPayload,
+	NavigationActionsObject,
+	NavitionActionRouteNamePayload,
+} from '@bluebase/components';
+import {
+	NavigationInjectedProps,
+	NavigationParams,
+	NavigationRouter,
+} from 'react-navigation';
 
 type NavigationProp = NavigationInjectedProps['navigation'];
 
@@ -110,13 +119,13 @@ const execAction =
 		return;
 	}
 
-	if (typeof routeName === 'string' || typeof routeName.routeName === 'string') {
+	if (typeof routeName === 'string' || typeof (routeName as NavitionActionRouteNamePayload).routeName === 'string') {
 		fn(routeName, params);
 		return;
 	}
 
-	if (typeof routeName.path === 'string') {
-		execPathAction(router)(fn, routeName.path, params);
+	if (typeof (routeName as NavigationActionPathPayload).path === 'string') {
+		execPathAction(router)(fn, (routeName as NavigationActionPathPayload).path, params);
 		return;
 	}
 

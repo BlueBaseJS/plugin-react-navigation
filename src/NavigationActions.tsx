@@ -1,4 +1,4 @@
-import { NavigationActionsProps } from '@bluebase/core';
+import { NavigationActionsProps } from '@bluebase/components';
 import { NavigationInjectedProps } from 'react-navigation';
 import { navigationToActionObject } from './helpers/navigationToActionObject';
 import { withNavigation } from '@react-navigation/core';

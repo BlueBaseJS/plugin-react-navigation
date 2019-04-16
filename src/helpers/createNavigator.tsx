@@ -1,5 +1,6 @@
-import { NavigationOptions, NavigatorProps, RouteConfig, getComponent, resolveThunk } from '@bluebase/core';
+import { NavigationOptions, NavigatorProps, RouteConfig, } from '@bluebase/components';
 import { NavigationRouteConfig, NavigationRouteConfigMap } from 'react-navigation';
+import { getComponent, resolveThunk } from '@bluebase/core';
 import { createWrappedNavigator } from './createWrappedNavigator';
 import { getNavigatorFn } from './getNavigatorFn';
 import { navigationConverterHoc } from './navigationConverterHoc';
