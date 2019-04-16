@@ -19,7 +19,7 @@ import deepmerge from 'deepmerge';
 const bootOptions: Partial<BootOptions> = {
 
 	plugins: [
-		// Launcher,
+		Launcher,
 		ResponsiveGrid,
 		MaterialIcons,
 
