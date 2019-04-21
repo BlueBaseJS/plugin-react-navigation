@@ -1,5 +1,5 @@
 import { NavigationOptions, NavigationProps } from '@bluebase/components';
-import { Theme, resolveThunk } from '@bluebase/core';
+import { BlueBaseContext, Theme, resolveThunk } from '@bluebase/core';
 import React from 'react';
 import { createContainer } from './lib/index';
 import { createNavigator } from './helpers/createNavigator';
@@ -10,6 +10,8 @@ import { createNavigator } from './helpers/createNavigator';
  * configs to this component.
  */
 export class Navigation extends React.Component<NavigationProps> {
+
+	static contextType = BlueBaseContext;
 
 	render() {
 
@@ -23,7 +25,7 @@ export class Navigation extends React.Component<NavigationProps> {
 		};
 
 		// Create a React Navigation container component
-		const Router = createContainer(createNavigator( navigator, defaultNavigationOptions));
+		const Router = createContainer(createNavigator( navigator, defaultNavigationOptions, this.context));
 
 		// Render it!
 		return <Router />;

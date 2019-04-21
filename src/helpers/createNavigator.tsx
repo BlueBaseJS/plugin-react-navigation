@@ -1,6 +1,6 @@
+import { BlueBase, resolveThunk } from '@bluebase/core';
 import { NavigationOptions, NavigatorProps, RouteConfig, } from '@bluebase/components';
 import { NavigationRouteConfig, NavigationRouteConfigMap } from 'react-navigation';
-import { getComponent, resolveThunk } from '@bluebase/core';
 import { createWrappedNavigator } from './createWrappedNavigator';
 import { getNavigatorFn } from './getNavigatorFn';
 import { navigationConverterHoc } from './navigationConverterHoc';
@@ -12,7 +12,11 @@ import { navigationConverterHoc } from './navigationConverterHoc';
  * @param options NavigatorProps
  * @param defaultNavigationOptions NavigationOptions
  */
-export const createNavigator = (options: NavigatorProps, globalDefaultNavigationOptions: NavigationOptions) => {
+export const createNavigator = (
+	options: NavigatorProps,
+	globalDefaultNavigationOptions: NavigationOptions,
+	BB: BlueBase
+) => {
 
 	const { defaultNavigationOptions: _defaultNavigationOptions, routes: _routes, type, ...rest } = options;
 
@@ -35,10 +39,10 @@ export const createNavigator = (options: NavigatorProps, globalDefaultNavigation
 		};
 
 		// Screen component
-		const Component = (typeof element.screen === 'string') ? getComponent(element.screen) : element.screen;
+		const Component = (typeof element.screen === 'string') ? BB.Components.resolve(element.screen) : element.screen;
 
 		// Create navigator
-		const Navigator = (element.navigator) ? createNavigator(element.navigator, globalDefaultNavigationOptions) : null;
+		const Navigator = (element.navigator) ? createNavigator(element.navigator, globalDefaultNavigationOptions, BB) : null;
 
 		// If we have both, a navigator and a screen, we wrap the navigator inside
 		// the screen component
@@ -52,6 +56,12 @@ export const createNavigator = (options: NavigatorProps, globalDefaultNavigation
 		// If we have only a screen, use it
 		else if (Component) {
 			route.screen = navigationConverterHoc(Component);
+		}
+
+		// Add data from static props
+		if (Component) {
+			// debugger;
+			route.navigationOptions = (Component as any).navigationOptions || route.navigationOptions;
 		}
 
 		// If theres a screen component, use this route
