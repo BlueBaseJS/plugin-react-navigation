@@ -12,7 +12,7 @@ import {
 
 type NavigationProp = NavigationInjectedProps['navigation'];
 
-const getTopNavigation = (navigation: NavigationProp): NavigationProp => {
+export const getTopNavigation = (navigation: NavigationProp): NavigationProp => {
 	const parent = navigation.dangerouslyGetParent();
 	if (parent) {
 		return getTopNavigation(parent);
@@ -30,6 +30,7 @@ export const navigationToActionObject = (navigation: NavigationProp): Navigation
 
 	// Extract top router
 	const topNavigation = getTopNavigation(navigation);
+	// console.log(topNavigation);
 	const router = topNavigation.router;
 
 	// If we don't have a router, puke 🤮
@@ -75,38 +76,38 @@ export const navigationToActionObject = (navigation: NavigationProp): Navigation
  * Execute action from a path
  * @param router
  */
-const execPathAction =
-(router: NavigationRouter) =>
-(fn: ((...a: any[]) => void), path: string, params?: NavigationParams) => {
+export const execPathAction =
+	(router: NavigationRouter) =>
+		(fn: ((...a: any[]) => void), path: string, params?: NavigationParams) => {
 
-	let url = path;
-	let search = '';
+			let url = path;
+			let search = '';
 
-	if (path.indexOf('?') >= 0) {
-		url = path.substring(0, path.indexOf('?'));
-		search = path.substring(path.indexOf('?'));
-	}
+			if (path.indexOf('?') >= 0) {
+				url = path.substring(0, path.indexOf('?'));
+				search = path.substring(path.indexOf('?'));
+			}
 
-	const finalParams = {
-		...params,
+			const finalParams = {
+				...params,
 
-		// We create these internal flags to pass url variables around
-		'__path_search__': search,
-		'__path_url__': url,
-	};
+				// We create these internal flags to pass url variables around
+				'__path_search__': search,
+				'__path_url__': url,
+			};
 
-	const action = router.getActionForPathAndParams(url, finalParams) as any;
+			const action = router.getActionForPathAndParams(url, finalParams) as any;
 
-	if (!fn || !action) {
-		return;
-	}
+			if (!fn || !action) {
+				return;
+			}
 
-	if (action.routeName) {
-		fn(action.routeName, action.params, action.action);
-	} else {
-		fn(action);
-	}
-};
+			if (action.routeName) {
+				fn(action.routeName, action.params, action.action);
+			} else {
+				fn(action);
+			}
+		};
 
 /**
  * Execute an action. If a routeName is provided, prefer it,
@@ -115,23 +116,23 @@ const execPathAction =
  * @param path
  * @param params
  */
-const execAction =
-(router: NavigationRouter) =>
-(fn: ((...a: any[]) => void), routeName: NavigationActionPayload, params?: NavigationParams) => {
+export const execAction =
+	(router: NavigationRouter) =>
+		(fn: ((...a: any[]) => void), routeName: NavigationActionPayload, params?: NavigationParams) => {
 
-	if (!fn) {
-		return;
-	}
+			if (!fn) {
+				return;
+			}
 
-	if (typeof routeName === 'string' || typeof (routeName as NavitionActionRouteNamePayload).routeName === 'string') {
-		fn(routeName, params);
-		return;
-	}
+			if (typeof routeName === 'string' || typeof (routeName as NavitionActionRouteNamePayload).routeName === 'string') {
+				fn(routeName, params);
+				return;
+			}
 
-	if (typeof (routeName as NavigationActionPathPayload).path === 'string') {
-		execPathAction(router)(fn, (routeName as NavigationActionPathPayload).path, params);
-		return;
-	}
+			if (typeof (routeName as NavigationActionPathPayload).path === 'string') {
+				execPathAction(router)(fn, (routeName as NavigationActionPathPayload).path, params);
+				return;
+			}
 
-	throw Error('Invalid props provided to navigation action');
-};
+			throw Error('Invalid props provided to navigation action');
+		};

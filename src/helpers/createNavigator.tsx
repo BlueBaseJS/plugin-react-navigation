@@ -34,7 +34,28 @@ export const createNavigator = (
 
 		// react-navigation's route object
 		const route: NavigationRouteConfig = {
-			navigationOptions: element.navigationOptions,
+
+			// navigationOptions: element.navigationOptions,
+			navigationOptions: (element.screen && (element.screen as any).navigationOptions !== undefined) ?
+			{
+				...element.navigationOptions,
+				...resolveThunk((element.screen as any).navigationOptions/** navigation func args here */)
+			} : {
+				...element.navigationOptions
+			},
+
+			// navigationOptions: (props: any) => {
+			// 	// debugger;
+			// 	// const navigation = navigationToActionObject(props.navigation);
+			// 	// return typeof element.navigationOptions === 'function'
+			// 	// 	? element.navigationOptions({ ...props , navigation })
+			// 	// 	: { ...props , navigation };
+
+			// 	return ({
+			// 		title: 'Settings'
+			// 	});
+			// },
+
 			path: element.path,
 		};
 

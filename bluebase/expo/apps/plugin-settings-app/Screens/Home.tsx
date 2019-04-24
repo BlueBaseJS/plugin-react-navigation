@@ -18,7 +18,7 @@ export class HomeScreen extends React.Component<any> {
 						<Button
 							title="Setting (path)"
 							// description="Go to Settings Page"
-							onPress={() => this.props.navigation.push({ path: 'p/settings' })}
+							onPress={() => this.props.navigation.push('SettingsTabs')}
 						/>
 						<Button
 							title="Tabs"

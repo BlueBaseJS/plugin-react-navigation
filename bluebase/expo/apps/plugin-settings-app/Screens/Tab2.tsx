@@ -2,8 +2,19 @@ import { Button, Text, View } from 'react-native';
 // import { DrawerActions } from '../../components';
 import { NavigationActions } from '@bluebase/components';
 import React from 'react';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+
 
 export class Tab2Screen extends React.Component {
+  static navigationOptions = {
+    tabBarIcon: () => (
+      <MaterialCommunityIcons
+        // color={tintColor}
+        name="database-search"
+        size={25}
+      />
+    )
+  }
 	render() {
 		return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>

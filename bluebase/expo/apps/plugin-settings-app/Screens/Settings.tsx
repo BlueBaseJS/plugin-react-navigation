@@ -3,6 +3,9 @@ import { NavigationActions } from '@bluebase/components';
 import React from 'react';
 
 export class SettingsScreen extends React.Component {
+  // static navigationOptions = {
+  //   title: 'New Title'
+  // }
 	render() {
     console.log('screen props', this.props);
 		return (
