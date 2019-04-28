@@ -17,7 +17,7 @@
   },
   "size-limit": [
     {
-      "limit": "6 KB",
+      "limit": "7 KB",
       "webpack": false,
       "path": "dist/**/*.js"
     }
@@ -80,6 +80,7 @@
     "@react-navigation/web": "^1.0.0-alpha.7",
     "deepmerge": "^3.2.0",
     "expo": "^32.0.0",
+    "hoist-non-react-statics": "^3.3.0",
     "react-native": "^0.57.8",
     "react-navigation": "^3.6.1",
     "tslib": "^1.9.3"
@@ -101,6 +102,7 @@
     "@types/enzyme": "^3.9.0",
     "@types/enzyme-adapter-react-16": "^1.0.5",
     "@types/enzyme-async-helpers": "^0.9.1",
+    "@types/hoist-non-react-statics": "^3.3.1",
     "@types/jest": "^24.0.9",
     "@types/react": "^16.8.7",
     "@types/react-dom": "^16.8.2",

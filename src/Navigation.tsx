@@ -1,5 +1,5 @@
-import { NavigationOptions, NavigationProps } from '@bluebase/components';
-import { BlueBaseContext, Theme, resolveThunk } from '@bluebase/core';
+import { BlueBaseContext, IntlConsumer, Theme, ThemeConsumer } from '@bluebase/core';
+import { NavigationProps, NavigatorProps } from '@bluebase/components';
 import React from 'react';
 import { createContainer } from './lib/index';
 import { createNavigator } from './helpers/createNavigator';
@@ -13,36 +13,81 @@ export class Navigation extends React.Component<NavigationProps> {
 
 	static contextType = BlueBaseContext;
 
-	render() {
+	private Router?: React.ComponentType<any>;
+
+	componentWillMount() {
 
 		// navigator prop from BlueBase
 		const { styles, navigator } = this.props;
 
 		// Build global default NavigationOptions
-		const defaultNavigationOptions: NavigationOptions = {
+		const defaultNavigationOptions: NavigatorProps = {
 			...styles,
-			...resolveThunk(navigator.defaultNavigationOptions || {})
 		};
 
 		// Create a React Navigation container component
-		const Router = createContainer(createNavigator( navigator, defaultNavigationOptions, this.context));
+		this.Router = createContainer(createNavigator( navigator, defaultNavigationOptions, this.context));
+	}
+
+	render() {
+
+		const Router = this.Router;
 
 		// Render it!
-		return <Router />;
+		return Router 
+		? (
+			<ThemeConsumer>
+			{({ theme }) => (
+				<IntlConsumer>
+				{(intl) => (
+					<Router screenProps={{ BB: this.context, theme, intl }} />
+				)}
+				</IntlConsumer>
+			)}
+			</ThemeConsumer>
+		)
+		: null;
 	}
 }
 
 (Navigation as any).defaultStyles = (theme: Theme) => ({
-	headerBackTitleStyle: {
-		color: theme.palette.primary.contrastText,
-	},
-	headerStyle: {
-		backgroundColor: theme.palette.primary.main,
-		...theme.elevation(4)
-	},
-	headerTitleStyle: {
-		color: theme.palette.primary.contrastText,
+
+	defaultNavigationOptions: {
+		headerBackTitleStyle: {
+			color: theme.palette.primary.contrastText,
+		},
+		headerStyle: {
+			backgroundColor: theme.palette.primary.main,
+			...theme.elevation(4)
+		},
+		headerTitleStyle: {
+			color: theme.palette.primary.contrastText,
+		},
+
+		headerTintColor: theme.palette.primary.contrastText,
 	},
 
-	headerTintColor: theme.palette.primary.contrastText,
+	cardStyle: {
+		backgroundColor: theme.palette.background.default,
+	},
+
+	tabBarOptions: {
+		// labelStyle: {
+		// 	fontSize: 12,
+		// },
+
+		style: {
+			backgroundColor: theme.palette.primary.main,
+			zIndex: 2000,
+			...theme.elevation(4),
+		},
+
+		// tabStyle: {
+		// 	width: 100,
+		// },
+
+		indicatorStyle: {
+			backgroundColor: theme.palette.secondary.main,
+		},
+	},
 });

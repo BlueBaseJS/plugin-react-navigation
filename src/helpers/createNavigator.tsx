@@ -1,9 +1,12 @@
 import { BlueBase, resolveThunk } from '@bluebase/core';
-import { NavigationOptions, NavigatorProps, RouteConfig, } from '@bluebase/components';
-import { NavigationRouteConfig, NavigationRouteConfigMap } from 'react-navigation';
+import { NavigationRouteConfig, NavigationRouteConfigMap, NavigationScreenComponent } from 'react-navigation';
+import { NavigatorProps, RouteConfig, } from '@bluebase/components';
 import { createWrappedNavigator } from './createWrappedNavigator';
+import deepmerge from 'deepmerge';
 import { getNavigatorFn } from './getNavigatorFn';
+import hoistNonReactStatics from 'hoist-non-react-statics';
 import { navigationConverterHoc } from './navigationConverterHoc';
+import { resolveNavigationOptions } from './resolveNavigationOptions';
 
 /**
  * This function is responsible to create a React Navigation "navigator"
@@ -14,7 +17,7 @@ import { navigationConverterHoc } from './navigationConverterHoc';
  */
 export const createNavigator = (
 	options: NavigatorProps,
-	globalDefaultNavigationOptions: NavigationOptions,
+	globalDefaultConfigs: NavigatorProps,
 	BB: BlueBase
 ) => {
 
@@ -32,43 +35,34 @@ export const createNavigator = (
 	// Fill that navigatorRoutes map
 	routes.forEach((element: RouteConfig) => {
 
+		const { screen, navigator, ...extras } = element;
+
 		// react-navigation's route object
-		const route: NavigationRouteConfig = {
-
-			// navigationOptions: element.navigationOptions,
-			navigationOptions: (element.screen && (element.screen as any).navigationOptions !== undefined) ?
-			{
-				...element.navigationOptions,
-				...resolveThunk((element.screen as any).navigationOptions/** navigation func args here */)
-			} : {
-				...element.navigationOptions
-			},
-
-			// navigationOptions: (props: any) => {
-			// 	// debugger;
-			// 	// const navigation = navigationToActionObject(props.navigation);
-			// 	// return typeof element.navigationOptions === 'function'
-			// 	// 	? element.navigationOptions({ ...props , navigation })
-			// 	// 	: { ...props , navigation };
-
-			// 	return ({
-			// 		title: 'Settings'
-			// 	});
-			// },
-
-			path: element.path,
-		};
+		const route: NavigationRouteConfig = extras;
 
 		// Screen component
-		const Component = (typeof element.screen === 'string') ? BB.Components.resolve(element.screen) : element.screen;
+		const Component = (
+			(typeof screen === 'string') ? BB.Components.resolve(screen) : screen
+		) as NavigationScreenComponent;
+
+		// Screen static navigationOptions object/function
+		if (Component) {
+			Component.navigationOptions = resolveNavigationOptions(Component.navigationOptions);
+		}
+
+		// Route navigationOptions object/function
+		if (route.navigationOptions) {
+			route.navigationOptions = resolveNavigationOptions(route.navigationOptions);
+		}
 
 		// Create navigator
-		const Navigator = (element.navigator) ? createNavigator(element.navigator, globalDefaultNavigationOptions, BB) : null;
+		const Navigator = (navigator) ? createNavigator(navigator, globalDefaultConfigs, BB) : null;
 
 		// If we have both, a navigator and a screen, we wrap the navigator inside
 		// the screen component
 		if (Component && Navigator) {
 			route.screen = createWrappedNavigator(Navigator, Component);
+			route.screen = hoistNonReactStatics(route.screen, Component, { contextType: true });
 		}
 		// If we have only a navigator, use it
 		else if (Navigator) {
@@ -77,12 +71,7 @@ export const createNavigator = (
 		// If we have only a screen, use it
 		else if (Component) {
 			route.screen = navigationConverterHoc(Component);
-		}
-
-		// Add data from static props
-		if (Component) {
-			// debugger;
-			route.navigationOptions = (Component as any).navigationOptions || route.navigationOptions;
+			route.screen = hoistNonReactStatics(route.screen, Component, { contextType: true });
 		}
 
 		// If theres a screen component, use this route
@@ -92,11 +81,15 @@ export const createNavigator = (
 	});
 
 	// Create defaultNavigationOptions for navigator
-	const defaultNavigationOptions = {
-		...globalDefaultNavigationOptions,
-		...resolveThunk(rest.defaultNavigationOptions)
-	};
+	const navigatorConfigs = deepmerge(
+		globalDefaultConfigs,
+		rest,
+		{
+			defaultNavigationOptions: resolveNavigationOptions(rest.defaultNavigationOptions),
+			navigationOptions: resolveNavigationOptions(rest.navigationOptions),
+		} as any
+	);
 
 	// Create and return navigator
-	return createNavigatorFn(navigatorRoutes, { ...rest, defaultNavigationOptions });
+	return createNavigatorFn(navigatorRoutes, navigatorConfigs);
 };
