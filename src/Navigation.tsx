@@ -58,6 +58,7 @@ export class Navigation extends React.Component<NavigationProps> {
 		},
 		headerStyle: {
 			backgroundColor: theme.palette.primary.main,
+			borderBottomWidth: 0,
 			...theme.elevation(4)
 		},
 		headerTitleStyle: {
