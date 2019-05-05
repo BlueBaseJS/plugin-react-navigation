@@ -93,7 +93,7 @@
     "@bluebase/cli-essentials": "^0.0.4",
     "@bluebase/code-standards": "^1.1.0",
     "@bluebase/components": "^4.1.1",
-    "@bluebase/core": "^4.0.0-aplha.18",
+    "@bluebase/core": "^4.0.0-aplha.24",
     "@bluebase/plugin-launcher": "^0.0.1",
     "@bluebase/plugin-responsive-grid": "^0.0.5",
     "@bluebase/plugin-vector-icons": "^0.0.3",

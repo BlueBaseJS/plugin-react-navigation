@@ -1,45 +1,12 @@
 import {
-	// HomeScreen,
-	// SettingsDetailScreen,
-	// SettingsScreen,
 	Tab1Screen,
-	// Tab2Screen,
 } from '../../../bluebase/expo/apps/plugin-settings-app/Screens';
 import { navigationConverterHoc } from '../navigationConverterHoc';
 import { shallow } from 'enzyme';
 
-// const nav = {
-// 	name: 'SettingsTabs',
-// 	// TODO: test initial route here
-// 	navigationOptions: {
-// 		title: 'Settings Tabs',
-// 	},
-// 	navigator: {
-// 		routes: [{
-// 			exact: true,
-// 			name: 'Tab1',
-// 			navigationOptions: {
-// 				title: 'Tab A',
-// 			},
-// 			path: 't1',
-// 			screen: Tab1Screen,
-// 		}, {
-// 			exact: true,
-// 			name: 'Tab2',
-// 			navigationOptions: {
-// 				title: 'Tab B',
-// 			},
-// 			path: 't2',
-// 			screen: Tab2Screen,
-// 		}],
-// 		type: 'tab'
-// 	},
-// 	path: 'tabs',
-// };
-
 
 describe('navigationConverterHoc', () => {
-	test('test', () => {
+	it('should create HOC of Component with navigation', () => {
 		const Component = navigationConverterHoc(Tab1Screen)({ navigation: {
 			dangerouslyGetParent: jest.fn(),
 			router: {
@@ -57,16 +24,14 @@ describe('navigationConverterHoc', () => {
 		const wrapper = shallow(
 			Component
 		);
-		// expect(wrapper).toThrow('No router found in navigation.');
 		expect(wrapper).toBeTruthy();
 	});
 
-	test('test', () => {
+	it('should create HOC of Component with no navigation', () => {
 		const Component = navigationConverterHoc(Tab1Screen)({});
 		const wrapper = shallow(
 			Component
 		);
-		// expect(wrapper).toThrow('No router found in navigation.');
 		expect(wrapper).toBeTruthy();
 	});
 

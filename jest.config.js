@@ -6,6 +6,12 @@ const esModules = [
   'react-navigation-stack',
   'react-navigation-tabs',
   'react-navigation-drawer',
+  '@expo/vector-icons',
+  // '@expo',
+  // 'expo-font',
+  // 'expo-constants',
+  // 'expo-core',
+  // 'expo-react-native-adapter'
 ].join('|');
 
 module.exports = Object.assign(configs, {

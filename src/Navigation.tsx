@@ -34,7 +34,7 @@ export class Navigation extends React.Component<NavigationProps> {
 		const Router = this.Router;
 
 		// Render it!
-		return Router 
+		return Router
 		? (
 			<ThemeConsumer>
 			{({ theme }) => (

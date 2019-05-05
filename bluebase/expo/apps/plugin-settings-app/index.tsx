@@ -30,6 +30,7 @@ const plugin = createPlugin({
 		path: 'tabs',
 		// TODO: test initial route here
 		navigator: {
+			headerMode: 'none',
 			type: 'tab',
 			routes: [{
 				name: 'Tab1',

@@ -1,11 +1,6 @@
-// import {
-// 	createBottomTabNavigator,
-// 	createStackNavigator,
-// } from '../index';
-// import { createBrowserApp } from '@react-navigation/web';
+// import * as Navigators from '../index';
 // import React from 'react';
 // import { createSwitchNavigator } from '@react-navigation/core';
-// import { mount } from 'enzyme';
 
 describe('Get Naivgator Functions Tests', () => {
 	it('it should return createSwitchNavigator by default', () => {
@@ -20,7 +15,11 @@ describe('Get Naivgator Functions Tests', () => {
 		// expect(createBottomTabNavigator).toBe(createSwitchNavigator);
 		// mount(<Comp/>);
 		// expect(createStackNavigator).toBeDefined();
-		expect(2+2).toBe(4);
+		// const fn = require('../index').createBottomTabNavigator({}, {});
+		// require('../index')
+		// expect(fn).toBeCalled();
+		// expect((require('../index').createSwitchNavigator)).toBe(createSwitchNavigator);
+		// expect(Navigators.createBottomTabNavigator).toBeDefined();
 	});
 	// it('it should return createContainer', () => {
 	// 	expect(WebNavigator.createContainer).toBe(createBrowserApp);

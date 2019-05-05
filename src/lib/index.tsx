@@ -1,3 +1,4 @@
+
 // import {
 // 	// NavigationActions,
 // 	SceneView,
@@ -5,8 +6,6 @@
 // 	createNavigator,
 // } from '@react-navigation/core';
 // import { View, getComponent } from '@bluebase/core';
-// import React from 'react';
-
 // import stack from 'react-navigation-stack';
 
 // const createStackNavigator = stack.createStackNavigator;
@@ -18,7 +17,7 @@ export {
 	createSwitchNavigator as createDrawerNavigator,
 } from '@react-navigation/core';
 
-// export { createSwitchNavigator, createStackNavigator } from 'react-navigation';
+// // export { createSwitchNavigator, createStackNavigator } from 'react-navigation';
 
 export {
   createBrowserApp as createContainer,

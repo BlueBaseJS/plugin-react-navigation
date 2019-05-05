@@ -1,60 +1,91 @@
 import {
-	// HomeScreen,
-	// SettingsDetailScreen,
-	// SettingsScreen,
+	SettingsScreen,
 	Tab1Screen,
-	Tab2Screen,
 } from '../../../bluebase/expo/apps/plugin-settings-app/Screens';
-import { createNavigator } from '../createNavigator';
 import { BlueBase } from '@bluebase/core';
+import Plugin from '../../index';
+import { createNavigator } from '../createNavigator';
 
 const inputRoutes = {
 	initialRouteName: 'Home',
 	routes: [
-		{ name: 'Home', path: '/', exact: true, screen: 'HomeScreen', navigationOptions: {} },
 		{
 			exact: true,
 			name: 'Settings',
 			navigationOptions: {},
 			path: '/p/settings',
-			screen: 'SettingsScreen',
+			screen: SettingsScreen,
 		},
-		{
+	],
+	type: 'stack',
+};
+
+describe('createNavigator tests', () => {
+	it('should test if there is no navigator in routes', async () => {
+		const BB = new BlueBase();
+		await BB.Plugins.register(Plugin);
+		createNavigator(inputRoutes, {} as any, BB);
+		expect(createNavigator).toBeTruthy();
+	});
+	it('should test if there is no navigator in routes', async () => {
+		const BB = new BlueBase();
+		await BB.Plugins.register(Plugin);
+
+		inputRoutes.routes.push({
+			name: 'Settings',
+			path: '/p/settings',
+			screen: SettingsScreen,
+		} as any);
+
+		createNavigator(inputRoutes, {} as any, BB);
+		expect(createNavigator).toBeTruthy();
+	});
+
+	it('should test if there is navigator an screen in routes', () => {
+		inputRoutes.routes.push({
 			name: 'SettingsTabs',
-			// TODO: test initial route here
-			navigationOptions: {
-				title: 'Settings Tabs',
-			},
+			screen: SettingsScreen,
 			navigator: {
 				routes: [{
-					exact: true,
 					name: 'Tab1',
 					navigationOptions: {
 						title: 'Tab A',
 					},
 					path: 't1',
 					screen: Tab1Screen,
-				}, {
-					exact: true,
-					name: 'Tab2',
-					navigationOptions: {
-						title: 'Tab B',
-					},
-					path: 't2',
-					screen: Tab2Screen,
 				}],
-				type: 'tab'
 			},
 			path: 'tabs',
-		}
-	],
-	type: 'stack',
-};
+		} as any);
+		createNavigator(inputRoutes, {} as any, {} as any);
+		expect(createNavigator).toBeTruthy();
+	});
 
-
-describe('createNavigator tests', () => {
-	test('navigator', () => {
-		createNavigator(inputRoutes, {}, {} as any) ;
+	it('should test if there is navigator only in routes', () => {
+		inputRoutes.routes.push({
+			name: 'SettingsTabs',
+			navigator: {
+				routes: [{
+					name: 'Tab1',
+					navigationOptions: {
+						title: 'Tab A',
+					},
+					path: 't1',
+					screen: Tab1Screen,
+				}],
+			},
+			path: 'tabs',
+		} as any);
+		createNavigator(inputRoutes, {} as any, {} as any);
+		expect(createNavigator).toBeTruthy();
+	});
+	it('should test if there is only screen component in routes', () => {
+		inputRoutes.routes.push({
+			navigator: {
+				routes: [{ screen: SettingsScreen }]
+			}
+		} as any);
+		createNavigator(inputRoutes, {} as any, {} as any);
 		expect(createNavigator).toBeTruthy();
 	});
 });
