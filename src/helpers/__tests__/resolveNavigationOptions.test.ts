@@ -1,5 +1,5 @@
 import { resolveNavigationOptions } from '../resolveNavigationOptions';
-import {navigationToActionObject} from '../navigationToActionObject';
+// import {navigationToActionObject} from '../navigationToActionObject';
 
 
 describe('resolveNavigationOptions', () => {
