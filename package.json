@@ -19,7 +19,8 @@
     {
       "limit": "7 KB",
       "webpack": false,
-      "path": "dist/**/*.js"
+      "path": "dist/**/*.js",
+      "running": false
     }
   ],
   "scripts": {

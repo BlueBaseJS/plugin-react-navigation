@@ -1,5 +1,6 @@
-import { BlueBaseContext, IntlConsumer, Theme, ThemeConsumer } from '@bluebase/core';
+import { BlueBase, BlueBaseContext, IntlConsumer, Theme, ThemeConsumer } from '@bluebase/core';
 import { NavigationProps, NavigatorProps } from '@bluebase/components';
+
 import React from 'react';
 import { createContainer } from './lib/index';
 import { createNavigator } from './helpers/createNavigator';
@@ -10,13 +11,11 @@ import { createNavigator } from './helpers/createNavigator';
  * configs to this component.
  */
 export class Navigation extends React.Component<NavigationProps> {
-
-	static contextType = BlueBaseContext;
+	static contextType: React.Context<BlueBase> = BlueBaseContext;
 
 	private Router?: React.ComponentType<any>;
 
 	componentWillMount() {
-
 		// navigator prop from BlueBase
 		const { styles, navigator } = this.props;
 
@@ -26,32 +25,28 @@ export class Navigation extends React.Component<NavigationProps> {
 		};
 
 		// Create a React Navigation container component
-		this.Router = createContainer(createNavigator( navigator, defaultNavigationOptions, this.context));
+		this.Router = createContainer(
+			createNavigator(navigator, defaultNavigationOptions, this.context)
+		);
 	}
 
 	render() {
-
 		const Router = this.Router;
 
 		// Render it!
-		return Router
-		? (
+		return Router ? (
 			<ThemeConsumer>
-			{({ theme }) => (
-				<IntlConsumer>
-				{(intl) => (
-					<Router screenProps={{ BB: this.context, theme, intl }} />
+				{({ theme }) => (
+					<IntlConsumer>
+						{intl => <Router screenProps={{ BB: this.context, theme, intl }} />}
+					</IntlConsumer>
 				)}
-				</IntlConsumer>
-			)}
 			</ThemeConsumer>
-		)
-		: null;
+		) : null;
 	}
 }
 
 (Navigation as any).defaultStyles = (theme: Theme) => ({
-
 	defaultNavigationOptions: {
 		headerBackTitleStyle: {
 			color: theme.palette.primary.contrastText,
@@ -59,7 +54,7 @@ export class Navigation extends React.Component<NavigationProps> {
 		headerStyle: {
 			backgroundColor: theme.palette.primary.main,
 			borderBottomWidth: 0,
-			...theme.elevation(4)
+			...theme.elevation(4),
 		},
 		headerTitleStyle: {
 			color: theme.palette.primary.contrastText,
