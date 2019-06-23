@@ -7,10 +7,9 @@ import { navigationConverterHoc } from './navigationConverterHoc';
  * @param Wrapper
  */
 export const createWrappedNavigator = (Navigator: any, Wrapper: React.ComponentType<any>) => {
-
 	const WrappedNavigator: React.ComponentType<any> = navigationConverterHoc((props: any) => (
 		<Wrapper {...props}>
-			<Navigator {...props} />
+			<Navigator {...props} navigation={props.realNavigation} />
 		</Wrapper>
 	));
 

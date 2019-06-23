@@ -76,14 +76,14 @@
     "node": ">=8.9"
   },
   "dependencies": {
-    "@react-navigation/core": "^3.2.1",
-    "@react-navigation/web": "^1.0.0-alpha.7",
+    "@react-navigation/core": "^3.4.2",
+    "@react-navigation/web": "^1.0.0-alpha.9",
     "deepmerge": "^3.3.0",
     "expo": "^33.0.7",
     "hoist-non-react-statics": "^3.3.0",
     "react-native": "^0.59.9",
     "react-native-screens": "^1.0.0-alpha.22",
-    "react-navigation": "^3.6.1",
+    "react-navigation": "^3.11.0",
     "tslib": "^1.10.0"
   },
   "devDependencies": {
