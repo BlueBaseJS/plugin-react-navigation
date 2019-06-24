@@ -1,4 +1,3 @@
-
 // import {
 // 	// NavigationActions,
 // 	SceneView,
@@ -10,19 +9,17 @@
 
 // const createStackNavigator = stack.createStackNavigator;
 export {
-  createSwitchNavigator,
-  createSwitchNavigator as createStackNavigator,
+	createSwitchNavigator,
+	createSwitchNavigator as createStackNavigator,
 	createSwitchNavigator as createMaterialTopTabNavigator,
 	createSwitchNavigator as createBottomTabNavigator,
 	createSwitchNavigator as createDrawerNavigator,
+	createSwitchNavigator as createMaterialBottomTabNavigator,
 } from '@react-navigation/core';
 
 // // export { createSwitchNavigator, createStackNavigator } from 'react-navigation';
 
-export {
-  createBrowserApp as createContainer,
-} from '@react-navigation/web';
-
+export { createBrowserApp as createContainer } from '@react-navigation/web';
 
 // export const createStackNavigator = (args: any, configs: any = {}) => {
 // 	const router = SwitchRouter(args);
@@ -83,7 +80,6 @@ export {
 // 		}
 // 	);
 // };
-
 
 // // const MyStack = createSwitchNavigator({ ... });
 

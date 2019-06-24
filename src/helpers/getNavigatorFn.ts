@@ -1,6 +1,6 @@
 import {
-	createBottomTabNavigator,
 	createDrawerNavigator,
+	createMaterialBottomTabNavigator,
 	createMaterialTopTabNavigator,
 	createStackNavigator,
 	createSwitchNavigator,
@@ -21,7 +21,7 @@ export function getNavigatorFn(type?: string) {
 
 		case 'bottom-tab':
 		case 'bottom-navigation':
-			return createBottomTabNavigator;
+			return createMaterialBottomTabNavigator;
 
 		case 'drawer':
 			return createDrawerNavigator;

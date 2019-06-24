@@ -1,11 +1,11 @@
 export {
-  createStackNavigator,
-  createSwitchNavigator,
-  createMaterialTopTabNavigator,
-  createBottomTabNavigator,
-  createDrawerNavigator,
+	createStackNavigator,
+	createSwitchNavigator,
+	createMaterialTopTabNavigator,
+	createBottomTabNavigator,
+	createDrawerNavigator,
 } from 'react-navigation';
 
-export {
-  createAppContainer as createContainer
-} from '@react-navigation/native';
+export { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
+
+export { createAppContainer as createContainer } from '@react-navigation/native';
