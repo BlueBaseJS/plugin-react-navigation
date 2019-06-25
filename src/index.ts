@@ -1,3 +1,5 @@
+import { DrawerActions } from './DrawerActions';
+import { HeaderBackButton } from 'react-navigation';
 import { Navigation } from './Navigation';
 import { NavigationActions } from './NavigationActions';
 import { createPlugin } from '@bluebase/core';
@@ -14,7 +16,9 @@ export default createPlugin({
 	version: '1.0.0',
 
 	components: {
+		DrawerActions,
+		HeaderBackButton,
 		Navigation,
 		NavigationActions,
-	}
+	},
 });
