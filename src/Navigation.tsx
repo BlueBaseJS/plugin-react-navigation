@@ -32,13 +32,14 @@ export class Navigation extends React.Component<NavigationProps> {
 
 	render() {
 		const Router = this.Router;
+		const { styles, navigator, ...rest } = this.props;
 
 		// Render it!
 		return Router ? (
 			<ThemeConsumer>
 				{({ theme }) => (
 					<IntlConsumer>
-						{intl => <Router screenProps={{ BB: this.context, theme, intl }} />}
+						{intl => <Router screenProps={{ BB: this.context, theme, intl, ...rest }} />}
 					</IntlConsumer>
 				)}
 			</ThemeConsumer>
