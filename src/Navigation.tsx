@@ -1,5 +1,6 @@
 import { BlueBase, BlueBaseContext, IntlConsumer, Theme, ThemeConsumer } from '@bluebase/core';
 import { NavigationProps, NavigatorProps } from '@bluebase/components';
+import { Platform, StatusBar } from 'react-native';
 
 import React from 'react';
 import { createContainer } from './lib/index';
@@ -55,6 +56,7 @@ export class Navigation extends React.Component<NavigationProps> {
 		headerStyle: {
 			backgroundColor: theme.palette.primary.main,
 			borderBottomWidth: 0,
+			marginTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
 			...theme.elevation(4),
 		},
 		headerTitleStyle: {
