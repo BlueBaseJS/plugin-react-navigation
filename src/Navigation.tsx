@@ -1,6 +1,7 @@
 import { BlueBase, BlueBaseContext, IntlConsumer, Theme, ThemeConsumer } from '@bluebase/core';
 import { NavigationProps, NavigatorProps } from '@bluebase/components';
 
+import { NavigationContainer } from 'react-navigation';
 import React from 'react';
 import { createContainer } from './lib/index';
 import { createNavigator } from './helpers/createNavigator';
@@ -13,7 +14,7 @@ import { createNavigator } from './helpers/createNavigator';
 export class Navigation extends React.Component<NavigationProps> {
 	static contextType: React.Context<BlueBase> = BlueBaseContext;
 
-	private Router?: React.ComponentType<any>;
+	private Router?: NavigationContainer;
 
 	componentWillMount() {
 		// navigator prop from BlueBase
@@ -39,7 +40,12 @@ export class Navigation extends React.Component<NavigationProps> {
 			<ThemeConsumer>
 				{({ theme }) => (
 					<IntlConsumer>
-						{intl => <Router screenProps={{ BB: this.context, theme, intl, ...rest }} />}
+						{intl => (
+							<Router
+								screenProps={{ BB: this.context, theme, intl, ...rest }}
+								navigationOptions={styles!.defaultNavigationOptions}
+							/>
+						)}
 					</IntlConsumer>
 				)}
 			</ThemeConsumer>
@@ -65,7 +71,7 @@ export class Navigation extends React.Component<NavigationProps> {
 	},
 
 	cardStyle: {
-		backgroundColor: 'transparent',
+		backgroundColor: theme.palette.background.default,
 	},
 
 	tabBarOptions: {
