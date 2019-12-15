@@ -1027,13 +1027,13 @@
     deepmerge "^3.2.0"
     tslib "^1.9.3"
 
-"@bluebase/core@^5.4.1":
-  version "5.4.1"
-  resolved "https://registry.yarnpkg.com/@bluebase/core/-/core-5.4.1.tgz#8ae9c2250dd1f4789b391ab43ffb08410eaf9fb0"
-  integrity sha512-YCjYKPRBn+7bjKBdIKt0csb/JWL6O0QstfnUPtO9A7YsCoWmuWRF+9sPql4iVQGrKZcwWOm+3KB5Ym8YBYhsyA==
+"@bluebase/core@^5.5.0":
+  version "5.5.0"
+  resolved "https://registry.yarnpkg.com/@bluebase/core/-/core-5.5.0.tgz#1b38d95c95aa0287e9e7343745fcfb25cd6bb51f"
+  integrity sha512-FK94b1o5ijCcj2N2VPZv2Sp86CBur56E2c0G8W0ngf4Oc+XRclMntt3zwUBp825+S1UssBfCfC2SGJuFE6ZWkg==
   dependencies:
     deepmerge "^4.0.0"
-    hoist-non-react-statics "^3.3.0"
+    hoist-non-react-statics "^3.3.1"
     is-plain-object "^3.0.0"
     lodash.flowright "^3.5.0"
     lodash.isboolean "^3.0.3"

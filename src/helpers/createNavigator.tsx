@@ -2,6 +2,7 @@ import { BlueBase, resolveThunk } from '@bluebase/core';
 import { NavigatorProps, RouteConfig } from '@bluebase/components';
 
 import { NavigationScreenComponent } from 'react-navigation';
+import { applyThemedBackground } from './applyThemedBackground';
 import { createWrappedNavigator } from './createWrappedNavigator';
 import deepmerge from 'deepmerge';
 import { getNavigatorFn } from './getNavigatorFn';
@@ -16,11 +17,7 @@ import { resolveNavigationOptions } from './resolveNavigationOptions';
  * @param options NavigatorProps
  * @param defaultNavigationOptions NavigationOptions
  */
-export const createNavigator = (
-	options: NavigatorProps,
-	globalDefaultConfigs: NavigatorProps,
-	BB: BlueBase
-) => {
+export const createNavigator = (options: NavigatorProps, BB: BlueBase) => {
 	const {
 		defaultNavigationOptions: _defaultNavigationOptions,
 		routes: _routes,
@@ -60,12 +57,12 @@ export const createNavigator = (
 		}
 
 		// Create navigator
-		const Navigator = navigator ? createNavigator(navigator, globalDefaultConfigs, BB) : null;
+		const Navigator = navigator ? createNavigator(navigator, BB) : null;
 
 		// If we have both, a navigator and a screen, we wrap the navigator inside
 		// the screen component
 		if (Component && Navigator) {
-			route.screen = createWrappedNavigator(Navigator, Component);
+			route.screen = createWrappedNavigator(Navigator, applyThemedBackground(Component));
 			route.screen = hoistNonReactStatics(route.screen, Component, { contextType: true });
 		}
 		// If we have only a navigator, use it
@@ -74,7 +71,7 @@ export const createNavigator = (
 		}
 		// If we have only a screen, use it
 		else if (Component) {
-			route.screen = navigationConverterHoc(Component);
+			route.screen = navigationConverterHoc(applyThemedBackground(Component));
 			route.screen = hoistNonReactStatics(route.screen, Component, { contextType: true });
 		}
 
@@ -85,7 +82,7 @@ export const createNavigator = (
 	});
 
 	// Create defaultNavigationOptions for navigator
-	const navigatorConfigs = deepmerge(globalDefaultConfigs, rest, {
+	const navigatorConfigs = deepmerge(rest, {
 		defaultNavigationOptions: resolveNavigationOptions(rest.defaultNavigationOptions),
 		navigationOptions: resolveNavigationOptions(rest.navigationOptions),
 	} as any);
