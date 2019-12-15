@@ -1,8 +1,9 @@
-import { NavigationScreenComponent } from 'react-navigation';
+import { NavigationStackScreenComponent } from 'react-navigation-stack';
 import { navigationToActionObject } from './navigationToActionObject';
 
-export function resolveNavigationOptions (navOptions: NavigationScreenComponent['navigationOptions']) {
-
+export function resolveNavigationOptions(
+	navOptions: NavigationStackScreenComponent['navigationOptions']
+) {
 	if (!navOptions) {
 		return;
 	}
@@ -11,8 +12,9 @@ export function resolveNavigationOptions (navOptions: NavigationScreenComponent[
 		return navOptions;
 	}
 
-	return ({ navigation, ...others }: any) => navOptions({
-		navigation: navigationToActionObject(navigation),
-		...others
-	});
+	return ({ navigation, ...others }: any) =>
+		navOptions({
+			navigation: navigationToActionObject(navigation),
+			...others,
+		});
 }

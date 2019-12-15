@@ -5,5 +5,4 @@ export const useScreenComponent = () => {
 	if (global.__expo) {
 		useScreens();
 	}
-
 };

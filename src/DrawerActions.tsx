@@ -1,7 +1,7 @@
 import { DrawerActionsObject, DrawerActionsProps } from '@bluebase/components';
+import { NavigationInjectedProps, withNavigation } from 'react-navigation';
 
-import { NavigationInjectedProps } from 'react-navigation';
-import { withNavigation } from '@react-navigation/core';
+import { ReactElement } from 'react';
 
 /**
  * DrawerActions
@@ -12,6 +12,7 @@ import { withNavigation } from '@react-navigation/core';
  */
 export const DrawerActions = withNavigation(
 	(props: DrawerActionsProps & NavigationInjectedProps) => {
+		// (props: DrawerActionsProps & NavigationInjectedProps) => {
 		// Extract props
 		const {
 			// This is passed by the consumer of this component
@@ -33,6 +34,6 @@ export const DrawerActions = withNavigation(
 		};
 
 		// Pass actions the object on to the children
-		return children(actions);
+		return children(actions) as ReactElement;
 	}
 );
