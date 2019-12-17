@@ -83,6 +83,7 @@
     "expo": "^33.0.7",
     "hoist-non-react-statics": "^3.3.1",
     "react-native": "^0.59.9",
+    "react-native-reanimated": "^1.4.0",
     "react-native-screens": "^2.0.0-alpha.19",
     "react-navigation": "^4.0.10",
     "react-navigation-drawer": "^2.3.3",

@@ -1,8 +1,10 @@
+import { Platform, StatusBar } from 'react-native';
 import { Theme, merge } from '@bluebase/core';
 
 import { NavigationStackScreenComponent } from 'react-navigation-stack';
 import { navigationToActionObject } from './navigationToActionObject';
 
+declare const global: any;
 export const resolveNavigationOptions = (
 	navOptions: NavigationStackScreenComponent['navigationOptions']
 ) => (options: any) => {
@@ -34,6 +36,7 @@ const defaultNavigationOptions = (theme: Theme) => ({
 	headerStyle: {
 		backgroundColor: theme.palette.primary.main,
 		borderBottomWidth: 0,
+		marginTop: Platform.OS === 'android' && !global.__expo ? StatusBar.currentHeight : 0,
 		...theme.elevation(4),
 	},
 	headerTitleStyle: {
