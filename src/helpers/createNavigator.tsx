@@ -1,8 +1,8 @@
 import { BlueBase, resolveThunk } from '@bluebase/core';
 import { NavigatorProps, RouteConfig } from '@bluebase/components';
+import { applyNavigationContext, applyThemedBackground } from './screenWrappers';
 
 import { NavigationScreenComponent } from 'react-navigation';
-import { applyThemedBackground } from './applyThemedBackground';
 import { createWrappedNavigator } from './createWrappedNavigator';
 import deepmerge from 'deepmerge';
 import { getNavigatorFn } from './getNavigatorFn';
@@ -42,13 +42,14 @@ export const createNavigator = (options: NavigatorProps, BB: BlueBase) => {
 		const route = extras;
 
 		// Screen component
-		const Component = (typeof screen === 'string'
+		let Component = (typeof screen === 'string'
 			? BB.Components.resolve(screen)
 			: screen) as NavigationScreenComponent<any, any>;
 
 		// Screen static navigationOptions object/function
 		if (Component) {
 			Component.navigationOptions = resolveNavigationOptions(Component.navigationOptions);
+			Component = applyNavigationContext(applyThemedBackground(Component));
 		}
 
 		// Route navigationOptions object/function
@@ -62,7 +63,7 @@ export const createNavigator = (options: NavigatorProps, BB: BlueBase) => {
 		// If we have both, a navigator and a screen, we wrap the navigator inside
 		// the screen component
 		if (Component && Navigator) {
-			route.screen = createWrappedNavigator(Navigator, applyThemedBackground(Component));
+			route.screen = createWrappedNavigator(Navigator, Component);
 			route.screen = hoistNonReactStatics(route.screen, Component, { contextType: true });
 		}
 		// If we have only a navigator, use it
@@ -71,7 +72,7 @@ export const createNavigator = (options: NavigatorProps, BB: BlueBase) => {
 		}
 		// If we have only a screen, use it
 		else if (Component) {
-			route.screen = navigationConverterHoc(applyThemedBackground(Component));
+			route.screen = navigationConverterHoc(Component);
 			route.screen = hoistNonReactStatics(route.screen, Component, { contextType: true });
 		}
 

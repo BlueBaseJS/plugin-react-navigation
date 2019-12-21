@@ -1027,10 +1027,10 @@
     deepmerge "^3.2.0"
     tslib "^1.9.3"
 
-"@bluebase/core@^5.5.0":
-  version "5.5.0"
-  resolved "https://registry.yarnpkg.com/@bluebase/core/-/core-5.5.0.tgz#1b38d95c95aa0287e9e7343745fcfb25cd6bb51f"
-  integrity sha512-FK94b1o5ijCcj2N2VPZv2Sp86CBur56E2c0G8W0ngf4Oc+XRclMntt3zwUBp825+S1UssBfCfC2SGJuFE6ZWkg==
+"@bluebase/core@^5.8.0":
+  version "5.8.0"
+  resolved "https://registry.yarnpkg.com/@bluebase/core/-/core-5.8.0.tgz#14b4b4342fa49f54aa253b2f1ad93c270864f481"
+  integrity sha512-ydrAueEMjknkH4eCD7SbuJE/4xEeoeNt4D4Sz1dNPrJ3SoWja6/3X023avrca8pmG6F4eIyyZ49jNQIVDzvCHQ==
   dependencies:
     deepmerge "^4.0.0"
     hoist-non-react-statics "^3.3.1"
