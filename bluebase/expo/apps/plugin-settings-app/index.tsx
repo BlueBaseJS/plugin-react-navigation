@@ -27,9 +27,9 @@ const plugin = createPlugin({
 			path: '/',
 			exact: true,
 			screen: SettingsScreen,
-			navigationOptions: {
-				title: 'Settings',
-			},
+			// navigationOptions: {
+			// 	title: 'Settings',
+			// },
 		},
 		{
 			name: 'WrappedSettings',

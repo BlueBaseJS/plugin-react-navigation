@@ -1011,6 +1011,14 @@
     tslint-react "^3.6.0"
     typescript "^3.1.4"
 
+"@bluebase/component-mapper@^1.4.0":
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/@bluebase/component-mapper/-/component-mapper-1.4.0.tgz#1093f81ec0db0f08d61f938761f63c6e8c390120"
+  integrity sha512-Abwit8xaJZBVlqFbUZWT+Gr4Y+xARC/ClgaRRwn/rIh0ajvsQD9ZaPV8z9yEB6koreQMPui44y7XLDOmIrOgUw==
+  dependencies:
+    deepmerge "^3.2.0"
+    tslib "^1.9.3"
+
 "@bluebase/components@^4.1.1":
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/@bluebase/components/-/components-4.1.1.tgz#1d69d9f9e0bcd71a94991bb3740456fdc87fa6b6"
@@ -1054,6 +1062,18 @@
     deepmerge "^4.0.0"
     tslib "^1.10.0"
 
+"@bluebase/plugin-react-native-paper@^2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@bluebase/plugin-react-native-paper/-/plugin-react-native-paper-2.2.0.tgz#0b4772f64dbac95c68cfad1eda1fca8128bb67e8"
+  integrity sha512-FEoThdNhmUhiyyJQmEp2MZVqI4STAVJw4rZSdUyFgkOXUPVwTOwPgXXhIL9sf9ubzvgDOUqf37G3mI2ZZ4gLvg==
+  dependencies:
+    "@bluebase/component-mapper" "^1.4.0"
+    "@bluebase/components" "^5.20.0"
+    "@react-native-community/slider" "^2.0.1"
+    react-native-paper "^3.0.0"
+    react-native-vector-icons "^6.5.0"
+    tslib "^1.9.3"
+
 "@bluebase/plugin-responsive-grid@^0.0.7":
   version "0.0.7"
   resolved "https://registry.yarnpkg.com/@bluebase/plugin-responsive-grid/-/plugin-responsive-grid-0.0.7.tgz#773284cfa8819ac8493af05ea7c0e4823c94eae0"
@@ -1087,6 +1107,14 @@
     tslint-eslint-rules "^5.4.0"
     tslint-react "^3.6.0"
     typescript "^3.1.4"
+
+"@callstack/react-theme-provider@^3.0.5":
+  version "3.0.5"
+  resolved "https://registry.yarnpkg.com/@callstack/react-theme-provider/-/react-theme-provider-3.0.5.tgz#a173e455e9603c9c45357a3b6ace1273086527ca"
+  integrity sha512-Iec+ybWN0FvNj87sD3oWo/49edGUP0UOSdMnzCJEFJIDYr992ECIuOV89burAAh2/ibPCxgLiK6dmgv2mO/8Tg==
+  dependencies:
+    deepmerge "^3.2.0"
+    hoist-non-react-statics "^3.3.0"
 
 "@cnakazawa/watch@^1.0.3":
   version "1.0.3"
@@ -1402,6 +1430,11 @@
   version "2.0.10"
   resolved "https://registry.yarnpkg.com/@react-native-community/netinfo/-/netinfo-2.0.10.tgz#d28a446352e75754b78509557988359133cdbcca"
   integrity sha512-NrIzyLe0eSbhgMnHl2QdSEhaA7yXh6p9jzMomfUa//hoTXE+xbObGDdiWWSQm2bnXnZJg8XCU3AB9qzvqcuLnA==
+
+"@react-native-community/slider@^2.0.1":
+  version "2.0.8"
+  resolved "https://registry.yarnpkg.com/@react-native-community/slider/-/slider-2.0.8.tgz#c4a3c342638270e0adc942b51427ec17104a786d"
+  integrity sha512-FZC3wjYzHQiD7jT7ALy3QNccyLj9zQBRiKGBFr/QvrWLkVg5orpIJ53aYFXm3eOkNvUV+wjhoI9uCkh3LCN2+A==
 
 "@react-navigation/core@^3.5.1":
   version "3.5.1"
@@ -3455,6 +3488,14 @@ color@^3.0.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/color/-/color-3.1.0.tgz#d8e9fb096732875774c84bf922815df0308d0ffc"
   integrity sha512-CwyopLkuRYO5ei2EpzpIh6LqJMt6Mt+jZhO5VI5f/wJLZriXQE32/SSqzmrh+QB+AZT81Cj8yv+7zwToW8ahZg==
+  dependencies:
+    color-convert "^1.9.1"
+    color-string "^1.5.2"
+
+color@^3.1.2:
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/color/-/color-3.1.2.tgz#68148e7f85d41ad7649c5fa8c8106f098d229e10"
+  integrity sha512-vXTJhHebByxZn3lDvDJYw4lR5+uB3vuoHsuYA5AKuxRVn5wzzIfQKGLBmgdVRHKTJYeK5rvJcHnrd0Li49CFpg==
   dependencies:
     color-convert "^1.9.1"
     color-string "^1.5.2"
@@ -10834,6 +10875,15 @@ react-native-maps@0.24.2:
   resolved "https://registry.yarnpkg.com/react-native-maps/-/react-native-maps-0.24.2.tgz#19974f967cb0c2e24dab74ca879118e0932571b2"
   integrity sha512-1iNIDikp2dkCG+8DguaEviYZiMSYyvwqYT7pO2YTZvuFRDSc/P9jXMhTUnSh4wNDlEeQ47OJ09l0pwWVBZ7wxg==
 
+react-native-paper@^3.0.0:
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/react-native-paper/-/react-native-paper-3.4.0.tgz#b8d3643b33177ff41a2505aaa801d313defaf707"
+  integrity sha512-QVd6vZ4iJbUqp1OI1DY/0HwBS4y0SVixa2IeBIVyYM4ZZeoeOOlWCXdgtQk7tlf1ju5t1MJunyRGPOXOXTLGNg==
+  dependencies:
+    "@callstack/react-theme-provider" "^3.0.5"
+    color "^3.1.2"
+    react-native-safe-area-view "^0.14.6"
+
 react-native-reanimated@1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-1.0.1.tgz#5ecb6a2f6dad0351077ac9b771ca943b7ad6feda"
@@ -10903,6 +10953,15 @@ react-native-vector-icons@^6.4.2:
   version "6.4.2"
   resolved "https://registry.yarnpkg.com/react-native-vector-icons/-/react-native-vector-icons-6.4.2.tgz#ee0b097e783387544ed160a3192a437c097e551d"
   integrity sha512-G7Y5HksOQkCanFWKJ+fjwP38XL8tQREOSnw7jrbq28AFrrv41YtafOF4uDSDS7HxMRXs17HeEzn24OzJb63iuA==
+  dependencies:
+    lodash "^4.0.0"
+    prop-types "^15.6.2"
+    yargs "^13.2.2"
+
+react-native-vector-icons@^6.5.0:
+  version "6.6.0"
+  resolved "https://registry.yarnpkg.com/react-native-vector-icons/-/react-native-vector-icons-6.6.0.tgz#66cf004918eb05d90778d64bd42077c1800d481b"
+  integrity sha512-MImKVx8JEvVVBnaShMr7/yTX4Y062JZMupht1T+IEgbqBj4aQeQ1z2SH4VHWKNtWtppk4kz9gYyUiMWqx6tNSw==
   dependencies:
     lodash "^4.0.0"
     prop-types "^15.6.2"

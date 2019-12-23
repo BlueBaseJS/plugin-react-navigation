@@ -42,14 +42,16 @@ export const createNavigator = (options: NavigatorProps, BB: BlueBase) => {
 		const route = extras;
 
 		// Screen component
-		let Component = (typeof screen === 'string'
+		const rawComponent = (typeof screen === 'string'
 			? BB.Components.resolve(screen)
 			: screen) as NavigationScreenComponent<any, any>;
 
+		let Component = rawComponent;
+
 		// Screen static navigationOptions object/function
 		if (Component) {
-			Component.navigationOptions = resolveNavigationOptions(Component.navigationOptions);
 			Component = applyNavigationContext(applyThemedBackground(Component));
+			Component.navigationOptions = resolveNavigationOptions(rawComponent.navigationOptions);
 		}
 
 		// Route navigationOptions object/function

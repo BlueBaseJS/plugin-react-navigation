@@ -7,6 +7,7 @@ import { BootOptions } from '@bluebase/core';
 import DemoApp from './apps/plugin-settings-app';
 import Launcher from '@bluebase/plugin-launcher';
 import { MaterialIcons } from '@bluebase/plugin-vector-icons';
+import ReactNativePaper from '@bluebase/plugin-react-native-paper';
 import ResponsiveGrid from '@bluebase/plugin-responsive-grid';
 import commonBootOptions from '../common/bluebase';
 import deepmerge from 'deepmerge';
@@ -17,11 +18,11 @@ import deepmerge from 'deepmerge';
  * the common folder, and extend them here.
  */
 const bootOptions: Partial<BootOptions> = {
-
 	plugins: [
 		Launcher,
 		ResponsiveGrid,
 		MaterialIcons,
+		ReactNativePaper,
 
 		DemoApp,
 		App1,
@@ -30,7 +31,6 @@ const bootOptions: Partial<BootOptions> = {
 		App4,
 		App5,
 	],
-
 };
 
 export default deepmerge(commonBootOptions, bootOptions);
