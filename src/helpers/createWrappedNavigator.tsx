@@ -2,7 +2,7 @@ import React from 'react';
 import { navigationConverterHoc } from './navigationConverterHoc';
 
 /**
- * Wraps a Navigator in a Wrapper Component
+ * Wraps a Navigator in a Wrapper Component (Legacy)
  * @param Navigator
  * @param Wrapper
  */

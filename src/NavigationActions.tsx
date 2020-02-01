@@ -5,7 +5,7 @@ import { ReactElement } from 'react';
 import { navigationToActionObject } from './helpers/navigationToActionObject';
 
 /**
- * NavigationActions
+ * NavigationActions (Legacy)
  * This is a render prop component which passes the navigation actions
  * to the child component. It's useful when you cannot pass the navigation
  * actions into the component directly, or don't want to pass it in case
