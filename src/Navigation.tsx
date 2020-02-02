@@ -1,7 +1,7 @@
 import { NavigationNativeContainer } from '@react-navigation/native';
 import { NavigationProps } from '@bluebase/components';
-import { Navigator } from './Navigatior';
 import React from 'react';
+import { useComponent } from '@bluebase/core';
 
 /**
  * Navigation (V5)
@@ -9,7 +9,9 @@ import React from 'react';
  * configs to this component.
  */
 export const Navigation = (props: NavigationProps) => {
+	const Navigator = useComponent('Navigator');
 	const { navigator, ...rest } = props;
+
 	return (
 		<NavigationNativeContainer {...rest}>
 			<Navigator {...navigator} />

@@ -3,6 +3,7 @@ import './helpers/useScreen';
 import { DrawerActions } from './DrawerActions';
 import { HeaderBackButton } from 'react-navigation-stack';
 import { Navigation } from './Navigation';
+import { Navigator } from './Navigator';
 import { components } from './components';
 import { createPlugin } from '@bluebase/core';
 
@@ -16,6 +17,7 @@ export default createPlugin({
 		DrawerActions,
 		HeaderBackButton,
 		Navigation,
+		Navigator,
 		// NavigationActions,
 
 		...components,
