@@ -1,6 +1,6 @@
 import { BlueBase, useComponent } from '@bluebase/core';
 
-import { NavigationProvider } from '../NavigationProvider';
+import { NavigationProvider } from '../components';
 import React from 'react';
 import { RouteConfig } from '@bluebase/components';
 import { resolveRouteOptions } from './resolveRouteOptions';

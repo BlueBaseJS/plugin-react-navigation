@@ -2,7 +2,7 @@ import { NavigationInjectedProps, withNavigation } from 'react-navigation';
 
 import { NavigationActionsProps } from '@bluebase/components';
 import { ReactElement } from 'react';
-import { navigationToActionObject } from './helpers/navigationToActionObject';
+import { navigationToActionObject } from '../../helpers';
 
 /**
  * NavigationActions (Legacy)

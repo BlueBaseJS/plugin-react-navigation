@@ -1,7 +1,7 @@
 import { NavigationContext } from '@bluebase/core';
 import React from 'react';
-import { navigationToActionObject } from './helpers/navigationToActionObject';
-import { useCompatNavigation } from './lib';
+import { navigationToActionObject } from '../../helpers';
+import { useCompatNavigation } from '../../lib';
 
 /**
  * Converted navigation object to one that is recognized by BlueBase

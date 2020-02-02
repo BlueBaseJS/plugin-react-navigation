@@ -1,14 +1,14 @@
 import {
 	createNavigatorScreenComponent,
+	getNavigatorFn,
 	resolveNavigatorScreenOptions,
 	resolveRouteOptions,
-} from './helpers';
+} from '../../helpers';
 import { resolveThunk, useBlueBase, useIntl, useTheme } from '@bluebase/core';
 
 import { NavigatorProps as CoreNavigatorProps } from '@bluebase/components';
 import React from 'react';
-import { RouteConfigWithResolveSubRoutes } from './types';
-import { getNavigator } from './imports';
+import { RouteConfigWithResolveSubRoutes } from '../../types';
 
 export interface NavigatorProps extends CoreNavigatorProps {}
 
@@ -24,7 +24,7 @@ export const Navigator = (props: NavigatorProps) => {
 
 	const { type = 'stack', routes } = props;
 
-	const NavigatorComponent = getNavigator(type, BB)!;
+	const NavigatorComponent = getNavigatorFn(type);
 
 	if (!NavigatorComponent) {
 		return null;
