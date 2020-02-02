@@ -11,6 +11,7 @@ import { navigationConverterHoc } from './navigationConverterHoc';
 import { resolveNavigationOptions } from './resolveNavigationOptions';
 
 /**
+ * (Legacy)
  * This function is responsible to create a React Navigation "navigator"
  * component, and return it.
  *

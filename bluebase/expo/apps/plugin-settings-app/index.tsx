@@ -28,8 +28,12 @@ const plugin = createPlugin({
 			exact: true,
 			screen: SettingsScreen,
 			// navigationOptions: {
-			// 	title: 'Settings',
 			// },
+
+			options: {
+				title: 'Settings',
+				presentation: 'modal',
+			},
 		},
 		{
 			name: 'WrappedSettings',

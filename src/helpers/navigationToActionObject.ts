@@ -4,19 +4,18 @@ import {
 	NavigationActionsObject,
 	NavitionActionRouteNamePayload,
 } from '@bluebase/components';
-import { NavigationInjectedProps, NavigationParams, NavigationRouter } from 'react-navigation';
+import { NavigationProp, ParamListBase } from '@react-navigation/native';
 
-import { NavigationStackScreenProps } from 'react-navigation-stack';
+import { CompatNavigationProp } from '@react-navigation/compat';
+import { NavigationParams } from 'react-navigation';
 
 const noop = (..._params: any[]) => {
 	return null;
 };
 
-type NavigationProp =
-	| NavigationInjectedProps['navigation']
-	| NavigationStackScreenProps['navigation'];
-
-export const getTopNavigation = (navigation: NavigationProp): NavigationProp => {
+export const getTopNavigation = (
+	navigation: CompatNavigationProp<NavigationProp<ParamListBase>>
+): CompatNavigationProp<NavigationProp<ParamListBase>> => {
 	const parent = navigation.dangerouslyGetParent();
 	if (parent) {
 		// FIXME: remove any
@@ -29,7 +28,7 @@ export const getTopNavigation = (navigation: NavigationProp): NavigationProp => 
  * Convert a react-navigation's navigation prop to NavigationActionsObject
  * @param navigation
  */
-export const navigationToActionObject = (navigation: NavigationProp): NavigationActionsObject => {
+export const navigationToActionObject = (navigation: any): NavigationActionsObject => {
 	const {
 		navigate,
 		push = noop,
@@ -41,14 +40,14 @@ export const navigationToActionObject = (navigation: NavigationProp): Navigation
 	} = navigation as any;
 
 	// Extract top router
-	const topNavigation = getTopNavigation(navigation);
+	// const topNavigation = getTopNavigation(navigation);
 	// console.log(topNavigation);
-	const router = topNavigation.router;
+	// const router = topNavigation.router;
 
-	// If we don't have a router, puke 🤮
-	if (!router) {
-		throw Error('No router found in navigation.');
-	}
+	// // If we don't have a router, puke 🤮
+	// if (!router) {
+	// 	throw Error('No router found in navigation.');
+	// }
 
 	const otherParams: any = { ...navigation.state.params };
 
@@ -63,13 +62,17 @@ export const navigationToActionObject = (navigation: NavigationProp): Navigation
 	const actions: NavigationActionsObject = {
 		getParam,
 		goBack: () => goBack(),
-		navigate: (routeName, params?: NavigationParams) =>
-			execAction(router)(navigate, routeName, params),
 		pop,
-		push: (routeName, params?: NavigationParams) =>
-			execAction(router)(push || navigate, routeName, params),
+
+		// navigate,
+		// push,
+		// replace,
+
+		navigate: (routeName, params?: NavigationParams) => execAction(navigate, routeName, params),
+		push: (routeName, params?: NavigationParams) => execAction(push || navigate, routeName, params),
 		replace: (routeName, params?: NavigationParams) =>
-			execAction(router)(replace || navigate, routeName, params),
+			execAction(replace || navigate, routeName, params),
+
 		setParams,
 
 		state: {
@@ -77,7 +80,7 @@ export const navigationToActionObject = (navigation: NavigationProp): Navigation
 			params: otherParams || {},
 			routeName: navigation.state.routeName,
 			search: search,
-			url: navigation.state.path || url,
+			url: (navigation.state as any).path || url,
 		},
 
 		source: navigation,
@@ -86,43 +89,44 @@ export const navigationToActionObject = (navigation: NavigationProp): Navigation
 	return actions;
 };
 
-/**
- * Execute action from a path
- * @param router
- */
-export const execPathAction = (router: NavigationRouter) => (
-	fn: (...a: any[]) => void,
-	path: string,
-	params?: NavigationParams
-) => {
-	let url = path;
-	let search = '';
+// /**
+// TODO: Use preparePaths & findRouteByKey from react-router plugin
+//  * Execute action from a path
+//  * @param router
+//  */
+// export const execPathAction = (router: NavigationRouter) => (
+// 	fn: (...a: any[]) => void,
+// 	path: string,
+// 	params?: NavigationParams
+// ) => {
+// 	let url = path;
+// 	let search = '';
 
-	if (path.indexOf('?') >= 0) {
-		url = path.substring(0, path.indexOf('?'));
-		search = path.substring(path.indexOf('?'));
-	}
+// 	if (path.indexOf('?') >= 0) {
+// 		url = path.substring(0, path.indexOf('?'));
+// 		search = path.substring(path.indexOf('?'));
+// 	}
 
-	const finalParams = {
-		...params,
+// 	const finalParams = {
+// 		...params,
 
-		// We create these internal flags to pass url variables around
-		__path_search__: search,
-		__path_url__: url,
-	};
+// 		// We create these internal flags to pass url variables around
+// 		__path_search__: search,
+// 		__path_url__: url,
+// 	};
 
-	const action = router.getActionForPathAndParams(url, finalParams) as any;
+// 	const action = router.getActionForPathAndParams(url, finalParams) as any;
 
-	if (!fn || !action) {
-		return;
-	}
+// 	if (!fn || !action) {
+// 		return;
+// 	}
 
-	if (action.routeName) {
-		fn(action.routeName, action.params, action.action);
-	} else {
-		fn(action);
-	}
-};
+// 	if (action.routeName) {
+// 		fn(action.routeName, action.params, action.action);
+// 	} else {
+// 		fn(action);
+// 	}
+// };
 
 /**
  * Execute an action. If a routeName is provided, prefer it,
@@ -131,7 +135,7 @@ export const execPathAction = (router: NavigationRouter) => (
  * @param path
  * @param params
  */
-export const execAction = (router: NavigationRouter) => (
+export const execAction = (
 	fn: (...a: any[]) => void,
 	routeName: NavigationActionPayload,
 	params?: NavigationParams
@@ -149,7 +153,8 @@ export const execAction = (router: NavigationRouter) => (
 	}
 
 	if (typeof (routeName as NavigationActionPathPayload).path === 'string') {
-		execPathAction(router)(fn, (routeName as NavigationActionPathPayload).path, params);
+		console.warn('Navigation by path is not supported in this version');
+		// execPathAction(fn, (routeName as NavigationActionPathPayload).path, params);
 		return;
 	}
 

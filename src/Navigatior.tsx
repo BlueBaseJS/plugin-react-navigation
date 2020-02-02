@@ -1,6 +1,7 @@
-import { BlueBase, resolveThunk, useBlueBase } from '@bluebase/core';
+import { BlueBase, merge, resolveThunk, useBlueBase } from '@bluebase/core';
 import { NavigatorProps as CoreNavigatorProps, Noop, RouteConfig } from '@bluebase/components';
 
+import { NavigationProvider } from './NavigationProvider';
 import React from 'react';
 import { RouteConfigWithResolveSubRoutes } from './types';
 import { getNavigator } from './imports';
@@ -14,7 +15,7 @@ export interface NavigatorProps extends CoreNavigatorProps {}
  */
 export const Navigator = (props: NavigatorProps) => {
 	const BB = useBlueBase();
-	const { type = 'stack', routes, ...navigatorProps } = props;
+	const { type = 'stack', routes } = props;
 
 	const NavigatorComponent = getNavigator(type, BB)!;
 
@@ -26,18 +27,13 @@ export const Navigator = (props: NavigatorProps) => {
 	const resolvedRoutes = resolveThunk<RouteConfigWithResolveSubRoutes[]>(routes as any, BB);
 
 	function renderRoute(route: RouteConfigWithResolveSubRoutes) {
-		const { navigator } = route;
-
-		const component = navigator
-			? createNestedNavigatorScreenComponent(route, BB)
-			: resolveScreenComponent(route, BB);
 		const options = resolveRouteOptions(route, BB);
 
 		return (
 			<NavigatorComponent.Screen
 				key={route.name}
 				{...route}
-				component={component}
+				component={createNestedNavigatorScreenComponent(route, BB)}
 				options={options}
 			/>
 		);
@@ -46,7 +42,7 @@ export const Navigator = (props: NavigatorProps) => {
 	const screenOptions = resolveNavigatorScreenOptions(props, BB);
 
 	return (
-		<NavigatorComponent.Navigator {...navigatorProps} screenOptions={screenOptions}>
+		<NavigatorComponent.Navigator screenOptions={screenOptions}>
 			{resolvedRoutes.map(renderRoute)}
 		</NavigatorComponent.Navigator>
 	);
@@ -57,30 +53,50 @@ function resolveScreenComponent(route: RouteConfig, BB: BlueBase) {
 	return BB.Components.resolveFromCache(componentName);
 }
 
-function resolveRouteOptions(_route: RouteConfig, _BB: BlueBase) {
-	// const options = route.options || route.navigationOptions || {};
-	return {};
+function resolveRouteOptions(route: RouteConfig, _BB: BlueBase) {
+	const options = route.options || route.navigationOptions || {};
+
+	return {
+		...options,
+		header:
+			typeof options.header === 'function' || options.header === undefined
+				? options.header
+				: () => options.header,
+	};
 }
 
 function resolveNavigatorScreenOptions(navigator: CoreNavigatorProps, _BB: BlueBase) {
+	const { type, routes, ...navigatorProps } = navigator;
+
 	const screenOptions = navigator.screenOptions || navigator.defaultNavigationOptions || {};
-	return screenOptions;
+	return merge(navigatorProps, screenOptions);
 }
 
 export const createNestedNavigatorScreenComponent = (route: RouteConfig, BB: BlueBase) => {
 	const { navigator, screen } = route;
 
+	const ScreenComponent = resolveScreenComponent(route, BB);
+	const options = resolveRouteOptions(route, BB);
+
 	const navigatorNode = <Navigator {...navigator!} />;
 
 	if (screen) {
-		const options = resolveRouteOptions(route, BB);
-		const Wrapper = resolveScreenComponent(route, BB);
 		return (props: any) => (
-			<Wrapper {...props} {...options}>
-				{navigatorNode}
-			</Wrapper>
+			<NavigationProvider>
+				<ScreenComponent {...props} {...options}>
+					{navigatorNode}
+				</ScreenComponent>
+			</NavigationProvider>
 		);
 	}
 
-	return () => navigatorNode;
+	if (navigator) {
+		return () => navigatorNode;
+	}
+
+	return (props: any) => (
+		<NavigationProvider>
+			<ScreenComponent {...props} {...options} />
+		</NavigationProvider>
+	);
 };
