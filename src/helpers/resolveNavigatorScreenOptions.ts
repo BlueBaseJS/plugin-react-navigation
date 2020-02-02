@@ -8,8 +8,7 @@ import { NavigatorProps as CoreNavigatorProps } from '@bluebase/components';
  * @param BB
  */
 export function resolveNavigatorScreenOptions(navigator: CoreNavigatorProps, _BB: BlueBase) {
-	const { type, routes, ...navigatorProps } = navigator;
-
-	const screenOptions = navigator.screenOptions || navigator.defaultNavigationOptions || {};
-	return merge(navigatorProps, screenOptions);
+	const { type, routes, screenOptions, defaultNavigationOptions, ...navigatorProps } = navigator;
+	const resolvedScreenOptions = navigator.screenOptions || defaultNavigationOptions || {};
+	return merge(navigatorProps, resolvedScreenOptions);
 }

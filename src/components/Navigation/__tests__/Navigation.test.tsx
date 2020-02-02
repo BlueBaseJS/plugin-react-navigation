@@ -1,11 +1,11 @@
 import {
-	// SettingsScreen,
 	Tab1Screen,
 	Tab2Screen,
-} from '../../bluebase/expo/apps/plugin-settings-app/Screens';
+} from '../../../../bluebase/expo/apps/plugin-settings-app/Screens';
+
 import { BlueBaseApp } from '@bluebase/core';
 import { Navigation } from '../Navigation';
-import Plugin from '../index';
+import Plugin from '../../../index';
 import React from 'react';
 import { mount } from 'enzyme';
 import { waitForElement } from 'enzyme-async-helpers';
@@ -16,24 +16,27 @@ const nav = {
 		title: 'Settings Tabs',
 	},
 	navigator: {
-		routes: [{
-			exact: true,
-			name: 'Tab1',
-			navigationOptions: {
-				title: 'Tab A',
+		routes: [
+			{
+				exact: true,
+				name: 'Tab1',
+				navigationOptions: {
+					title: 'Tab A',
+				},
+				path: 't1',
+				screen: Tab1Screen,
 			},
-			path: 't1',
-			screen: Tab1Screen,
-		}, {
-			exact: true,
-			name: 'Tab2',
-			navigationOptions: {
-				title: 'Tab B',
+			{
+				exact: true,
+				name: 'Tab2',
+				navigationOptions: {
+					title: 'Tab B',
+				},
+				path: 't2',
+				screen: Tab2Screen,
 			},
-			path: 't2',
-			screen: Tab2Screen,
-		}],
-		type: 'tab'
+		],
+		type: 'tab',
 	},
 	path: 'tabs',
 };
@@ -53,11 +56,13 @@ describe('Navigation tests', () => {
 	it('should check if there is no router', () => {
 		const wrapper = mount(
 			// <BlueBaseApp plugins={[Plugin]}>
-				<Navigation navigator={{
-					routes: [
-						{} as any
-					]
-				} as any}/>
+			<Navigation
+				navigator={
+					{
+						routes: [{} as any],
+					} as any
+				}
+			/>
 			// </BlueBaseApp>
 		);
 		// await waitForElement(wrapper, Navigation);
