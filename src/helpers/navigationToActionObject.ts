@@ -7,7 +7,6 @@ import {
 import { NavigationProp, ParamListBase } from '@react-navigation/native';
 
 import { CompatNavigationProp } from '@react-navigation/compat';
-import { NavigationParams } from 'react-navigation';
 
 const noop = (..._params: any[]) => {
 	return null;
@@ -68,10 +67,9 @@ export const navigationToActionObject = (navigation: any): NavigationActionsObje
 		// push,
 		// replace,
 
-		navigate: (routeName, params?: NavigationParams) => execAction(navigate, routeName, params),
-		push: (routeName, params?: NavigationParams) => execAction(push || navigate, routeName, params),
-		replace: (routeName, params?: NavigationParams) =>
-			execAction(replace || navigate, routeName, params),
+		navigate: (routeName, params?: any) => execAction(navigate, routeName, params),
+		push: (routeName, params?: any) => execAction(push || navigate, routeName, params),
+		replace: (routeName, params?: any) => execAction(replace || navigate, routeName, params),
 
 		setParams,
 
@@ -138,7 +136,7 @@ export const navigationToActionObject = (navigation: any): NavigationActionsObje
 export const execAction = (
 	fn: (...a: any[]) => void,
 	routeName: NavigationActionPayload,
-	params?: NavigationParams
+	params?: any
 ) => {
 	if (!fn) {
 		return;

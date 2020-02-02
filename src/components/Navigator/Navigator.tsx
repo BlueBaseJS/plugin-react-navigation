@@ -22,7 +22,7 @@ export const Navigator = (props: NavigatorProps) => {
 	const theme = useTheme();
 	const intl = useIntl();
 
-	const { type = 'stack', routes } = props;
+	const { type, routes } = props;
 
 	const NavigatorComponent = getNavigatorFn(type);
 
