@@ -1,7 +1,8 @@
+import { useNavigation, useRoute } from '@react-navigation/native';
+
 import { NavigationContext } from '@bluebase/core';
 import React from 'react';
 import { navigationToActionObject } from '../../helpers';
-import { useCompatNavigation } from '../../lib';
 
 /**
  * Converted navigation object to one that is recognized by BlueBase
@@ -9,8 +10,12 @@ import { useCompatNavigation } from '../../lib';
  * @param param
  */
 export const NavigationProvider = ({ children }: { children: React.ReactNode }) => {
-	const v4Navigation = useCompatNavigation();
-	const navigation = navigationToActionObject(v4Navigation);
+	const navigation = useNavigation();
+	const route = useRoute();
 
-	return <NavigationContext.Provider value={navigation}>{children}</NavigationContext.Provider>;
+	return (
+		<NavigationContext.Provider value={navigationToActionObject(navigation, route)}>
+			{children}
+		</NavigationContext.Provider>
+	);
 };

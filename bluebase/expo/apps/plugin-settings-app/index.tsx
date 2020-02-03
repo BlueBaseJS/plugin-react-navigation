@@ -1,6 +1,7 @@
 // https://github.com/kmagiera/react-native-gesture-handler/issues/320#issuecomment-443815828
 import 'react-native-gesture-handler';
 
+import { ComponentState, Noop } from '@bluebase/components';
 // tslint:disable: object-literal-sort-keys
 import {
 	HomeScreen,
@@ -9,8 +10,11 @@ import {
 	Tab1Screen,
 	Tab2Screen,
 } from './Screens';
+import { Text, View } from 'react-native';
 
-import { Noop } from '@bluebase/components';
+import { DrawerTab1Screen } from './Screens/DrawerTab1';
+import { DrawerTab2Screen } from './Screens/DrawerTab2';
+import React from 'react';
 import { createPlugin } from '@bluebase/core';
 
 const plugin = createPlugin({
@@ -39,9 +43,15 @@ const plugin = createPlugin({
 			name: 'WrappedSettings',
 			path: '/wrapped',
 			// exact: true,
-			screen: Noop,
+			screen: ({ children }: any) => (
+				<View style={{ backgroundColor: 'rgba(0,255,0,.2)', paddingVertical: 50, flex: 1 }}>
+					<Text>Wrapper</Text>
+					{children}
+				</View>
+			),
+
 			navigationOptions: {
-				title: 'Settings',
+				header: null,
 			},
 
 			navigator: {
@@ -52,18 +62,11 @@ const plugin = createPlugin({
 						name: 'Tab1',
 						path: 't1',
 						exact: true,
-						screen: Tab1Screen,
+
+						screen: () => <ComponentState title="Wrapped" description="This screen is wrapped" />,
+
 						navigationOptions: {
-							title: 'Tab A',
-						},
-					},
-					{
-						name: 'Tab2',
-						path: 't2',
-						exact: true,
-						screen: Tab2Screen,
-						navigationOptions: {
-							title: 'Tab B',
+							title: 'Wrapped Screen',
 						},
 					},
 				],
@@ -137,6 +140,10 @@ const plugin = createPlugin({
 			name: 'SettingsDrawer',
 			path: 'drawer',
 
+			navigationOptions: {
+				title: 'Drawer Demo',
+			},
+
 			navigator: {
 				type: 'drawer',
 
@@ -157,7 +164,7 @@ const plugin = createPlugin({
 						name: 'DTab1',
 						path: 'dt1',
 						exact: true,
-						screen: Tab1Screen,
+						screen: DrawerTab1Screen,
 						navigationOptions: {
 							title: 'DTab A',
 							// drawerLockMode: 'locked-open',
@@ -167,15 +174,12 @@ const plugin = createPlugin({
 						name: 'DTab2',
 						path: 'Dt2',
 						exact: true,
-						screen: Tab2Screen,
+						screen: DrawerTab2Screen,
 						navigationOptions: {
 							title: 'DTab B',
 						},
 					},
 				],
-			},
-			navigationOptions: {
-				title: 'Settings Tabs',
 			},
 		},
 		{

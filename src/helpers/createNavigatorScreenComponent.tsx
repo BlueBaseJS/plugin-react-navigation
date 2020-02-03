@@ -1,5 +1,4 @@
-import { BlueBase, useComponent } from '@bluebase/core';
-
+import { BlueBase } from '@bluebase/core';
 import { NavigationProvider } from '../components';
 import React from 'react';
 import { RouteConfig } from '@bluebase/components';
@@ -13,24 +12,24 @@ import { resolveScreenComponent } from './resolveScreenComponent';
  */
 export const createNavigatorScreenComponent = (route: RouteConfig, BB: BlueBase) => {
 	const { navigator, screen } = route;
-	const Navigator = useComponent('Navigator');
+	const Navigator = BB.Components.resolveFromCache('Navigator');
 
 	const ScreenComponent = resolveScreenComponent(route, BB);
 	const options = resolveRouteOptions(route, BB);
 
-	const navigatorNode = <Navigator {...navigator!} />;
-
-	if (screen) {
-		return (props: any) => (
-			<NavigationProvider>
-				<ScreenComponent {...props} {...options}>
-					{navigatorNode}
-				</ScreenComponent>
-			</NavigationProvider>
-		);
-	}
-
 	if (navigator) {
+		const navigatorNode = <Navigator {...navigator} />;
+
+		if (screen) {
+			return (props: any) => (
+				<NavigationProvider>
+					<ScreenComponent {...props} {...options}>
+						{navigatorNode}
+					</ScreenComponent>
+				</NavigationProvider>
+			);
+		}
+
 		return () => navigatorNode;
 	}
 

@@ -4,51 +4,26 @@ import {
 	NavigationActionsObject,
 	NavitionActionRouteNamePayload,
 } from '@bluebase/components';
-import { NavigationProp, ParamListBase } from '@react-navigation/native';
-
-import { CompatNavigationProp } from '@react-navigation/compat';
 
 const noop = (..._params: any[]) => {
 	return null;
-};
-
-export const getTopNavigation = (
-	navigation: CompatNavigationProp<NavigationProp<ParamListBase>>
-): CompatNavigationProp<NavigationProp<ParamListBase>> => {
-	const parent = navigation.dangerouslyGetParent();
-	if (parent) {
-		// FIXME: remove any
-		return getTopNavigation(parent as any);
-	}
-	return navigation;
 };
 
 /**
  * Convert a react-navigation's navigation prop to NavigationActionsObject
  * @param navigation
  */
-export const navigationToActionObject = (navigation: any): NavigationActionsObject => {
+export const navigationToActionObject = (navigation: any, state: any): NavigationActionsObject => {
 	const {
 		navigate,
 		push = noop,
 		pop = noop,
 		replace = noop,
 		goBack,
-		getParam,
 		setParams,
 	} = navigation as any;
 
-	// Extract top router
-	// const topNavigation = getTopNavigation(navigation);
-	// console.log(topNavigation);
-	// const router = topNavigation.router;
-
-	// // If we don't have a router, puke 🤮
-	// if (!router) {
-	// 	throw Error('No router found in navigation.');
-	// }
-
-	const otherParams: any = { ...navigation.state.params };
+	const otherParams: any = { ...state.params };
 
 	// Extract internal variables
 	const url = `/${otherParams.__path_url__}`;
@@ -59,7 +34,6 @@ export const navigationToActionObject = (navigation: any): NavigationActionsObje
 	delete otherParams.__path_search__;
 
 	const actions: NavigationActionsObject = {
-		getParam,
 		goBack: () => goBack(),
 		pop,
 
@@ -73,12 +47,22 @@ export const navigationToActionObject = (navigation: any): NavigationActionsObje
 
 		setParams,
 
+		getParam(paramName: any, defaultValue: any): any {
+			// @ts-ignore
+			const params = state.params;
+
+			if (params && paramName in params) {
+				return params[paramName];
+			}
+
+			return defaultValue;
+		},
+
 		state: {
-			key: navigation.state.key,
-			params: otherParams || {},
-			routeName: navigation.state.routeName,
+			...state,
+			routeName: state.name,
 			search: search,
-			url: (navigation.state as any).path || url,
+			url: (state as any).path || url,
 		},
 
 		source: navigation,

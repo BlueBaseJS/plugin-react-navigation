@@ -1,6 +1,7 @@
+import { useNavigation, useRoute } from '@react-navigation/native';
+
 import { NavigationActionsProps } from '@bluebase/components';
 import { navigationToActionObject } from '../../helpers';
-import { useCompatNavigation } from '../../lib';
 
 /**
  * NavigationActions (Legacy)
@@ -9,8 +10,9 @@ import { useCompatNavigation } from '../../lib';
  * actions into the component directly, or don't want to pass it in case
  * of a deeply nested child.
  */
-export const NavigationActions = ({ children }: NavigationActionsProps) => {
-	const v4Navigation = useCompatNavigation();
-	const navigation = navigationToActionObject(v4Navigation);
-	return children(navigation);
+export const NavigationActions: React.ComponentType<NavigationActionsProps> = ({ children }) => {
+	const navigation = useNavigation();
+	const route = useRoute();
+
+	return children(navigationToActionObject(navigation, route)) as any;
 };

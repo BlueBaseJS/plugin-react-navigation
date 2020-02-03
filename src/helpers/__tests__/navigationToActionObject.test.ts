@@ -1,6 +1,5 @@
-import { getTopNavigation, navigationToActionObject } from '../navigationToActionObject';
-
 import { NavigationActionsObject } from '@bluebase/components';
+import { navigationToActionObject } from '../navigationToActionObject';
 
 const navigation: any = {
 	addListener: jest.fn(),
@@ -17,43 +16,36 @@ const navigation: any = {
 	popToTop: jest.fn(),
 	push: jest.fn(),
 	replace: jest.fn(),
-	router: {
-		getActionForPathAndParams: jest.fn(),
-		getComponentForRouteName: jest.fn(),
-		getComponentForState: jest.fn(),
-		getPathAndParamsForState: jest.fn(),
-		getScreenOptions: jest.fn(),
-		getStateForAction: jest.fn(),
-	},
 	setParams: jest.fn(),
-	state: {
-		index: 0,
-		isTransitioning: false,
-		key: 'kjdkj',
-		params: { foo: 'bar' },
-		path: '/',
-		routeName: 'Home',
-		routes: [
-			{
-				index: 1,
-				isTransitioning: false,
-				key: 'jsdfl',
-				path: '/settings',
-				routeName: 'Settings',
-				routes: [],
-			},
-		],
-	},
 	toggleDrawer: jest.fn(),
+};
+
+const route = {
+	index: 0,
+	isTransitioning: false,
+	key: 'kjdkj',
+	name: 'Home',
+	params: { foo: 'bar' },
+	path: '/',
+	routes: [
+		{
+			index: 1,
+			isTransitioning: false,
+			key: 'jsdfl',
+			path: '/settings',
+			routeName: 'Settings',
+			routes: [],
+		},
+	],
 };
 
 describe('navigationToActionObject', () => {
 	it('should check navigationToActionObject', async () => {
-		expect(navigationToActionObject(navigation)).toBeTruthy();
+		expect(navigationToActionObject(navigation, route)).toBeTruthy();
 	});
 
 	it('should convert a history object to action object', () => {
-		const result: NavigationActionsObject = navigationToActionObject(navigation);
+		const result: NavigationActionsObject = navigationToActionObject(navigation, route);
 		// expect(getTopNavigation).toBeCalled();
 		expect(result.state.key).toBe('kjdkj');
 		expect(result.state.routeName).toBe('Home');
@@ -62,7 +54,7 @@ describe('navigationToActionObject', () => {
 	});
 
 	it('should check returning functions', () => {
-		const result: NavigationActionsObject = navigationToActionObject(navigation);
+		const result: NavigationActionsObject = navigationToActionObject(navigation, route);
 		result.goBack();
 		expect(result.goBack).toBeTruthy();
 		result.navigate('');
@@ -80,16 +72,11 @@ describe('navigationToActionObject', () => {
 			router: {},
 			state: {},
 		};
-		const result = navigationToActionObject(nav as any);
+		const result = navigationToActionObject(nav as any, route);
 		result.push('');
 		expect(result.push).toBeTruthy();
 		result.replace('');
 		expect(result.replace).toBeTruthy();
-	});
-
-	it('shoud test getTopNavigation', () => {
-		navigationToActionObject(navigation);
-		expect(getTopNavigation).toBeTruthy();
 	});
 
 	// it('should test execFunc', () => {
@@ -175,6 +162,6 @@ describe('navigationToActionObject', () => {
 	// });
 
 	it('router error', () => {
-		expect(navigationToActionObject(navigation).goBack).toBeDefined();
+		expect(navigationToActionObject(navigation, route).goBack).toBeDefined();
 	});
 });
