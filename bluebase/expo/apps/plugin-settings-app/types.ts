@@ -166,7 +166,7 @@
 // 		filter: 'bluebase.routes.main',
 // 		routes: {}
 // 	}]
-// }	
+// }
 
 
 // export interface RouteConfig {

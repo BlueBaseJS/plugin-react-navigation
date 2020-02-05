@@ -1,9 +1,8 @@
-import './helpers/useScreen';
+import './enableScreens';
 
-import { DrawerActions } from './DrawerActions';
-import { HeaderBackButton } from 'react-navigation-stack';
-import { Navigation } from './Navigation';
-// import { NavigationActions } from './NavigationActions';
+import { DrawerActions, Navigation, Navigator } from './components';
+
+import { HeaderBackButton } from '@react-navigation/stack';
 import { createPlugin } from '@bluebase/core';
 
 export default createPlugin({
@@ -13,9 +12,21 @@ export default createPlugin({
 	version: '1.0.0',
 
 	components: {
-		DrawerActions,
-		HeaderBackButton,
-		Navigation,
-		// NavigationActions,
+		HeaderBackButton: HeaderBackButton,
+
+		DrawerActions: {
+			applyStyles: false,
+			value: DrawerActions as any,
+		},
+
+		Navigation: {
+			applyStyles: false,
+			value: Navigation,
+		},
+
+		Navigator: {
+			applyStyles: false,
+			value: Navigator,
+		},
 	},
 });

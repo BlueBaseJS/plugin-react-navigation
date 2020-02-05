@@ -1,5 +1,6 @@
 import 'jest-enzyme';
 import 'react-native';
+
 import Adapter from 'enzyme-adapter-react-16';
 import Enzyme from 'enzyme';
 
@@ -11,6 +12,7 @@ const { JSDOM } = require('jsdom');
 const jsdom = new JSDOM('<!doctype html><html><body></body></html>');
 const { window } = jsdom;
 
+// eslint-disable-next-line prefer-arrow/prefer-arrow-functions
 function copyProps(src: any, target: any) {
 	Object.defineProperties(target, {
 		...Object.getOwnPropertyDescriptors(src),
@@ -19,9 +21,9 @@ function copyProps(src: any, target: any) {
 }
 
 declare const global: {
-	document: any,
-	navigator: any,
-	window: any,
+	document: any;
+	navigator: any;
+	window: any;
 };
 
 global.window = window;
@@ -52,9 +54,7 @@ console.error = (message: any) => {
 	originalConsoleError(message);
 };
 
-
-
-//////// Fix Jest Issues with React Navigation ////////
+// ////// Fix Jest Issues with React Navigation ////////
 
 jest.mock('react-native-gesture-handler', () => {
 	const View = require('react-native/Libraries/Components/View/View');
@@ -78,34 +78,14 @@ jest.mock('react-native-gesture-handler', () => {
 		PanGestureHandler: View,
 		PinchGestureHandler: View,
 		RotationGestureHandler: View,
-    /* Buttons */
+		/* Buttons */
 		RawButton: View,
 		BaseButton: View,
 		RectButton: View,
 		BorderlessButton: View,
-    /* Other */
+		/* Other */
 		FlatList: View,
 		gestureHandlerRootHOC: jest.fn(),
 		Directions: {},
 	};
 });
-
-jest.mock('NativeModules', () => ({
-	UIManager: {
-		RCTView: () => {},
-	},
-	RNGestureHandlerModule: {
-		attachGestureHandler: jest.fn(),
-		createGestureHandler: jest.fn(),
-		dropGestureHandler: jest.fn(),
-		updateGestureHandler: jest.fn(),
-		State: {},
-		Directions: {}
-	},
-	PlatformConstants: {
-		forceTouchAvailable: false,
-	},
-	KeyboardObserver: {
-
-	}
-}));

@@ -1,32 +1,36 @@
-import {
-	createDrawerNavigator,
-	createMaterialBottomTabNavigator,
-	createMaterialTopTabNavigator,
-	createStackNavigator,
-	createSwitchNavigator,
-} from '../lib';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createStackNavigator } from '@react-navigation/stack';
+
+const NavigatorMap: { [key: string]: any } = {
+	'bottom-tab': createBottomTabNavigator,
+	'bottom-tabs': createBottomTabNavigator,
+
+	drawer: createDrawerNavigator,
+
+	'bottom-navigation': createMaterialBottomTabNavigator,
+	'material-bottom-tab': createMaterialBottomTabNavigator,
+	'material-bottom-tabs': createMaterialBottomTabNavigator,
+
+	tab: createMaterialTopTabNavigator,
+	tabs: createMaterialTopTabNavigator,
+
+	'native-stack': createNativeStackNavigator,
+
+	stack: createStackNavigator,
+
+	switch: createStackNavigator,
+};
 
 /**
- * Return react navigation's createNavigator based on the navigator type
+ * Get Navigator by type (V5)
  * @param type
+ * @param BB
  */
-export function getNavigatorFn(type?: string) {
-	switch (type) {
-		case 'stack':
-			return createStackNavigator;
-
-		case 'tab':
-		case 'top-tab':
-			return createMaterialTopTabNavigator;
-
-		case 'bottom-tab':
-		case 'bottom-navigation':
-			return createMaterialBottomTabNavigator;
-
-		case 'drawer':
-			return createDrawerNavigator;
-
-		default:
-			return createSwitchNavigator;
-	}
-}
+export const getNavigatorFn = (type?: string) => {
+	const fn = NavigatorMap[type || 'stack'];
+	return fn ? fn() : undefined;
+};
