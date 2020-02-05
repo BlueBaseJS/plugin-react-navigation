@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 import React from 'react';
 import { Text } from '@bluebase/components';
 import { createPlugin } from '@bluebase/core';
@@ -14,6 +15,6 @@ export default createPlugin({
 	routes: {
 		name: 'App2',
 		path: '',
-		screen: () => (<Text>App2</Text>),
-	}
+		screen: () => <Text>App2</Text>,
+	},
 });

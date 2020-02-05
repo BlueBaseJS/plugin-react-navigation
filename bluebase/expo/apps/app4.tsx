@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 import { DynamicIcon } from '@bluebase/core/dist/components';
 import React from 'react';
 import { Text } from '@bluebase/components';
@@ -30,6 +31,6 @@ export default createPlugin({
 	routes: {
 		name: 'App4',
 		path: '',
-		screen: () => (<Text>App4</Text>),
-	}
+		screen: () => <Text>App4</Text>,
+	},
 });
