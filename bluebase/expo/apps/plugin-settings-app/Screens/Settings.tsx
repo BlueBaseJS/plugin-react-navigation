@@ -1,6 +1,6 @@
-import { Button, Text, View } from 'react-native';
+import { Body1, NavigationActions } from '@bluebase/components';
+import { Button, View } from 'react-native';
 
-import { NavigationActions } from '@bluebase/components';
 import React from 'react';
 
 export class SettingsScreen extends React.Component {
@@ -10,7 +10,7 @@ export class SettingsScreen extends React.Component {
 	render() {
 		return (
 			<View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-				<Text>Settings Screen</Text>
+				<Body1>Settings Screen</Body1>
 				<NavigationActions>
 					{({ navigate }: any) => (
 						<Button

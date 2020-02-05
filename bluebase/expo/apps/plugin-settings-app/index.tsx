@@ -14,6 +14,7 @@ import { Text, View } from 'react-native';
 
 import { DrawerTab1Screen } from './Screens/DrawerTab1';
 import { DrawerTab2Screen } from './Screens/DrawerTab2';
+import { ParamsScreen } from './Screens/Params';
 import React from 'react';
 import { createPlugin } from '@bluebase/core';
 
@@ -70,6 +71,17 @@ const plugin = createPlugin({
 						},
 					},
 				],
+			},
+		},
+		{
+			name: 'Params',
+			path: '/params',
+			exact: true,
+			screen: ParamsScreen,
+			navigationOptions: () => {
+				return {
+					title: 'Params',
+				};
 			},
 		},
 		{

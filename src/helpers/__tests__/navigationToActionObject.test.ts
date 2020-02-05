@@ -1,5 +1,6 @@
+import { execAction, navigationToActionObject } from '../navigationToActionObject';
+
 import { NavigationActionsObject } from '@bluebase/components';
-import { navigationToActionObject } from '../navigationToActionObject';
 
 const navigation: any = {
 	addListener: jest.fn(),
@@ -79,38 +80,49 @@ describe('navigationToActionObject', () => {
 		expect(result.replace).toBeTruthy();
 	});
 
-	// it('should test execFunc', () => {
-	// 	navigation.router = {
-	// 		getActionForPathAndParams: jest.fn(),
-	// 		getComponentForRouteName: jest.fn(),
-	// 		getComponentForState: jest.fn(),
-	// 		getPathAndParamsForState: jest.fn(),
-	// 		getScreenOptions: jest.fn(),
-	// 		getStateForAction: jest.fn(),
-	// 	};
+	it('should check getParam', () => {
+		const nav = {
+			dangerouslyGetParent: jest.fn(),
+			navigate: () => ({}),
+			router: {},
+			state: {
+				params: {
+					foo: 'bar',
+				},
+			},
+		};
+		const result = navigationToActionObject(nav as any, route);
 
-	// 	execAction(navigation.router)(
-	// 		undefined as any,
-	// 		navigation.state.routeName,
-	// 		navigation.state.params
-	// 	);
-	// 	expect(execAction).toBeTruthy();
+		// Return known value
+		expect(result.getParam('foo', 'baz')).toBe('bar');
 
-	// 	execAction(navigation.router)(
-	// 		navigation.navigate,
-	// 		navigation.state.routeName,
-	// 		navigation.state.params
-	// 	);
-	// 	expect(execAction).toBeTruthy();
+		// Return defaultValue for unknown key
+		expect(result.getParam('blah', 'baz')).toBe('baz');
+	});
 
-	// 	execAction(navigation.router)(navigation.navigate, { path: '/' }, navigation.state.params);
-	// 	expect(execAction).toBeTruthy();
+	it('should test execFunc', () => {
+		navigation.router = {
+			getActionForPathAndParams: jest.fn(),
+			getComponentForRouteName: jest.fn(),
+			getComponentForState: jest.fn(),
+			getPathAndParamsForState: jest.fn(),
+			getScreenOptions: jest.fn(),
+			getStateForAction: jest.fn(),
+		};
 
-	// 	const err = () => {
-	// 		execAction(navigation.router as any)(navigation.navigate, {} as any, navigation.state.params);
-	// 	};
-	// 	expect(err).toThrow('Invalid props provided to navigation action');
-	// });
+		expect(execAction(undefined as any, route.name, route.params)).toBeUndefined();
+
+		execAction(navigation.navigate, route.name, route.params);
+		expect(navigation.navigate).toHaveBeenLastCalledWith(route.name, route.params);
+
+		execAction(navigation.navigate, { path: '/' }, route.params);
+		expect(execAction).toBeTruthy();
+
+		const err = () => {
+			execAction(navigation.navigate, {} as any, route.params);
+		};
+		expect(err).toThrow('Invalid props provided to navigation action');
+	});
 
 	// it('should test execPathAction', () => {
 	// 	navigation.router = {

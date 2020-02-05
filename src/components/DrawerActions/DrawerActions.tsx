@@ -10,11 +10,7 @@ import { useNavigation } from '@react-navigation/native';
  * of a deeply nested child.
  */
 export const DrawerActions: React.ComponentType<DrawerActionsProps> = ({ children }) => {
-	const noop = () => {
-		return;
-	};
-
-	const { openDrawer = noop, closeDrawer = noop, toggleDrawer = noop } = useNavigation() as any;
+	const { openDrawer, closeDrawer, toggleDrawer } = useNavigation() as any;
 
 	const actions: DrawerActionsObject = {
 		closeDrawer,

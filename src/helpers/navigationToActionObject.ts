@@ -42,13 +42,12 @@ export const navigationToActionObject = (navigation: any, state: any): Navigatio
 		// replace,
 
 		navigate: (routeName, params?: any) => execAction(navigate, routeName, params),
-		push: (routeName, params?: any) => execAction(push || navigate, routeName, params),
-		replace: (routeName, params?: any) => execAction(replace || navigate, routeName, params),
+		push: (routeName, params?: any) => execAction(push, routeName, params),
+		replace: (routeName, params?: any) => execAction(replace, routeName, params),
 
 		setParams,
 
 		getParam(paramName: any, defaultValue: any): any {
-			// @ts-ignore
 			const params = state.params;
 
 			if (params && paramName in params) {

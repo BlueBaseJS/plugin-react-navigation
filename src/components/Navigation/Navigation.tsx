@@ -1,7 +1,8 @@
+import { useComponent, useTheme } from '@bluebase/core';
+
 import { NavigationNativeContainer } from '@react-navigation/native';
 import { NavigationProps } from '@bluebase/components';
 import React from 'react';
-import { useComponent } from '@bluebase/core';
 
 /**
  * Navigation (V5)
@@ -9,11 +10,26 @@ import { useComponent } from '@bluebase/core';
  * configs to this component.
  */
 export const Navigation = (props: NavigationProps) => {
-	const Navigator = useComponent('Navigator');
 	const { navigator, ...rest } = props;
 
+	const Navigator = useComponent('Navigator');
+	const { theme } = useTheme();
+
 	return (
-		<NavigationNativeContainer {...rest}>
+		<NavigationNativeContainer
+			theme={{
+				dark: theme.mode === 'dark',
+
+				colors: {
+					background: theme.palette.background.default,
+					border: theme.palette.divider,
+					card: theme.palette.background.card,
+					primary: theme.palette.primary.main,
+					text: theme.palette.text.primary,
+				},
+			}}
+			{...rest}
+		>
 			<Navigator {...navigator} />
 		</NavigationNativeContainer>
 	);
