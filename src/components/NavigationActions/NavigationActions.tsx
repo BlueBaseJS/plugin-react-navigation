@@ -10,7 +10,9 @@ import { navigationToActionObject } from '../../helpers';
  * actions into the component directly, or don't want to pass it in case
  * of a deeply nested child.
  */
-export const NavigationActions: React.ComponentType<NavigationActionsProps> = ({ children }) => {
+export const NavigationActions: React.ComponentType<NavigationActionsProps> = ({
+	children,
+}: NavigationActionsProps) => {
 	const navigation = useNavigation();
 	const route = useRoute();
 

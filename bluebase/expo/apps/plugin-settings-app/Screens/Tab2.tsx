@@ -1,13 +1,14 @@
+/* eslint-disable react/jsx-no-bind */
 import { Button, Text, View } from 'react-native';
+
 // import { DrawerActions } from '../../components';
 import { NavigationActions } from '@bluebase/components';
 import React from 'react';
+
 // import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-
 export class Tab2Screen extends React.Component {
-	static navigationOptions = {
-		
+	static navigationOptions: any = {
 		// tabBarIcon: () => (
 		// 	<MaterialCommunityIcons
 		// 		// color={tintColor}
@@ -17,10 +18,10 @@ export class Tab2Screen extends React.Component {
 		// ),
 		tabBarOptions: {
 			labelStyle: {
-				fontSize: 20
+				fontSize: 20,
 			},
 			tabStyle: {
-				width: 80
+				width: 80,
 			},
 			activeTintColor: 'green',
 			inactiveTintColor: 'yellow',
@@ -29,21 +30,16 @@ export class Tab2Screen extends React.Component {
 			pressColor: 'red',
 			pressOpacity: 80,
 			iconStyle: {
-				color: 'red'
-			}
-		}
-	}
+				color: 'red',
+			},
+		},
+	};
 	render() {
 		return (
 			<View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
 				<Text>Tab 2 Content</Text>
 				<NavigationActions>
-					{({ navigate }: any) => (
-						<Button
-							title="Home"
-							onPress={() => navigate('Home')}
-						/>
-					)}
+					{({ navigate }: any) => <Button title="Home" onPress={() => navigate('Home')} />}
 				</NavigationActions>
 				{/* <DrawerActions>
           {({ toggleDrawer }: any) => (

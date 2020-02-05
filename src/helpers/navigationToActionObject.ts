@@ -41,9 +41,11 @@ export const navigationToActionObject = (navigation: any, state: any): Navigatio
 		// push,
 		// replace,
 
-		navigate: (routeName, params?: any) => execAction(navigate, routeName, params),
-		push: (routeName, params?: any) => execAction(push, routeName, params),
-		replace: (routeName, params?: any) => execAction(replace, routeName, params),
+		navigate: (routeName: NavigationActionPayload, params?: any) =>
+			execAction(navigate, routeName, params),
+		push: (routeName: NavigationActionPayload, params?: any) => execAction(push, routeName, params),
+		replace: (routeName: NavigationActionPayload, params?: any) =>
+			execAction(replace, routeName, params),
 
 		setParams,
 

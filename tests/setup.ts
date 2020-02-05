@@ -12,6 +12,7 @@ const { JSDOM } = require('jsdom');
 const jsdom = new JSDOM('<!doctype html><html><body></body></html>');
 const { window } = jsdom;
 
+// eslint-disable-next-line prefer-arrow/prefer-arrow-functions
 function copyProps(src: any, target: any) {
 	Object.defineProperties(target, {
 		...Object.getOwnPropertyDescriptors(src),
@@ -53,7 +54,7 @@ console.error = (message: any) => {
 	originalConsoleError(message);
 };
 
-//////// Fix Jest Issues with React Navigation ////////
+// ////// Fix Jest Issues with React Navigation ////////
 
 jest.mock('react-native-gesture-handler', () => {
 	const View = require('react-native/Libraries/Components/View/View');

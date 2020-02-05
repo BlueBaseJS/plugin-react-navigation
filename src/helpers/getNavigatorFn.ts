@@ -30,7 +30,7 @@ const NavigatorMap: { [key: string]: any } = {
  * @param type
  * @param BB
  */
-export const getNavigatorFn = (type: string = 'stack') => {
-	const fn = NavigatorMap[type];
-	return !!fn ? fn() : undefined;
+export const getNavigatorFn = (type?: string) => {
+	const fn = NavigatorMap[type || 'stack'];
+	return fn ? fn() : undefined;
 };

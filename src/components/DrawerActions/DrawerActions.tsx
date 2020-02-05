@@ -9,7 +9,9 @@ import { useNavigation } from '@react-navigation/native';
  * actions into the component directly, or don't want to pass it in case
  * of a deeply nested child.
  */
-export const DrawerActions: React.ComponentType<DrawerActionsProps> = ({ children }) => {
+export const DrawerActions: React.ComponentType<DrawerActionsProps> = ({
+	children,
+}: DrawerActionsProps) => {
 	const { openDrawer, closeDrawer, toggleDrawer } = useNavigation() as any;
 
 	const actions: DrawerActionsObject = {

@@ -21,7 +21,7 @@ describe('DrawerActions tests', () => {
 	it('should check props', async () => {
 		const children = jest.fn().mockReturnValue(null);
 
-		mount(<DrawerActions children={children} />);
+		mount(<DrawerActions>{children}</DrawerActions>);
 
 		expect(children).toHaveBeenCalledTimes(1);
 		expect(children).toHaveBeenCalledWith(mockedNavigation);

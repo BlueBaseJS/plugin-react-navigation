@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-bind */
 import { Divider, List } from '@bluebase/components';
 import { ScrollView, View } from 'react-native';
 

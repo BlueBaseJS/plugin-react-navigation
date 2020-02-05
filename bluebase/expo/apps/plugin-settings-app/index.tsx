@@ -44,6 +44,8 @@ const plugin = createPlugin({
 			name: 'WrappedSettings',
 			path: '/wrapped',
 			// exact: true,
+
+			// eslint-disable-next-line react/display-name
 			screen: ({ children }: any) => (
 				<View style={{ backgroundColor: 'rgba(0,255,0,.2)', paddingVertical: 50, flex: 1 }}>
 					<Text>Wrapper</Text>
@@ -64,6 +66,7 @@ const plugin = createPlugin({
 						path: 't1',
 						exact: true,
 
+						// eslint-disable-next-line react/display-name
 						screen: () => <ComponentState title="Wrapped" description="This screen is wrapped" />,
 
 						navigationOptions: {

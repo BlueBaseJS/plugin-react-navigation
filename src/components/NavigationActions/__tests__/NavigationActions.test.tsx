@@ -54,7 +54,7 @@ describe('NavigationActions tests', () => {
 	it('should check props', async () => {
 		const children = jest.fn().mockReturnValue(null);
 
-		mount(<NavigationActions children={children} />);
+		mount(<NavigationActions>{children}</NavigationActions>);
 
 		expect(children).toHaveBeenCalledTimes(1);
 

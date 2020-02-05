@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-bind */
 import { Button, Text, View } from 'react-native';
 
 import { NavigationActions } from '@bluebase/components';
