@@ -32,13 +32,6 @@ const plugin = createPlugin({
 			path: '/',
 			exact: true,
 			screen: SettingsScreen,
-			// navigationOptions: {
-			// },
-
-			options: {
-				title: 'Settings',
-				presentation: 'modal',
-			},
 		},
 		{
 			name: 'WrappedSettings',
@@ -76,6 +69,62 @@ const plugin = createPlugin({
 				],
 			},
 		},
+
+		{
+			name: 'Modal',
+			path: '/modal',
+
+			options: {
+				headerShown: false,
+				contentStyle: {
+					backgroundColor: 'black',
+				},
+			},
+
+			navigator: {
+				type: 'native-stack',
+				// mode: 'modal',
+
+				routes: [
+					{
+						name: 'Modal1',
+						path: 'modal1',
+						exact: true,
+
+						// eslint-disable-next-line react/display-name
+						screen: (props: any) => (
+							<ComponentState
+								title="Title 1"
+								description="This screen is in a modal"
+								actionOnPress={() => props.navigation.navigate('Modal2')}
+								actionTitle="Modal 2"
+							/>
+						),
+
+						navigationOptions: {
+							// stackPresentation: 'modal',
+							title: 'Modal 1 Screen',
+						},
+					},
+					{
+						name: 'Modal2',
+						path: 'modal2',
+						exact: true,
+
+						// eslint-disable-next-line react/display-name
+						screen: () => (
+							<ComponentState title="Title 2" description="This screen is in a modal" />
+						),
+
+						navigationOptions: {
+							stackPresentation: 'modal',
+							title: 'Modal 2 Screen',
+						} as any,
+					},
+				],
+			},
+		},
+
 		{
 			name: 'Params',
 			path: '/params',

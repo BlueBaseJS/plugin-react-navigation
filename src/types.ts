@@ -1,10 +1,18 @@
-import { BlueBase, IntlContextData, Theme } from '@bluebase/core';
-import { NavigatorProps, RouteConfig } from '@bluebase/components';
+import { BlueBase, IntlContextData, Theme, ThemeContextData } from '@bluebase/core';
+import { NavigationActionsObject, NavigatorProps, RouteConfig } from '@bluebase/components';
 
 export interface ScreenProps {
 	BB: BlueBase;
-	theme: Theme;
+	themes: ThemeContextData;
 	intl: IntlContextData;
+
+	// Backwards Compat
+	theme: Theme;
+}
+
+export interface NavigationData {
+	navigation: NavigationActionsObject;
+	screenProps: ScreenProps;
 }
 
 export interface RouteConfigWithResolveSubRoutes extends RouteConfig {

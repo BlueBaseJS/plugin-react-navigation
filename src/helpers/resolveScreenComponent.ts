@@ -7,7 +7,7 @@ import { BlueBase } from '@bluebase/core';
  * @param route
  * @param BB
  */
-export function resolveScreenComponent(route: RouteConfig, BB: BlueBase) {
+export const resolveScreenComponent = (route: RouteConfig, BB: BlueBase) => {
 	const componentName: string | React.ComponentType<any> = route.component || route.screen || Noop;
 	return BB.Components.resolveFromCache(componentName);
-}
+};

@@ -1,14 +1,15 @@
+import { RouteConfigWithResolveSubRoutes, ScreenProps } from '../../types';
 import {
 	createNavigatorScreenComponent,
 	getNavigatorFn,
 	resolveNavigatorScreenOptions,
 	resolveRouteOptions,
+	stubNavigationObject,
 } from '../../helpers';
 import { resolveThunk, useBlueBase, useIntl, useTheme } from '@bluebase/core';
 
 import { NavigatorProps as CoreNavigatorProps } from '@bluebase/components';
 import React from 'react';
-import { RouteConfigWithResolveSubRoutes } from '../../types';
 
 export interface NavigatorProps extends CoreNavigatorProps {}
 
@@ -18,11 +19,12 @@ export interface NavigatorProps extends CoreNavigatorProps {}
  * @param props
  */
 export const Navigator = (props: NavigatorProps) => {
-	const BB = useBlueBase();
-	const theme = useTheme();
-	const intl = useIntl();
+	const { type, routes, ...rest } = props;
 
-	const { type, routes } = props;
+	const BB = useBlueBase();
+	const themes = useTheme();
+	const intl = useIntl();
+	const screenProps: ScreenProps = { BB, intl, themes, theme: themes.theme };
 
 	const NavigatorComponent = getNavigatorFn(type);
 
@@ -31,14 +33,14 @@ export const Navigator = (props: NavigatorProps) => {
 	}
 
 	// If routes is a thunk, resolve it
-	const resolvedRoutes = resolveThunk<RouteConfigWithResolveSubRoutes[]>(routes as any, {
-		BB,
-		intl,
-		theme,
-	});
+	const resolvedRoutes = resolveThunk<RouteConfigWithResolveSubRoutes[]>(
+		routes as any,
+		screenProps
+	);
 
-	function renderRoute(route: RouteConfigWithResolveSubRoutes) {
-		const options = resolveRouteOptions(route, BB);
+	const renderRoute = (route: RouteConfigWithResolveSubRoutes) => {
+		// We're not able to resovle navigation object here. Open to better ideas.
+		const options = resolveRouteOptions(route, { navigation: stubNavigationObject, screenProps });
 
 		return (
 			<NavigatorComponent.Screen
@@ -48,10 +50,10 @@ export const Navigator = (props: NavigatorProps) => {
 				options={options}
 			/>
 		);
-	}
+	};
 
 	return (
-		<NavigatorComponent.Navigator screenOptions={resolveNavigatorScreenOptions(props, BB)}>
+		<NavigatorComponent.Navigator screenOptions={resolveNavigatorScreenOptions(props)} {...rest}>
 			{resolvedRoutes.map(renderRoute)}
 		</NavigatorComponent.Navigator>
 	);
