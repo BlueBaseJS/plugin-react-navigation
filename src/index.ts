@@ -1,6 +1,6 @@
 import './enableScreens';
 
-import { DrawerActions, Navigation, Navigator } from './components';
+import { DrawerActions, Navigation, Navigator, ScreenView } from './components';
 
 import { HeaderBackButton } from '@react-navigation/stack';
 import { createPlugin } from '@bluebase/core';
@@ -27,6 +27,11 @@ export default createPlugin({
 		Navigator: {
 			applyStyles: false,
 			value: Navigator,
+		},
+
+		ScreenView: {
+			applyStyles: false,
+			value: ScreenView,
 		},
 	},
 });

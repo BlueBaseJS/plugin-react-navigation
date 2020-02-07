@@ -5,7 +5,10 @@ describe('resolveRouteOptions', () => {
 	it('should convert header:null to a thunk', async () => {
 		const BB = new BlueBase();
 
-		const opts = resolveRouteOptions({ navigationOptions: { header: null } } as any, BB);
+		const opts = resolveRouteOptions(
+			{ navigationOptions: { header: null } } as any,
+			{ screenProps: { BB } } as any
+		);
 
 		expect(opts.header()).toBe(null);
 	});
@@ -13,7 +16,10 @@ describe('resolveRouteOptions', () => {
 	it('should recognise "options" prop', async () => {
 		const BB = new BlueBase();
 
-		const opts = resolveRouteOptions({ options: { headerBackTitle: 'Back' } } as any, BB);
+		const opts = resolveRouteOptions(
+			{ options: { headerBackTitle: 'Back' } } as any,
+			{ screenProps: { BB } } as any
+		);
 
 		expect(opts).toMatchObject({ headerBackTitle: 'Back' });
 	});
@@ -21,7 +27,7 @@ describe('resolveRouteOptions', () => {
 	it('should return empty object if nothing suitable is provided', async () => {
 		const BB = new BlueBase();
 
-		const opts = resolveRouteOptions({} as any, BB);
+		const opts = resolveRouteOptions({} as any, { screenProps: { BB } } as any);
 
 		expect(opts).toMatchObject({});
 	});

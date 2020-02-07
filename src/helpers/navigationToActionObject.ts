@@ -49,7 +49,7 @@ export const navigationToActionObject = (navigation: any, state: any): Navigatio
 
 		setParams,
 
-		getParam(paramName: any, defaultValue: any): any {
+		getParam: (paramName: any, defaultValue: any): any => {
 			const params = state.params;
 
 			if (params && paramName in params) {

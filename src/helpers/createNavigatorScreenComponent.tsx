@@ -2,8 +2,6 @@ import { BlueBase } from '@bluebase/core';
 import { NavigationProvider } from '../components';
 import React from 'react';
 import { RouteConfig } from '@bluebase/components';
-import { resolveRouteOptions } from './resolveRouteOptions';
-import { resolveScreenComponent } from './resolveScreenComponent';
 
 /**
  * Given a route object, creates a Screen component
@@ -12,30 +10,33 @@ import { resolveScreenComponent } from './resolveScreenComponent';
  */
 export const createNavigatorScreenComponent = (route: RouteConfig, BB: BlueBase) => {
 	const { navigator, screen } = route;
-	const Navigator = BB.Components.resolveFromCache('Navigator');
 
-	const ScreenComponent = resolveScreenComponent(route, BB);
-	const options = resolveRouteOptions(route, BB);
+	const Navigator = BB.Components.resolveFromCache('Navigator');
+	const ScreenView = BB.Components.resolveFromCache('ScreenView');
 
 	if (navigator) {
 		const navigatorNode = <Navigator {...navigator} />;
 
 		if (screen) {
-			return (props: any) => (
+			const WrappedNavigator = (props: any) => (
 				<NavigationProvider>
-					<ScreenComponent {...props} {...options}>
+					<ScreenView {...props} route={route}>
 						{navigatorNode}
-					</ScreenComponent>
+					</ScreenView>
 				</NavigationProvider>
 			);
+
+			return WrappedNavigator;
 		}
 
 		return () => navigatorNode;
 	}
 
-	return (props: any) => (
+	const Screen = (props: any) => (
 		<NavigationProvider>
-			<ScreenComponent {...props} {...options} />
+			<ScreenView {...props} route={route} />
 		</NavigationProvider>
 	);
+
+	return Screen;
 };
