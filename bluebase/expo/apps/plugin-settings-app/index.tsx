@@ -137,17 +137,6 @@ const plugin = createPlugin({
 			},
 		},
 		{
-			name: 'Params',
-			path: '/params',
-			exact: true,
-			screen: ParamsScreen,
-			navigationOptions: () => {
-				return {
-					title: 'Params',
-				};
-			},
-		},
-		{
 			name: 'SettingsTabs',
 			path: 'tabs',
 			screen: Noop,
