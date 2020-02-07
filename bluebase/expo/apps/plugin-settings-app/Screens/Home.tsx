@@ -38,6 +38,8 @@ export const HomeScreen = (props: any) => {
 					onPress={navigate('WrappedSettings')}
 				/>
 				<Divider />
+				<List.Item title="Native Stack" onPress={navigate('NativeStack')} />
+				<Divider />
 				<List.Item title="Modal" onPress={navigate('Modal')} />
 				<Divider />
 				<List.Item
