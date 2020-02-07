@@ -1,3 +1,4 @@
+import { isIosModalScreen } from '../resolveNavigatorScreenOptions';
 import { resolveNavigatorScreenOptions } from '..';
 
 describe('resolveNavigatorScreenOptions', () => {
@@ -21,7 +22,12 @@ describe('resolveNavigatorScreenOptions', () => {
 
 	it('should return empty object if nothing suitable is provided', async () => {
 		const opts = resolveNavigatorScreenOptions({} as any);
-
 		expect(opts).toMatchObject({});
+	});
+
+	describe('isIosModalScreen', () => {
+		it('should return true', async () => {
+			expect(isIosModalScreen({ type: 'stack', mode: 'modal' } as any)).toBe(true);
+		});
 	});
 });

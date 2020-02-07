@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-bind */
 // https://github.com/kmagiera/react-native-gesture-handler/issues/320#issuecomment-443815828
 import 'react-native-gesture-handler';
 
@@ -71,8 +72,8 @@ const plugin = createPlugin({
 		},
 
 		{
-			name: 'Modal',
-			path: '/modal',
+			name: 'NativeStack',
+			path: '/native-stack',
 
 			options: {
 				headerShown: false,
@@ -87,6 +88,61 @@ const plugin = createPlugin({
 
 				routes: [
 					{
+						name: 'Native 1',
+						path: 'native1',
+						exact: true,
+
+						// eslint-disable-next-line react/display-name
+						screen: (props: any) => (
+							<ComponentState
+								title="Title 1"
+								description="This screen is in a native stack"
+								actionOnPress={() => props.navigation.navigate('Native2')}
+								actionTitle="Show Modal"
+							/>
+						),
+
+						navigationOptions: {
+							// stackPresentation: 'modal',
+							title: 'Native Stack 1 Screen',
+						},
+					},
+					{
+						name: 'Native2',
+						path: 'native2',
+						exact: true,
+
+						// eslint-disable-next-line react/display-name
+						screen: () => (
+							<ComponentState title="Title 2" description="This screen is in a modal" />
+						),
+
+						navigationOptions: {
+							stackPresentation: 'modal',
+							title: 'Native Stack 2 Screen',
+						} as any,
+					},
+				],
+			},
+		},
+
+		{
+			name: 'Modal',
+			path: '/modal',
+
+			options: {
+				headerShown: false,
+				contentStyle: {
+					backgroundColor: 'black',
+				},
+			},
+
+			navigator: {
+				type: 'stack',
+				mode: 'modal',
+
+				routes: [
+					{
 						name: 'Modal1',
 						path: 'modal1',
 						exact: true,
@@ -96,8 +152,8 @@ const plugin = createPlugin({
 							<ComponentState
 								title="Title 1"
 								description="This screen is in a modal"
-								actionOnPress={() => props.navigation.navigate('Modal2')}
 								actionTitle="Modal 2"
+								actionOnPress={() => props.navigation.navigate('Modal2')}
 							/>
 						),
 
