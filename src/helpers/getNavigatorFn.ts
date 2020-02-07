@@ -4,6 +4,7 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createStackNavigator } from '@react-navigation/stack';
+import createSwitchNavigator from './createSwitchNavigator';
 
 const NavigatorMap: { [key: string]: any } = {
 	'bottom-tab': createBottomTabNavigator,
@@ -22,7 +23,7 @@ const NavigatorMap: { [key: string]: any } = {
 
 	stack: createStackNavigator,
 
-	switch: createStackNavigator,
+	switch: createSwitchNavigator,
 };
 
 /**

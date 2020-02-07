@@ -38,6 +38,8 @@ export const HomeScreen = (props: any) => {
 					onPress={navigate('WrappedSettings')}
 				/>
 				<Divider />
+				<List.Item title="Modal" onPress={navigate('Modal')} />
+				<Divider />
 				<List.Item
 					title="Params"
 					description="See Params play"

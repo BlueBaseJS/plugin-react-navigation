@@ -2,6 +2,7 @@ import { BlueBaseApp } from '@bluebase/core';
 import { NavigationNativeContainer } from '@react-navigation/native';
 import { Navigator } from '..';
 import React from 'react';
+import { ScreenView } from '../../ScreenView';
 import { Text } from 'react-native';
 import { mount } from 'enzyme';
 import { waitForElement } from 'enzyme-async-helpers';
@@ -11,7 +12,7 @@ describe('Navigator', () => {
 		const SettingsScreen = () => <Text>Settings</Text>;
 
 		const wrapper = mount(
-			<BlueBaseApp components={{ Navigator }}>
+			<BlueBaseApp components={{ Navigator, ScreenView }}>
 				<NavigationNativeContainer>
 					<Navigator
 						type="stack"
