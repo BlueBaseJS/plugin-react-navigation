@@ -8,10 +8,8 @@ import {
 } from '../../helpers';
 import { resolveThunk, useBlueBase, useIntl, useTheme } from '@bluebase/core';
 
-import { NavigatorProps as CoreNavigatorProps } from '@bluebase/components';
+import { NavigatorProps } from '@bluebase/components';
 import React from 'react';
-
-export interface NavigatorProps extends CoreNavigatorProps {}
 
 /**
  * Navigator (V5)
@@ -40,7 +38,10 @@ export const Navigator = (props: NavigatorProps) => {
 
 	const renderRoute = (route: RouteConfigWithResolveSubRoutes) => {
 		// We're not able to resovle navigation object here. Open to better ideas.
-		const options = resolveRouteOptions(route, { navigation: stubNavigationObject, screenProps });
+		const options = resolveRouteOptions(route, {
+			navigation: stubNavigationObject,
+			screenProps,
+		});
 
 		return (
 			<NavigatorComponent.Screen
