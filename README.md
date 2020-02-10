@@ -4,7 +4,7 @@
 		React Navigation
 	</h1>
   <p>Use React Navigation in BlueBase apps</p>
-</div>
+</div> 
 
 <hr />
 
