@@ -71,6 +71,7 @@ describe('ScreenView', () => {
 							title: 'Settings',
 						},
 					}}
+					ScreenComponent={SettingsScreen}
 				>
 					{children}
 				</ScreenView>
