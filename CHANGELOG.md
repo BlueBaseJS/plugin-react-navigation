@@ -1,3 +1,13 @@
+# [1.1.0](https://github.com/BlueBaseJS/plugin-react-navigation/compare/v1.0.2...v1.1.0) (2020-02-10)
+
+### Bug Fixes
+
+-   **TabNavigator:** Fixed broken tabs ([0b097ed](https://github.com/BlueBaseJS/plugin-react-navigation/commit/0b097edf1b018dad183952e6b9e9085d02f5d492))
+
+### Features
+
+-   Uses dynamic version ([46fb630](https://github.com/BlueBaseJS/plugin-react-navigation/commit/46fb630d899f7bcdd07730e1561cdccf2fa73352))
+
 ## [1.0.2](https://github.com/BlueBaseJS/plugin-react-navigation/compare/v1.0.1...v1.0.2) (2020-02-10)
 
 ### Bug Fixes
