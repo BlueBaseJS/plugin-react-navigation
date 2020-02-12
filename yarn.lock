@@ -2589,9 +2589,9 @@
     react-native-iphone-x-helper "^1.2.1"
 
 "@react-navigation/material-bottom-tabs@^5.0.1":
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/@react-navigation/material-bottom-tabs/-/material-bottom-tabs-5.0.1.tgz#588c56105bbd2e86bd3ebdedac49ca09b473a7c1"
-  integrity sha512-XwCqW2irGApgAz4ma565131poS3v4b7nM+YGospfVMNNiAjBe1A8ofHkhLf6Qp6zXPQScFFNR7njWiXjgn6DsQ==
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/@react-navigation/material-bottom-tabs/-/material-bottom-tabs-5.0.2.tgz#6e1d3aaf97ecfc69d6aa3dbd89bb2836c5723772"
+  integrity sha512-pLy0l9FCu6k/FJwY8w9ZTjSSxi+aFB/vQ03E8Z66bPVXBzrd33FXcvUYqAuAEJmAGGJXrGJor0MR3uPPsYPcFw==
 
 "@react-navigation/material-top-tabs@^5.0.1":
   version "5.0.1"
