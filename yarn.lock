@@ -2601,9 +2601,9 @@
     color "^3.1.2"
 
 "@react-navigation/native-stack@^5.0.1":
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/@react-navigation/native-stack/-/native-stack-5.0.1.tgz#84a033256a39cb27e1ae6e33da9a0836f6274617"
-  integrity sha512-l+iwaoGTlhxyXdzYQymjxVgpgHkVIriv5hW7zI/iWrYNlVXxTtVJLiBFVe02fGXVHIcZBOUDzVBXOudKL9y5nA==
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/@react-navigation/native-stack/-/native-stack-5.0.2.tgz#2bdfc3921323503876a5e278a8a646c1876541ff"
+  integrity sha512-bHWnJ7IHbKbdVLlnaSOvrzIX2456N/EyaKjBJqcNizOINUjbgNb8MoyKHwaqZgplm95QNmpD5DNpyNLGiSZoUw==
 
 "@react-navigation/native@^5.0.1":
   version "5.0.1"
