@@ -2568,10 +2568,10 @@
   resolved "https://registry.yarnpkg.com/@react-navigation/compat/-/compat-5.0.1.tgz#ab8277b8a4a2d585b05d5d35beccb5c333f024b5"
   integrity sha512-MOEr8BCHIDjEB8vqduaxauvtJ8jj6r1hq2ohMaax6VTyiIXG2aFMhsAARMMxQOn05AHEt4yPJtc0OLn2dk3iFQ==
 
-"@react-navigation/core@^5.1.0":
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/@react-navigation/core/-/core-5.1.0.tgz#fba305f271aebcd4d7bdf8b094ede23204d76c45"
-  integrity sha512-H+wRpLanYimkw9PQkEwEL3/u8xJbbWqX35hUZ7KL2uOJyjo4oNM66uzNKPH9I4jErgH28oRdsAD0+ZnmdRbnRA==
+"@react-navigation/core@^5.1.0", "@react-navigation/core@^5.1.2":
+  version "5.1.2"
+  resolved "https://registry.yarnpkg.com/@react-navigation/core/-/core-5.1.2.tgz#1947449cb2f565cde8511ab953bb7170516c3e0f"
+  integrity sha512-0nQ46DTMzj5UjqUcc6g996qMQ2vSRSNgxd9LPlACVYHQRbwG2HHUq//NhfVf06dNpBHkQ0HYUITDHo+tifemjA==
   dependencies:
     "@react-navigation/routers" "^5.0.1"
     escape-string-regexp "^2.0.0"
@@ -2606,11 +2606,11 @@
   integrity sha512-l+iwaoGTlhxyXdzYQymjxVgpgHkVIriv5hW7zI/iWrYNlVXxTtVJLiBFVe02fGXVHIcZBOUDzVBXOudKL9y5nA==
 
 "@react-navigation/native@^5.0.1":
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/@react-navigation/native/-/native-5.0.1.tgz#980f9d4897e48d43678488707564269096339acd"
-  integrity sha512-2VX0RNlm3OzDxXDMhY61J0yUM7/w7DnAXe3o3M0EB2DHCshWANy+1X6VgyGHyp8O/3ZqCF+R1fyHbpw6RVdIpQ==
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/@react-navigation/native/-/native-5.0.3.tgz#6a16f50c41f62e27dafcff20848222c018a6b033"
+  integrity sha512-caJVWRkpTY6zFkpZvQE1Dg0gTu+a09XnleKaDEV9TOK8AxkBhp+X4GvCP/7sV9Ke8Cw8mvcnh9R1UCKIO4fTCQ==
   dependencies:
-    "@react-navigation/core" "^5.1.0"
+    "@react-navigation/core" "^5.1.2"
 
 "@react-navigation/routers@^5.0.1":
   version "5.0.1"
