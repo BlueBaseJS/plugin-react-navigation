@@ -1,15 +1,19 @@
-import { RouteConfigWithResolveSubRoutes, ScreenProps } from '../../types';
+import React, { useEffect } from 'react';
 import {
 	createNavigatorScreenComponent,
-	getNavigatorFn,
 	resolveNavigatorScreenOptions,
 	resolveRouteOptions,
 	stubNavigationObject,
+	useScreenProps,
 } from '../../helpers';
-import { resolveThunk, useBlueBase, useIntl, useTheme } from '@bluebase/core';
+import { resolveThunk, useBlueBase } from '@bluebase/core';
 
-import { NavigatorProps } from '@bluebase/components';
-import React from 'react';
+import { NavigatorProps as BBNavigatorProps } from '@bluebase/components';
+import { RouteConfigWithResolveSubRoutes } from '../../types';
+
+export interface NavigatorProps extends BBNavigatorProps {
+	NavigatorComponent: { [key: string]: any };
+}
 
 /**
  * Navigator (V5)
@@ -17,14 +21,18 @@ import React from 'react';
  * @param props
  */
 export const Navigator = (props: NavigatorProps) => {
-	const { type, routes, ...rest } = props;
+	const { type, routes, NavigatorComponent, ...rest } = props;
 
 	const BB = useBlueBase();
-	const themes = useTheme();
-	const intl = useIntl();
-	const screenProps: ScreenProps = { BB, intl, themes, theme: themes.theme };
+	const screenProps = useScreenProps();
 
-	const NavigatorComponent = getNavigatorFn(type);
+	useEffect(() => {
+		console.log('mount Navigator', props);
+
+		return () => {
+			console.log('unmount Navigator', props);
+		};
+	}, []);
 
 	if (!NavigatorComponent) {
 		return null;
