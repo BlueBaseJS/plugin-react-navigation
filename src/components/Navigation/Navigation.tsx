@@ -1,11 +1,8 @@
-import React, { useEffect } from 'react';
-import { preparePaths, useScreenProps } from '../../helpers';
 import { useComponent, useTheme } from '@bluebase/core';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { NavigationProps } from '@bluebase/components';
-
-let paths: any;
+import React from 'react';
 
 /**
  * Navigation (V5)
@@ -14,26 +11,8 @@ let paths: any;
  */
 export const Navigation = (props: NavigationProps) => {
 	const { navigator, ...rest } = props;
-	const Navigator = useComponent('Navigator');
-
-	const screenProps = useScreenProps();
 	const { theme } = useTheme();
-
-	if (!paths) {
-		paths = preparePaths(navigator, screenProps);
-	}
-
-	// const [resolvedNavigator] = useState(preparePaths(navigator, screenProps));
-
-	useEffect(() => {
-		console.log('mount navigation');
-
-		return () => {
-			console.log('unmount navigation');
-		};
-	}, []);
-
-	debugger;
+	const Navigator = useComponent('Navigator');
 
 	return (
 		<NavigationContainer
@@ -50,7 +29,7 @@ export const Navigation = (props: NavigationProps) => {
 			}}
 			{...rest}
 		>
-			<Navigator {...paths} />
+			<Navigator {...navigator} />
 		</NavigationContainer>
 	);
 };

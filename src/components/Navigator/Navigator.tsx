@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import {
-	createNavigatorScreenComponent,
+	preparePaths,
 	resolveNavigatorScreenOptions,
 	resolveRouteOptions,
 	stubNavigationObject,
-	useScreenProps,
+	useScreenProps
 } from '../../helpers';
 import { resolveThunk, useBlueBase } from '@bluebase/core';
 
@@ -12,7 +12,7 @@ import { NavigatorProps as BBNavigatorProps } from '@bluebase/components';
 import { RouteConfigWithResolveSubRoutes } from '../../types';
 
 export interface NavigatorProps extends BBNavigatorProps {
-	NavigatorComponent: { [key: string]: any };
+	// standalone?: boolean;
 }
 
 /**
@@ -20,19 +20,14 @@ export interface NavigatorProps extends BBNavigatorProps {
  * Renders a single navigator
  * @param props
  */
-export const Navigator = (props: NavigatorProps) => {
-	const { type, routes, NavigatorComponent, ...rest } = props;
-
+export const Navigator = (inputProps: NavigatorProps) => {
 	const BB = useBlueBase();
 	const screenProps = useScreenProps();
 
-	useEffect(() => {
-		console.log('mount Navigator', props);
+	const [props] = useState(preparePaths(inputProps, screenProps, BB));
 
-		return () => {
-			console.log('unmount Navigator', props);
-		};
-	}, []);
+	// eslint-disable-next-line react/prop-types
+	const { type, routes, NavigatorComponent, ...rest } = props;
 
 	if (!NavigatorComponent) {
 		return null;
@@ -55,7 +50,7 @@ export const Navigator = (props: NavigatorProps) => {
 			<NavigatorComponent.Screen
 				key={route.name}
 				{...route}
-				component={createNavigatorScreenComponent(route, BB)}
+				component={route.component}
 				options={options}
 			/>
 		);

@@ -26,12 +26,22 @@ const NavigatorMap: { [key: string]: any } = {
 	switch: createSwitchNavigator,
 };
 
+const ComponentMap: { [key: string]: any } = {};
+
 /**
  * Get Navigator by type (V5)
  * @param type
  * @param BB
  */
-export const getNavigatorFn = (type?: string) => {
-	const fn = NavigatorMap[type || 'stack'];
-	return fn ? fn() : undefined;
+export const getNavigatorFn = (id: string, type?: string) => {
+
+	if (ComponentMap[id] === undefined) {
+		const fn = NavigatorMap[type || 'stack'];
+		ComponentMap[id] = fn ? fn() : undefined;
+	} else {
+		console.log('loading navigator from cache')
+
+	}
+
+	return ComponentMap[id];
 };

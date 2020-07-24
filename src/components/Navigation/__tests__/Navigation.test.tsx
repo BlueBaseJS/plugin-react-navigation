@@ -8,7 +8,7 @@ import { waitForElement } from 'enzyme-async-helpers';
 describe('Navigation tests', () => {
 	it('should check props', async () => {
 		const wrapper = mount(<BlueBaseApp plugins={[Plugin]} />);
-		await waitForElement(wrapper, Navigation);
+		await waitForElement(wrapper as any, Navigation);
 		expect(wrapper.find(Navigation).exists()).toBe(true);
 	});
 });

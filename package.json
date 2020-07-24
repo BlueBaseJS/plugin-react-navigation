@@ -85,17 +85,17 @@
     "react-native-safe-area-context": "^0.7.2",
     "react-native-screens": "^2.0.0-beta.2",
     "react-native-tab-view": "^2.13.0",
-    "tslib": "^1.10.0"
+    "tslib": "^2.0.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.8.4",
     "@babel/plugin-transform-flow-strip-types": "^7.8.3",
     "@bluebase/code-standards": "^2.4.2",
-    "@bluebase/components": "^5.23.0",
-    "@bluebase/core": "^5.11.0",
+    "@bluebase/components": "^5.24.1",
+    "@bluebase/core": "^5.11.1",
     "@bluebase/plugin-launcher": "^1.2.0",
-    "@bluebase/plugin-react-native-paper": "^2.3.3",
+    "@bluebase/plugin-react-native-paper": "^2.4.0",
     "@bluebase/plugin-responsive-grid": "^0.0.7",
     "@bluebase/plugin-vector-icons": "^0.2.0",
     "@bluebase/storybook-addon": "^3.0.0",
@@ -109,8 +109,8 @@
     "@types/react-test-renderer": "^16.9.2",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^25.1.0",
-    "babel-loader": "^8.0.6",
-    "babel-preset-expo": "^8.0.0",
+    "babel-loader": "^8.1.0",
+    "babel-preset-expo": "^8.2.3",
     "codacy-coverage": "^3.4.0",
     "codecov": "^3.6.5",
     "enzyme": "^3.11.0",
@@ -136,11 +136,14 @@
     "trash-cli": "^3.0.0",
     "ts-jest": "^25.2.0",
     "typedoc": "^0.16.9",
-    "typescript": "3.7.5"
+    "typescript": "3.9.7"
   },
   "peerDependencies": {
     "@bluebase/core": "^5.11.0",
     "react": "^16.8.0"
+  },
+  "resolutions": {
+    "react-native-vector-icons": "6.6.0"
   },
   "prettier": {
     "singleQuote": true,
