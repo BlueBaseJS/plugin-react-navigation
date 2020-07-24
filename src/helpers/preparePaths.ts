@@ -9,7 +9,6 @@ export interface PreparedNavigatorProps extends NavigatorProps {
 	NavigatorComponent: { [key: string]: any };
 }
 
-
 /**
  * Converts paths from react-navigation pattern to react-router pattern
  * @param navigator
@@ -20,7 +19,6 @@ export const preparePaths = (
 	screenProps: ScreenProps,
 	BB: BlueBase
 ): PreparedNavigatorProps => {
-
 	const navigator = { ...navigatorProps };
 
 	if (!navigator.key) {

@@ -34,13 +34,9 @@ const ComponentMap: { [key: string]: any } = {};
  * @param BB
  */
 export const getNavigatorFn = (id: string, type?: string) => {
-
 	if (ComponentMap[id] === undefined) {
 		const fn = NavigatorMap[type || 'stack'];
 		ComponentMap[id] = fn ? fn() : undefined;
-	} else {
-		console.log('loading navigator from cache')
-
 	}
 
 	return ComponentMap[id];

@@ -71,6 +71,7 @@ describe('ScreenView', () => {
 							title: 'Settings',
 						},
 					}}
+					// eslint-disable-next-line react/jsx-no-bind
 					ScreenComponent={SettingsScreen}
 				>
 					{children}

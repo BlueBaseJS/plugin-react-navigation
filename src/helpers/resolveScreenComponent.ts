@@ -9,5 +9,7 @@ import { BlueBase } from '@bluebase/core';
  */
 export const resolveScreenComponent = (route: RouteConfig, BB: BlueBase) => {
 	const componentName: string | React.ComponentType<any> = route.component || route.screen || Noop;
-	return typeof componentName === 'string' ? BB.Components.resolveFromCache(componentName) : componentName;
+	return typeof componentName === 'string'
+		? BB.Components.resolveFromCache(componentName)
+		: componentName;
 };
