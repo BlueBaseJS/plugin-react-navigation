@@ -1,5 +1,4 @@
 import { BlueBase } from '@bluebase/core';
-import { Noop } from '@bluebase/components';
 import React from 'react';
 import { Text } from 'react-native';
 import { resolveScreenComponent } from '..';
@@ -35,6 +34,6 @@ describe('resolveScreenComponent', () => {
 
 		const Component = resolveScreenComponent({} as any, BB);
 
-		expect(String(Component)).toBe(String(BB.Components.resolveFromCache(Noop)));
+		expect(Component.displayName).toBe('Noop');
 	});
 });

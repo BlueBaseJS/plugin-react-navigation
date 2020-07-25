@@ -3,8 +3,8 @@
   <h1>
 		React Navigation
 	</h1>
-  <p>Use React Navigation in BlueBase apps!</p>
-</div>
+  <p>Use React Navigation in BlueBase apps</p>
+</div> 
 
 <hr />
 

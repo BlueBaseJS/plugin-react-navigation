@@ -1,7 +1,7 @@
 import { BlueBase, BlueBaseApp } from '@bluebase/core';
 import { Text, View } from 'react-native';
 
-import { NavigationNativeContainer } from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 import Plugin from '../../index';
 import React from 'react';
 import { createNavigatorScreenComponent } from '..';
@@ -31,15 +31,15 @@ describe('createNavigatorScreenComponent', () => {
 		const Stack = createStackNavigator();
 		const wrapper = mount(
 			<BlueBaseApp>
-				<NavigationNativeContainer>
+				<NavigationContainer>
 					<Stack.Navigator>
 						<Stack.Screen name="test" component={Screen} />
 					</Stack.Navigator>
-				</NavigationNativeContainer>
+				</NavigationContainer>
 			</BlueBaseApp>
 		);
 
-		await waitForElement(wrapper, Screen);
+		await waitForElement(wrapper as any, Screen);
 		expect(wrapper.find(SettingsScreen).exists()).toBe(true);
 	});
 
@@ -77,15 +77,15 @@ describe('createNavigatorScreenComponent', () => {
 		const Stack = createStackNavigator();
 		const wrapper = mount(
 			<BlueBaseApp plugins={[Plugin]}>
-				<NavigationNativeContainer>
+				<NavigationContainer>
 					<Stack.Navigator>
 						<Stack.Screen name="test" component={Screen} />
 					</Stack.Navigator>
-				</NavigationNativeContainer>
+				</NavigationContainer>
 			</BlueBaseApp>
 		);
 
-		await waitForElement(wrapper, Screen);
+		await waitForElement(wrapper as any, Screen);
 		expect(wrapper.find(SettingsScreen).exists()).toBe(true);
 	});
 
@@ -127,15 +127,15 @@ describe('createNavigatorScreenComponent', () => {
 		const Stack = createStackNavigator();
 		const wrapper = mount(
 			<BlueBaseApp plugins={[Plugin]}>
-				<NavigationNativeContainer>
+				<NavigationContainer>
 					<Stack.Navigator>
 						<Stack.Screen name="test" component={Screen} />
 					</Stack.Navigator>
-				</NavigationNativeContainer>
+				</NavigationContainer>
 			</BlueBaseApp>
 		);
 
-		await waitForElement(wrapper, Screen);
+		await waitForElement(wrapper as any, Screen);
 		expect(wrapper.find(Wrapper).exists()).toBe(true);
 		expect(wrapper.find(SettingsScreen).exists()).toBe(true);
 	});

@@ -1,6 +1,6 @@
 import { useComponent, useTheme } from '@bluebase/core';
 
-import { NavigationNativeContainer } from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 import { NavigationProps } from '@bluebase/components';
 import React from 'react';
 
@@ -11,12 +11,11 @@ import React from 'react';
  */
 export const Navigation = (props: NavigationProps) => {
 	const { navigator, ...rest } = props;
-
-	const Navigator = useComponent('Navigator');
 	const { theme } = useTheme();
+	const Navigator = useComponent('Navigator');
 
 	return (
-		<NavigationNativeContainer
+		<NavigationContainer
 			theme={{
 				dark: theme.mode === 'dark',
 
@@ -31,6 +30,6 @@ export const Navigation = (props: NavigationProps) => {
 			{...rest}
 		>
 			<Navigator {...navigator} />
-		</NavigationNativeContainer>
+		</NavigationContainer>
 	);
 };

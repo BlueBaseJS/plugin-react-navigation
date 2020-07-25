@@ -2,6 +2,7 @@ import { Body1, NavigationActions } from '@bluebase/components';
 import { Button, View } from 'react-native';
 
 import React from 'react';
+import { ThemeMode } from '../components/ThemeMode';
 
 export class SettingsScreen extends React.Component {
 	static navigationOptions: any = {
@@ -9,8 +10,8 @@ export class SettingsScreen extends React.Component {
 	};
 	render() {
 		return (
-			<View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-				<Body1>Settings Screen</Body1>
+			<View style={{ flexGrow: 1, justifyContent: 'center' }}>
+				<ThemeMode />
 				<NavigationActions>
 					{({ navigate }: any) => (
 						<Button

@@ -3,12 +3,11 @@ import { Divider, List } from '@bluebase/components';
 import { ScrollView, View } from 'react-native';
 
 import React from 'react';
-import { useTheme } from '@bluebase/core';
+import { ThemeMode } from '../components/ThemeMode';
 
 // tslint:disable: jsx-no-lambda
 
 export const HomeScreen = (props: any) => {
-	const { changeTheme, theme } = useTheme();
 
 	const navigate = (route?: any, params?: any) => () => props.navigation.navigate(route, params);
 	const push = (route?: any, params?: any) => () => props.navigation.push(route, params);
@@ -17,13 +16,7 @@ export const HomeScreen = (props: any) => {
 		<View style={{ flex: 1 }}>
 			<ScrollView style={{ flex: 1 }}>
 				<List.Subheader>Settings</List.Subheader>
-				<List.Item
-					title="Mode"
-					description={theme.mode === 'light' ? 'Light' : 'Dark'}
-					onPress={() =>
-						theme.mode === 'light' ? changeTheme('bluebase-dark') : changeTheme('bluebase-light')
-					}
-				/>
+				<ThemeMode />
 				<Divider />
 				<List.Subheader>Demos</List.Subheader>
 				<List.Item

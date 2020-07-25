@@ -1,5 +1,5 @@
 import { BlueBaseApp } from '@bluebase/core';
-import { NavigationNativeContainer } from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 import { Navigator } from '..';
 import React from 'react';
 import { ScreenView } from '../../ScreenView';
@@ -13,7 +13,7 @@ describe('Navigator', () => {
 
 		const wrapper = mount(
 			<BlueBaseApp components={{ Navigator, ScreenView }}>
-				<NavigationNativeContainer>
+				<NavigationContainer>
 					<Navigator
 						type="stack"
 						routes={[
@@ -24,7 +24,7 @@ describe('Navigator', () => {
 							},
 						]}
 					/>
-				</NavigationNativeContainer>
+				</NavigationContainer>
 			</BlueBaseApp>
 		);
 
@@ -37,7 +37,7 @@ describe('Navigator', () => {
 
 		const wrapper = mount(
 			<BlueBaseApp components={{ Navigator }}>
-				<NavigationNativeContainer>
+				<NavigationContainer>
 					<Navigator
 						type="unknown"
 						routes={[
@@ -48,7 +48,7 @@ describe('Navigator', () => {
 							},
 						]}
 					/>
-				</NavigationNativeContainer>
+				</NavigationContainer>
 			</BlueBaseApp>
 		);
 

@@ -2,10 +2,11 @@ import { Button, Text, View } from 'react-native';
 
 import { NavigationActions } from '@bluebase/components';
 import React from 'react';
+import { ThemeMode } from '../components/ThemeMode';
 
 export class SettingsDetailScreen extends React.Component {
 	render() {
-		console.log('settings details screen props', this.props);
+		// console.log('settings details screen props', this.props);
 		return (
 			<View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
 				<Text>Settings Details Screen</Text>
@@ -18,6 +19,7 @@ export class SettingsDetailScreen extends React.Component {
 						/>
 					)}
 				</NavigationActions>
+				<ThemeMode />
 			</View>
 		);
 	}
