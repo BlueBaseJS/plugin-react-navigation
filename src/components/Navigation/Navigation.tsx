@@ -25,6 +25,7 @@ export const Navigation = (props: NavigationProps) => {
 					card: theme.palette.background.card,
 					primary: theme.palette.primary.main,
 					text: theme.palette.text.primary,
+					notification: theme.palette.error.main,
 				},
 			}}
 			{...rest}

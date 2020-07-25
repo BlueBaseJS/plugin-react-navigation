@@ -6,4 +6,8 @@ module.exports = {
 		...configs.env,
 		jest: true,
 	},
+	rules: {
+		...configs.rules,
+		'@typescript-eslint/interface-name-prefix': 0,
+	},
 };
