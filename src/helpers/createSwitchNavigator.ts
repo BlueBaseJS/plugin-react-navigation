@@ -16,4 +16,4 @@ const SwitchNavigator = (props: Props) => {
 	return descriptors[state.routes[state.index].key].render();
 };
 
-export default createNavigatorFactory<{}, typeof SwitchNavigator>(SwitchNavigator);
+export default createNavigatorFactory<any, typeof SwitchNavigator, any, any>(SwitchNavigator);
