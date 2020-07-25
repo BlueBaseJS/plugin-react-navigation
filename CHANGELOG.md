@@ -1,3 +1,9 @@
+# [1.3.0](https://github.com/BlueBaseJS/plugin-react-navigation/compare/v1.2.0...v1.3.0) (2020-07-25)
+
+### Features
+
+-   Updated core dependencies ([261cd46](https://github.com/BlueBaseJS/plugin-react-navigation/commit/261cd46e08e50e8a289facfc3402bb533757028c))
+
 # [1.2.0](https://github.com/BlueBaseJS/plugin-react-navigation/compare/v1.1.0...v1.2.0) (2020-07-25)
 
 ### Bug Fixes
