@@ -1,3 +1,13 @@
+# [1.2.0](https://github.com/BlueBaseJS/plugin-react-navigation/compare/v1.1.0...v1.2.0) (2020-07-25)
+
+### Bug Fixes
+
+-   Fix Navigator unmounting on theme change ([b239a83](https://github.com/BlueBaseJS/plugin-react-navigation/commit/b239a83aa4f1e383667a8c6d4b9f05fffd19d9f6))
+
+### Features
+
+-   **package:** Updated packages ([855f368](https://github.com/BlueBaseJS/plugin-react-navigation/commit/855f368bff770df5dc70003e18f602f4b02772cd))
+
 # [1.1.0](https://github.com/BlueBaseJS/plugin-react-navigation/compare/v1.0.2...v1.1.0) (2020-02-10)
 
 ### Bug Fixes
