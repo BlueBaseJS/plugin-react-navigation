@@ -149,9 +149,6 @@
     "@bluebase/core": "^5.11.0",
     "react": "^16.8.0"
   },
-  "resolutions": {
-    "react-native-vector-icons": "6.6.0"
-  },
   "prettier": {
     "singleQuote": true,
     "useTabs": true,
