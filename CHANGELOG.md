@@ -1,3 +1,9 @@
+# [1.4.0](https://github.com/BlueBaseJS/plugin-react-navigation/compare/v1.3.0...v1.4.0) (2020-08-04)
+
+### Features
+
+-   Updated to expo@38 & navigation deps ([#239](https://github.com/BlueBaseJS/plugin-react-navigation/issues/239)) ([7148537](https://github.com/BlueBaseJS/plugin-react-navigation/commit/714853772e4e64d42ee8554bd2a18a96f30f135f))
+
 # [1.3.0](https://github.com/BlueBaseJS/plugin-react-navigation/compare/v1.2.0...v1.3.0) (2020-07-25)
 
 ### Features
