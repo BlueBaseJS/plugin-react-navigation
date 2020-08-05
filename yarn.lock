@@ -1300,9 +1300,9 @@
     tslib "^1.9.3"
 
 "@bluebase/components@^5.15.3", "@bluebase/components@^5.24.1":
-  version "5.24.1"
-  resolved "https://registry.yarnpkg.com/@bluebase/components/-/components-5.24.1.tgz#f543ce4e0461e1920223baf43801cd606224cd07"
-  integrity sha512-Kzn+he4/4QeII1mPSAy4+2S8ILWiQugUUc/QFaByGVTu+MFV3mCGhWRg+Oi2PF+xHmBL44cLnAfUUKkBayW/gg==
+  version "5.25.1"
+  resolved "https://registry.yarnpkg.com/@bluebase/components/-/components-5.25.1.tgz#e869fc95686e34e11970b7fafae2948d2cf71908"
+  integrity sha512-PTD/5J33hBffOgUa2sbIPoN3pV6aiAwJuwa2AFfPbmwzR+ewm9F/2jSfjgZuW3k+89k+0WCk81lSZytXNzRHoQ==
   dependencies:
     deepmerge "^3.2.0"
     tslib "^1.9.3"
