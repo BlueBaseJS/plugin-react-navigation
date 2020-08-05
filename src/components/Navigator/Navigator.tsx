@@ -4,12 +4,12 @@ import {
 	resolveNavigatorScreenOptions,
 	resolveRouteOptions,
 	stubNavigationObject,
-	useScreenProps
+	useScreenProps,
 } from '../../helpers';
-import { resolveThunk, useBlueBase } from '@bluebase/core';
 
 import { NavigatorProps as BBNavigatorProps } from '@bluebase/components';
 import { RouteConfigWithResolveSubRoutes } from '../../types';
+import { resolveThunk } from '@bluebase/core';
 
 export interface NavigatorProps extends BBNavigatorProps {
 	// standalone?: boolean;
@@ -21,10 +21,9 @@ export interface NavigatorProps extends BBNavigatorProps {
  * @param props
  */
 export const Navigator = (inputProps: NavigatorProps) => {
-	const BB = useBlueBase();
 	const screenProps = useScreenProps();
 
-	const [props] = useState(preparePaths(inputProps, screenProps, BB));
+	const [props] = useState(preparePaths(inputProps, screenProps));
 
 	// eslint-disable-next-line react/prop-types
 	const { type, routes, NavigatorComponent, ...rest } = props;

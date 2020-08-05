@@ -1,5 +1,5 @@
-import { BlueBase, makeId, resolveThunk } from '@bluebase/core';
 import { NavigatorProps, RouteConfig } from '@bluebase/components';
+import { makeId, resolveThunk } from '@bluebase/core';
 
 import { ScreenProps } from '../types';
 import { createNavigatorScreenComponent } from './createNavigatorScreenComponent';
@@ -16,8 +16,7 @@ export interface PreparedNavigatorProps extends NavigatorProps {
  */
 export const preparePaths = (
 	navigatorProps: NavigatorProps,
-	screenProps: ScreenProps,
-	BB: BlueBase
+	screenProps: ScreenProps
 ): PreparedNavigatorProps => {
 	const navigator = { ...navigatorProps };
 
@@ -31,10 +30,10 @@ export const preparePaths = (
 	// Then map it to have new paths
 	const routes = resolveThunk(navigator.routes || [], screenProps).map((r: RouteConfig) => {
 		// Do we have a navigator here? If yes then recurcively prepare its paths as well
-		const resolvedNavigator = r.navigator ? preparePaths(r.navigator, screenProps, BB) : undefined;
+		const resolvedNavigator = r.navigator ? preparePaths(r.navigator, screenProps) : undefined;
 
 		// Do we have a screen here? If yes then resolve the screen component
-		const component = createNavigatorScreenComponent(r, BB);
+		const component = createNavigatorScreenComponent(r, screenProps.BB);
 
 		// Return the final object
 		return { ...r, navigator: resolvedNavigator, component };
