@@ -91,7 +91,7 @@
     "@babel/core": "^7.11.0",
     "@babel/plugin-transform-flow-strip-types": "^7.8.3",
     "@bluebase/code-standards": "^2.7.0",
-    "@bluebase/components": "^5.24.1",
+    "@bluebase/components": "^6.2.1",
     "@bluebase/core": "^5.11.1",
     "@bluebase/plugin-launcher": "^1.2.0",
     "@bluebase/plugin-react-native-paper": "^2.4.0",
