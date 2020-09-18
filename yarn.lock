@@ -1343,9 +1343,9 @@
     tslib "^1.10.0"
 
 "@bluebase/plugin-react-native-paper@^3.1.0":
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/@bluebase/plugin-react-native-paper/-/plugin-react-native-paper-3.1.0.tgz#fa66ffded84a4df92e1308910e6ef0e4a09d42d9"
-  integrity sha512-5NfeV2n4uxSx0CMvRwja6RkPtKxwBrti7kJHAoqVHLIeJaQn37R/m+I0o9abeAhogsvMFaBhtUcFBMoiQjubuA==
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/@bluebase/plugin-react-native-paper/-/plugin-react-native-paper-3.1.1.tgz#ae83709bfd915f5acf79ff36aa26835cf59a0b6f"
+  integrity sha512-EEt/C9LifcI3sDMqu0TMHWMC54lTFMTptenx6nhm8IE1MMxsajGuxT7v8CCNhoX7W0I38UtHlWIuo+0E5BYBxg==
   dependencies:
     "@bluebase/component-mapper" "^1.4.0"
     "@bluebase/components" "^6.0.0"
