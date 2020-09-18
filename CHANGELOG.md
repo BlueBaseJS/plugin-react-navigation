@@ -1,3 +1,10 @@
+## [1.4.1](https://github.com/BlueBaseJS/plugin-react-navigation/compare/v1.4.0...v1.4.1) (2020-09-18)
+
+### Bug Fixes
+
+-   **resolveRouteOptions:** Fixed wrong treatment of options prop ([bd212f4](https://github.com/BlueBaseJS/plugin-react-navigation/commit/bd212f4dc643f18c92db982462ff22074e041186))
+-   Fixed wrong navigator selection for bottom-navigation ([fb27767](https://github.com/BlueBaseJS/plugin-react-navigation/commit/fb27767739180b638459215d0e0e552430aec0b7))
+
 # [1.4.0](https://github.com/BlueBaseJS/plugin-react-navigation/compare/v1.3.0...v1.4.0) (2020-08-04)
 
 ### Features
