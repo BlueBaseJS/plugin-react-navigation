@@ -12,7 +12,7 @@ const NavigatorMap: { [key: string]: any } = {
 
 	drawer: createDrawerNavigator,
 
-	'bottom-navigation': createMaterialBottomTabNavigator,
+	'bottom-navigation': createBottomTabNavigator,
 	'material-bottom-tab': createMaterialBottomTabNavigator,
 	'material-bottom-tabs': createMaterialBottomTabNavigator,
 
