@@ -11,12 +11,23 @@ import { resolveThunk } from '@bluebase/core';
 export const resolveRouteOptions = (route: RouteConfig, navigationData: NavigationData) => {
 	const ScreenComponent = resolveScreenComponent(route, navigationData.screenProps.BB);
 
-	const options =
-		route.options || route.navigationOptions || (ScreenComponent as any).navigationOptions || {};
+	if (route.options) {
+		return route.options;
+	}
+
+	if (route.navigationOptions) {
+		console.warn('route.navigationOptions is deprecated');
+	}
+
+	const options = resolveThunk(
+		route.navigationOptions || (ScreenComponent as any).navigationOptions || {},
+		navigationData
+	);
 
 	return {
 		// FIXME: missing navigation
-		...resolveThunk(options, navigationData),
+		...options,
+
 		header:
 			typeof options.header === 'function' || options.header === undefined
 				? options.header
