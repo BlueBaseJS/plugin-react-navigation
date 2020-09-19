@@ -1,3 +1,9 @@
+## [1.4.2](https://github.com/BlueBaseJS/plugin-react-navigation/compare/v1.4.1...v1.4.2) (2020-09-19)
+
+### Bug Fixes
+
+-   Fixed an issue where stack nav actions were throwing errors ([72e2aef](https://github.com/BlueBaseJS/plugin-react-navigation/commit/72e2aeff1fbe3c83627614a369c0361954f071cd))
+
 ## [1.4.1](https://github.com/BlueBaseJS/plugin-react-navigation/compare/v1.4.0...v1.4.1) (2020-09-18)
 
 ### Bug Fixes
