@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import { execAction, navigationToActionObject } from '../navigationToActionObject';
 
 import { NavigationActionsObject } from '@bluebase/components';
@@ -26,7 +27,7 @@ const route = {
 	isTransitioning: false,
 	key: 'kjdkj',
 	name: 'Home',
-	params: { foo: 'bar' },
+	params: { foo: 'bar', __path_url__: '/' },
 	path: '/',
 	routes: [
 		{
@@ -72,10 +73,13 @@ describe('navigationToActionObject', () => {
 			navigate: () => ({}),
 			router: {},
 			state: {},
+			dispatch: jest.fn(),
 		};
 		const result = navigationToActionObject(nav as any, route);
 		result.push('');
 		expect(result.push).toBeTruthy();
+		result.pop();
+		expect(result.pop).toBeTruthy();
 		result.replace('');
 		expect(result.replace).toBeTruthy();
 	});

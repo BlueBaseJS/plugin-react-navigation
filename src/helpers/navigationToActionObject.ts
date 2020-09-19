@@ -5,28 +5,34 @@ import {
 	NavitionActionRouteNamePayload,
 } from '@bluebase/components';
 
-const noop = (..._params: any[]) => {
-	return null;
-};
+import { StackActions } from '@react-navigation/native';
 
 /**
  * Convert a react-navigation's navigation prop to NavigationActionsObject
  * @param navigation
  */
 export const navigationToActionObject = (navigation: any, state: any): NavigationActionsObject => {
-	const {
-		navigate,
-		push = noop,
-		pop = noop,
-		replace = noop,
-		goBack,
-		setParams,
-	} = navigation as any;
+	const { navigate, goBack, setParams, dispatch } = navigation as any;
+
+	const push = (routeName: string, params: any) => {
+		const pushAction = StackActions.push(routeName, params);
+		dispatch(pushAction);
+	};
+
+	const pop = () => {
+		const pushAction = StackActions.pop();
+		dispatch(pushAction);
+	};
+
+	const replace = (routeName: string, params: any) => {
+		const pushAction = StackActions.replace(routeName, params);
+		dispatch(pushAction);
+	};
 
 	const otherParams: any = { ...state.params };
 
 	// Extract internal variables
-	const url = `/${otherParams.__path_url__}`;
+	const url = otherParams.__path_url__ ? `/${otherParams.__path_url__}` : undefined;
 	const search = otherParams.__path_search__;
 
 	// Delete internal flags

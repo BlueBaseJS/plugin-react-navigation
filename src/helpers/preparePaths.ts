@@ -3,6 +3,7 @@ import { NavigatorProps, RouteConfig } from '@bluebase/components';
 
 import { ScreenProps } from '../types';
 import { createNavigatorScreenComponent } from './createNavigatorScreenComponent';
+import get from 'lodash.get';
 import { getNavigatorFn } from './getNavigatorFn';
 
 export interface PreparedNavigatorProps extends NavigatorProps {
@@ -29,16 +30,20 @@ export const preparePaths = (
 
 	// If routes prop is a thunk, resolve it.
 	// Then map it to have new paths
-	const routes = resolveThunk(navigator.routes || [], screenProps).map((r: RouteConfig) => {
-		// Do we have a navigator here? If yes then recurcively prepare its paths as well
-		const resolvedNavigator = r.navigator ? preparePaths(r.navigator, screenProps, BB) : undefined;
+	const routes = resolveThunk(get(navigator, 'routes', [] as RouteConfig[]), screenProps).map(
+		(r: RouteConfig) => {
+			// Do we have a navigator here? If yes then recurcively prepare its paths as well
+			const resolvedNavigator = r.navigator
+				? preparePaths(r.navigator, screenProps, BB)
+				: undefined;
 
-		// Do we have a screen here? If yes then resolve the screen component
-		const component = createNavigatorScreenComponent(r, BB);
+			// Do we have a screen here? If yes then resolve the screen component
+			const component = createNavigatorScreenComponent(r, BB);
 
-		// Return the final object
-		return { ...r, navigator: resolvedNavigator, component };
-	});
+			// Return the final object
+			return { ...r, navigator: resolvedNavigator, component };
+		}
+	);
 
 	// Merge and return incoming navigator with newer routes
 	return { ...navigator, NavigatorComponent, routes };
