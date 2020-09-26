@@ -3,10 +3,9 @@ import {
 	preparePaths,
 	resolveNavigatorScreenOptions,
 	resolveRouteOptions,
-	stubNavigationObject,
-	useScreenProps
+	useScreenProps,
 } from '../../helpers';
-import { resolveThunk, useBlueBase } from '@bluebase/core';
+import { resolveThunk, useBlueBase, useNavigation } from '@bluebase/core';
 
 import { NavigatorProps as BBNavigatorProps } from '@bluebase/components';
 import { RouteConfigWithResolveSubRoutes } from '../../types';
@@ -22,6 +21,7 @@ export interface NavigatorProps extends BBNavigatorProps {
  */
 export const Navigator = (inputProps: NavigatorProps) => {
 	const BB = useBlueBase();
+	const navigation = useNavigation();
 	const screenProps = useScreenProps();
 
 	const [props] = useState(preparePaths(inputProps, screenProps, BB));
@@ -42,7 +42,7 @@ export const Navigator = (inputProps: NavigatorProps) => {
 	const renderRoute = (route: RouteConfigWithResolveSubRoutes) => {
 		// We're not able to resovle navigation object here. Open to better ideas.
 		const options = resolveRouteOptions(route, {
-			navigation: stubNavigationObject,
+			navigation,
 			screenProps,
 		});
 
