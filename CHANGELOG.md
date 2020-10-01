@@ -1,3 +1,9 @@
+# [1.6.0](https://github.com/BlueBaseJS/plugin-react-navigation/compare/v1.5.0...v1.6.0) (2020-10-01)
+
+### Features
+
+-   Cleaned up navigation context logic ([b7c6a24](https://github.com/BlueBaseJS/plugin-react-navigation/commit/b7c6a2443183614daec97d24c0fbab2ecfca39c7))
+
 # [1.5.0](https://github.com/BlueBaseJS/plugin-react-navigation/compare/v1.4.2...v1.5.0) (2020-09-26)
 
 ### Bug Fixes
