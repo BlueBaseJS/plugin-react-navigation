@@ -1,7 +1,5 @@
-import { useNavigation, useRoute } from '@react-navigation/native';
-
 import { NavigationActionsProps } from '@bluebase/components';
-import { navigationToActionObject } from '../../helpers';
+import { useNavigation } from '@bluebase/core';
 
 /**
  * NavigationActions (Legacy)
@@ -14,7 +12,6 @@ export const NavigationActions: React.ComponentType<NavigationActionsProps> = ({
 	children,
 }: NavigationActionsProps) => {
 	const navigation = useNavigation();
-	const route = useRoute();
 
-	return children(navigationToActionObject(navigation, route)) as any;
+	return children(navigation) as any;
 };

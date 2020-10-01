@@ -22,7 +22,7 @@ export const createNavigatorScreenComponent = (route: RouteConfig, BB: BlueBase)
 
 		if (screen) {
 			const WrappedNavigator = (props: any) => (
-				<NavigationProvider>
+				<NavigationProvider {...props}>
 					<ScreenComponent {...props} route={route} ScreenComponent={ScreenComponent}>
 						{navigatorNode}
 					</ScreenComponent>
@@ -36,7 +36,7 @@ export const createNavigatorScreenComponent = (route: RouteConfig, BB: BlueBase)
 	}
 
 	const Screen = (props: any) => (
-		<NavigationProvider>
+		<NavigationProvider {...props}>
 			<ScreenComponent {...props} route={route} ScreenComponent={ScreenComponent} />
 		</NavigationProvider>
 	);

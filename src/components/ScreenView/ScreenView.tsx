@@ -1,8 +1,6 @@
-import { useNavigation, useRoute } from '@react-navigation/native';
-
 import React from 'react';
 import { RouteConfig } from '@bluebase/components';
-import { navigationToActionObject } from '../../helpers';
+import { useNavigation } from '@bluebase/core';
 
 export interface ScreenViewProps {
 	children?: React.ReactNode;
@@ -16,9 +14,7 @@ export const ScreenView: React.ComponentType<ScreenViewProps> = ({
 	ScreenComponent,
 	...rest
 }: ScreenViewProps & any) => {
-	const state = useRoute();
-	const navObj = useNavigation();
-	const navigation = navigationToActionObject(navObj, state);
+	const navigation = useNavigation();
 
 	return (
 		<ScreenComponent {...rest} navigation={navigation}>

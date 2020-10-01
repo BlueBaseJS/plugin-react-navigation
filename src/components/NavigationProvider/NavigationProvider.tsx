@@ -9,7 +9,8 @@ import { navigationToActionObject } from '../../helpers';
  * and injects it into the context
  * @param param
  */
-export const NavigationProvider = ({ children }: { children: React.ReactNode }) => {
+export const NavigationProvider = (props: { children: React.ReactNode }) => {
+	const { children } = props;
 	const navigation = useNavigation();
 	const route = useRoute();
 
