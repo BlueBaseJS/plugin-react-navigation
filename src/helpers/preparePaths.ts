@@ -2,6 +2,7 @@ import { BlueBase, makeId, resolveThunk } from '@bluebase/core';
 import { NavigatorProps, RouteConfig } from '@bluebase/components';
 
 import { ScreenProps } from '../types';
+import { cloneElement } from 'react';
 import { createNavigatorScreenComponent } from './createNavigatorScreenComponent';
 import get from 'lodash.get';
 import { getNavigatorFn } from './getNavigatorFn';
@@ -41,10 +42,12 @@ export const preparePaths = (
 			const component = createNavigatorScreenComponent(r, BB);
 
 			// Return the final object
-			return { ...r, navigator: resolvedNavigator, component };
+			return { ...r, lazy: false, navigator: resolvedNavigator, component };
 		}
 	);
+	cloneElement(NavigatorComponent,
+		{ lazy: false }, null);
 
 	// Merge and return incoming navigator with newer routes
-	return { ...navigator, NavigatorComponent, routes };
+	return { ...navigator, lazy: false, NavigatorComponent, routes };
 };
