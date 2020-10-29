@@ -1,3 +1,9 @@
+# [1.7.0](https://github.com/BlueBaseJS/plugin-react-navigation/compare/v1.6.0...v1.7.0) (2020-10-29)
+
+### Features
+
+-   **Navigation:** Initial load add to avoid lazy loading of routes ([#285](https://github.com/BlueBaseJS/plugin-react-navigation/issues/285)) ([3efd358](https://github.com/BlueBaseJS/plugin-react-navigation/commit/3efd35899e25e487c891f31e77c2e60aede18716))
+
 # [1.6.0](https://github.com/BlueBaseJS/plugin-react-navigation/compare/v1.5.0...v1.6.0) (2020-10-01)
 
 ### Features
