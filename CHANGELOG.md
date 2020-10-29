@@ -1,3 +1,25 @@
+# [1.6.0](https://github.com/BlueBaseJS/plugin-react-navigation/compare/v1.5.0...v1.6.0) (2020-10-01)
+
+### Features
+
+-   Cleaned up navigation context logic ([b7c6a24](https://github.com/BlueBaseJS/plugin-react-navigation/commit/b7c6a2443183614daec97d24c0fbab2ecfca39c7))
+
+# [1.5.0](https://github.com/BlueBaseJS/plugin-react-navigation/compare/v1.4.2...v1.5.0) (2020-09-26)
+
+### Bug Fixes
+
+-   Moved some repos to peerDeps ([3fdc892](https://github.com/BlueBaseJS/plugin-react-navigation/commit/3fdc892e2ed26f893f63017ee89faa43d457348f))
+
+### Features
+
+-   **Navigator:** Doesn't use stub navigator anymore ([18bcd9a](https://github.com/BlueBaseJS/plugin-react-navigation/commit/18bcd9a7ae86898d929eb85a1bcc6f3228886982))
+
+## [1.4.2](https://github.com/BlueBaseJS/plugin-react-navigation/compare/v1.4.1...v1.4.2) (2020-09-19)
+
+### Bug Fixes
+
+-   Fixed an issue where stack nav actions were throwing errors ([72e2aef](https://github.com/BlueBaseJS/plugin-react-navigation/commit/72e2aeff1fbe3c83627614a369c0361954f071cd))
+
 ## [1.4.1](https://github.com/BlueBaseJS/plugin-react-navigation/compare/v1.4.0...v1.4.1) (2020-09-18)
 
 ### Bug Fixes
