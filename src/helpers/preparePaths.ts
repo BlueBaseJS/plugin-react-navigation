@@ -46,5 +46,5 @@ export const preparePaths = (
 	);
 
 	// Merge and return incoming navigator with newer routes
-	return { ...navigator, lazy: false, NavigatorComponent, routes };
+	return { lazy: false, ...navigator, NavigatorComponent, routes };
 };
