@@ -11,7 +11,7 @@ import { StackActions } from '@react-navigation/native';
  * Convert a react-navigation's navigation prop to NavigationActionsObject
  * @param navigation
  */
-export const navigationToActionObject = (navigation: any, state: any): NavigationActionsObject => {
+export const navigationToActionObject = (navigation: any, inputRoute: any): NavigationActionsObject => {
 	const { navigate, goBack, setParams, dispatch } = navigation as any;
 
 	const push = (routeName: string, params: any) => {
@@ -29,7 +29,21 @@ export const navigationToActionObject = (navigation: any, state: any): Navigatio
 		dispatch(pushAction);
 	};
 
-	const otherParams: any = { ...state.params };
+	// //////////////////////////////
+	// Experimental:
+	// Removing state property because of the following warning:
+	//
+	// eslint-disable-next-line max-len
+	// Accessing the 'state' property of the 'route' object is not supported. If you want to get the focused route name, use the 'getFocusedRouteNameFromRoute' helper instead: https://reactnavigation.org/docs/5.x/screen-options-resolution/#setting-parent-screen-options-based-on-child-navigators-state
+	//
+	const route = {
+		key: inputRoute.key,
+		name: inputRoute.name,
+		params: inputRoute.params,
+	};
+	// //////////////////////////////
+
+	const otherParams: any = { ...route.params };
 
 	// Extract internal variables
 	const url = otherParams.__path_url__ ? `/${otherParams.__path_url__}` : undefined;
@@ -38,6 +52,7 @@ export const navigationToActionObject = (navigation: any, state: any): Navigatio
 	// Delete internal flags
 	delete otherParams.__path_url__;
 	delete otherParams.__path_search__;
+
 
 	const actions: NavigationActionsObject = {
 		goBack: () => goBack(),
@@ -56,7 +71,7 @@ export const navigationToActionObject = (navigation: any, state: any): Navigatio
 		setParams,
 
 		getParam: (paramName: any, defaultValue: any): any => {
-			const params = state.params;
+			const params = route.params;
 
 			if (params && paramName in params) {
 				return params[paramName];
@@ -66,10 +81,10 @@ export const navigationToActionObject = (navigation: any, state: any): Navigatio
 		},
 
 		state: {
-			...state,
-			routeName: state.name,
+			...route,
+			routeName: route.name,
 			search: search,
-			url: (state as any).path || url,
+			url: (route as any).path || url,
 		},
 
 		source: navigation,

@@ -16,7 +16,8 @@ export const resolveRouteOptions = (route: RouteConfig, navigationData: Navigati
 	}
 
 	if (route.navigationOptions) {
-		console.warn('route.navigationOptions is deprecated');
+		// eslint-disable-next-line max-len
+		console.warn(`route.navigationOptions is deprecated. Refactor ${route.name} route to use route.options instead.`);
 	}
 
 	const options = resolveThunk(
