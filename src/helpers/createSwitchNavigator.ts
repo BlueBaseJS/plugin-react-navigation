@@ -1,19 +1,19 @@
-import {
-	DefaultNavigatorOptions,
-	createNavigatorFactory,
-	useNavigationBuilder,
-} from '@react-navigation/native';
+import { createNavigatorFactory, DefaultNavigatorOptions, useNavigationBuilder } from '@react-navigation/native';
 import { TabNavigationState, TabRouter, TabRouterOptions } from '@react-navigation/routers';
 
 type Props = DefaultNavigatorOptions<{}> & TabRouterOptions;
 
 const SwitchNavigator = (props: Props) => {
-	const { state, descriptors } = useNavigationBuilder<TabNavigationState, TabRouterOptions, {}, {}>(
-		TabRouter,
-		props
-	);
+	const { state, descriptors } = useNavigationBuilder<
+		TabNavigationState,
+		TabRouterOptions,
+		{},
+		{}
+	>(TabRouter, props);
 
 	return descriptors[state.routes[state.index].key].render();
 };
 
-export default createNavigatorFactory<any, typeof SwitchNavigator, any, any>(SwitchNavigator);
+export default createNavigatorFactory<any, typeof SwitchNavigator, any, any>(
+	SwitchNavigator
+);

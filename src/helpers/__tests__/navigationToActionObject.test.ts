@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
-import { execAction, navigationToActionObject } from '../navigationToActionObject';
-
 import { NavigationActionsObject } from '@bluebase/components';
+
+import { execAction, navigationToActionObject } from '../navigationToActionObject';
 
 const navigation: any = {
 	addListener: jest.fn(),
@@ -47,7 +47,10 @@ describe('navigationToActionObject', () => {
 	});
 
 	it('should convert a history object to action object', () => {
-		const result: NavigationActionsObject = navigationToActionObject(navigation, route);
+		const result: NavigationActionsObject = navigationToActionObject(
+			navigation,
+			route
+		);
 		// expect(getTopNavigation).toBeCalled();
 		expect(result.state.key).toBe('kjdkj');
 		expect(result.state.routeName).toBe('Home');
@@ -56,7 +59,10 @@ describe('navigationToActionObject', () => {
 	});
 
 	it('should check returning functions', () => {
-		const result: NavigationActionsObject = navigationToActionObject(navigation, route);
+		const result: NavigationActionsObject = navigationToActionObject(
+			navigation,
+			route
+		);
 		result.goBack();
 		expect(result.goBack).toBeTruthy();
 		result.navigate('');
@@ -114,10 +120,15 @@ describe('navigationToActionObject', () => {
 			getStateForAction: jest.fn(),
 		};
 
-		expect(execAction(undefined as any, route.name, route.params)).toBeUndefined();
+		expect(
+			execAction(undefined as any, route.name, route.params)
+		).toBeUndefined();
 
 		execAction(navigation.navigate, route.name, route.params);
-		expect(navigation.navigate).toHaveBeenLastCalledWith(route.name, route.params);
+		expect(navigation.navigate).toHaveBeenLastCalledWith(
+			route.name,
+			route.params
+		);
 
 		execAction(navigation.navigate, { path: '/' }, route.params);
 		expect(execAction).toBeTruthy();

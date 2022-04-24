@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-no-bind */
 import { List } from '@bluebase/components';
-import React from 'react';
 import { useTheme } from '@bluebase/core';
+import React from 'react';
 
 // tslint:disable: jsx-no-lambda
 

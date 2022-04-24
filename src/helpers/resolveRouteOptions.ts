@@ -1,15 +1,22 @@
-import { NavigationData } from '../types';
 import { RouteConfig } from '@bluebase/components';
-import { resolveScreenComponent } from './resolveScreenComponent';
 import { resolveThunk } from '@bluebase/core';
+
+import { NavigationData } from '../types';
+import { resolveScreenComponent } from './resolveScreenComponent';
 
 /**
  * Given a route object, resolves its navigation options
  * @param route
  * @param BB
  */
-export const resolveRouteOptions = (route: RouteConfig, navigationData: NavigationData) => {
-	const ScreenComponent = resolveScreenComponent(route, navigationData.screenProps.BB);
+export const resolveRouteOptions = (
+	route: RouteConfig,
+	navigationData: NavigationData
+) => {
+	const ScreenComponent = resolveScreenComponent(
+		route,
+		navigationData.screenProps.BB
+	);
 
 	if (route.options) {
 		return route.options;
@@ -17,7 +24,9 @@ export const resolveRouteOptions = (route: RouteConfig, navigationData: Navigati
 
 	if (route.navigationOptions) {
 		// eslint-disable-next-line max-len
-		console.warn(`route.navigationOptions is deprecated. Refactor ${route.name} route to use route.options instead.`);
+		console.warn(
+			`route.navigationOptions is deprecated. Refactor ${route.name} route to use route.options instead.`
+		);
 	}
 
 	const options = resolveThunk(

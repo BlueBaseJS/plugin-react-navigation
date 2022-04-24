@@ -1,7 +1,8 @@
-import { NavigationActions } from '../NavigationActions';
 import { NavigationContext } from '@bluebase/core';
-import React from 'react';
 import { mount } from 'enzyme';
+import React from 'react';
+
+import { NavigationActions } from '../NavigationActions';
 
 describe('NavigationActions tests', () => {
 	it('should check props', async () => {

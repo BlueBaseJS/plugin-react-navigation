@@ -2,6 +2,8 @@ const configs = require('@bluebase/code-standards/jest.config');
 
 const modules = [
 	'@unimodules/.*',
+	'@react-native/.*',
+	'@react-native-community/.*',
 	'expo',
 	'react-native',
 	'react-router-native',
@@ -9,13 +11,12 @@ const modules = [
 	'react-navigation',
 	'react-native-gesture-handler',
 	'rn-placeholder',
-	'@react-native-community/masked-view',
+	'react-native-modal-datetime-picker',
+	'unimodules-permissions-interface',
+	'@react-native-community/datetimepicker',
 ].join('|');
 
 module.exports = Object.assign(configs, {
-	preset: 'jest-expo',
-	testRegex: undefined,
-
 	transformIgnorePatterns: [`/node_modules/(?!${modules})`],
 	setupFilesAfterEnv: ['<rootDir>/tests/setup.ts'],
 });

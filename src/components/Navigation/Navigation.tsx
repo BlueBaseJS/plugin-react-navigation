@@ -1,7 +1,6 @@
-import { useComponent, useTheme } from '@bluebase/core';
-
-import { NavigationContainer } from '@react-navigation/native';
 import { NavigationProps } from '@bluebase/components';
+import { useComponent, useTheme } from '@bluebase/core';
+import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
 
 /**

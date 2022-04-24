@@ -3,6 +3,10 @@
 import 'react-native-gesture-handler';
 
 import { ComponentState, Noop } from '@bluebase/components';
+import { createPlugin } from '@bluebase/core';
+import React from 'react';
+import { Text, View } from 'react-native';
+
 // tslint:disable: object-literal-sort-keys
 import {
 	HomeScreen,
@@ -11,13 +15,9 @@ import {
 	Tab1Screen,
 	Tab2Screen,
 } from './Screens';
-import { Text, View } from 'react-native';
-
 import { DrawerTab1Screen } from './Screens/DrawerTab1';
 import { DrawerTab2Screen } from './Screens/DrawerTab2';
 import { ParamsScreen } from './Screens/Params';
-import React from 'react';
-import { createPlugin } from '@bluebase/core';
 
 const plugin = createPlugin({
 	key: 'settings',

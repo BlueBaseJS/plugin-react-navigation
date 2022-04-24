@@ -1,7 +1,6 @@
 import { NavigatorProps as CoreNavigatorProps, NavigatorProps } from '@bluebase/components';
-
-import { Platform } from 'react-native';
 import { TransitionPresets } from '@react-navigation/stack';
+import { Platform } from 'react-native';
 
 export const isIosModalScreen = ({ type, mode }: NavigatorProps) => {
 	if (Platform.OS === 'ios' && type === 'stack' && mode === 'modal') {
@@ -16,8 +15,11 @@ export const isIosModalScreen = ({ type, mode }: NavigatorProps) => {
  * @param navigator
  * @param BB
  */
-export const resolveNavigatorScreenOptions = (navigator: CoreNavigatorProps) => {
-	const resolvedScreenOptions = navigator.screenOptions || navigator.defaultNavigationOptions || {};
+export const resolveNavigatorScreenOptions = (
+	navigator: CoreNavigatorProps
+) => {
+	const resolvedScreenOptions =
+		navigator.screenOptions || navigator.defaultNavigationOptions || {};
 	return {
 		...(isIosModalScreen(navigator) && {
 			gestureEnabled: true,

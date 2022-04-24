@@ -1,8 +1,8 @@
 /* eslint-disable react/jsx-no-bind */
 import { Divider, List } from '@bluebase/components';
+import React from 'react';
 import { ScrollView, View } from 'react-native';
 
-import React from 'react';
 import { ThemeMode } from '../components/ThemeMode';
 
 // tslint:disable: jsx-no-lambda

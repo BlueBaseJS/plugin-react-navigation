@@ -1,13 +1,13 @@
 import { BlueBase, BlueBaseApp } from '@bluebase/core';
-import { Text, View } from 'react-native';
-
 import { NavigationContainer } from '@react-navigation/native';
-import Plugin from '../../index';
-import React from 'react';
-import { createNavigatorScreenComponent } from '..';
 import { createStackNavigator } from '@react-navigation/stack';
 import { mount } from 'enzyme';
 import { waitForElement } from 'enzyme-async-helpers';
+import React from 'react';
+import { Text, View } from 'react-native';
+
+import Plugin from '../../index';
+import { createNavigatorScreenComponent } from '..';
 
 describe('createNavigatorScreenComponent', () => {
 	it('should return create and render a screen component', async () => {

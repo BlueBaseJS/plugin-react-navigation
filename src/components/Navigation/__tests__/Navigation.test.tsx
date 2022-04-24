@@ -1,9 +1,10 @@
 import { BlueBaseApp } from '@bluebase/core';
-import { Navigation } from '../Navigation';
-import Plugin from '../../../index';
-import React from 'react';
 import { mount } from 'enzyme';
 import { waitForElement } from 'enzyme-async-helpers';
+import React from 'react';
+
+import Plugin from '../../../index';
+import { Navigation } from '../Navigation';
 
 describe('Navigation tests', () => {
 	it('should check props', async () => {

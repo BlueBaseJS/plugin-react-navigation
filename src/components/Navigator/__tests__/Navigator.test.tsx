@@ -1,11 +1,12 @@
 import { BlueBaseApp } from '@bluebase/core';
 import { NavigationContainer } from '@react-navigation/native';
-import { Navigator } from '..';
-import React from 'react';
-import { ScreenView } from '../../ScreenView';
-import { Text } from 'react-native';
 import { mount } from 'enzyme';
 import { waitForElement } from 'enzyme-async-helpers';
+import React from 'react';
+import { Text } from 'react-native';
+
+import { ScreenView } from '../../ScreenView';
+import { Navigator } from '..';
 
 describe('Navigator', () => {
 	it('should return create and render a screen component', async () => {

@@ -1,6 +1,6 @@
-import React from 'react';
 import { RouteConfig } from '@bluebase/components';
 import { useNavigation } from '@bluebase/core';
+import React from 'react';
 
 export interface ScreenViewProps {
 	children?: React.ReactNode;

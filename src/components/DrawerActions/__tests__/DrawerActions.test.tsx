@@ -13,9 +13,10 @@ jest.mock('@react-navigation/native', () => {
 	};
 });
 
-import { DrawerActions } from '../DrawerActions';
-import React from 'react';
 import { mount } from 'enzyme';
+import React from 'react';
+
+import { DrawerActions } from '../DrawerActions';
 
 describe('DrawerActions tests', () => {
 	it('should check props', async () => {

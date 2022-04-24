@@ -1,7 +1,7 @@
 import 'jest-enzyme';
 import 'react-native';
 
-import Adapter from 'enzyme-adapter-react-16';
+import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 import Enzyme from 'enzyme';
 
 /**
@@ -10,11 +10,11 @@ import Enzyme from 'enzyme';
 const { JSDOM } = require('jsdom');
 
 const jsdom = new JSDOM('<!doctype html><html><body></body></html>', {
-	url: 'http://localhost/',
+	url: 'http://localhost'
 });
 const { window } = jsdom;
+window.Date = Date;
 
-// eslint-disable-next-line prefer-arrow/prefer-arrow-functions
 function copyProps(src: any, target: any) {
 	Object.defineProperties(target, {
 		...Object.getOwnPropertyDescriptors(src),
@@ -23,9 +23,9 @@ function copyProps(src: any, target: any) {
 }
 
 declare const global: {
-	document: any;
-	navigator: any;
-	window: any;
+	document: any,
+	navigator: any,
+	window: any,
 };
 
 global.window = window;
@@ -33,6 +33,7 @@ global.document = window.document;
 global.navigator = {
 	userAgent: 'node.js',
 };
+
 copyProps(window, global);
 
 /**
@@ -56,38 +57,5 @@ console.error = (message: any) => {
 	originalConsoleError(message);
 };
 
-// ////// Fix Jest Issues with React Navigation ////////
-
-jest.mock('react-native-gesture-handler', () => {
-	const View = require('react-native/Libraries/Components/View/View');
-	return {
-		Swipeable: View,
-		DrawerLayout: View,
-		State: {},
-		ScrollView: View,
-		Slider: View,
-		Switch: View,
-		TextInput: View,
-		ToolbarAndroid: View,
-		ViewPagerAndroid: View,
-		DrawerLayoutAndroid: View,
-		WebView: View,
-		NativeViewGestureHandler: View,
-		TapGestureHandler: View,
-		FlingGestureHandler: View,
-		ForceTouchGestureHandler: View,
-		LongPressGestureHandler: View,
-		PanGestureHandler: View,
-		PinchGestureHandler: View,
-		RotationGestureHandler: View,
-		/* Buttons */
-		RawButton: View,
-		BaseButton: View,
-		RectButton: View,
-		BorderlessButton: View,
-		/* Other */
-		FlatList: View,
-		gestureHandlerRootHOC: jest.fn(),
-		Directions: {},
-	};
-});
+// Mocks
+jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper');

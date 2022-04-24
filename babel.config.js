@@ -1,8 +1,18 @@
-module.exports = {
-  "plugins": [
-    "@babel/plugin-transform-flow-strip-types"
-  ],
-  "presets": [
-    "@bluebase/code-standards/babel.config"
-  ]
+module.exports = function(api) {
+	api.cache(true);
+	return {
+		presets: ['babel-preset-expo', '@bluebase/code-standards/babel.config'],
+		env: {
+			test: {
+				plugins: [
+					[
+						'istanbul',
+						{
+							exclude: ['**/*.test.{ts,tsx,js,jsx}', 'tests/*.{ts,tsx,js,jsx}'],
+						},
+					],
+				],
+			},
+		},
+	};
 };

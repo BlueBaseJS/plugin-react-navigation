@@ -1,4 +1,5 @@
 import { BlueBase } from '@bluebase/core';
+
 import { resolveRouteOptions } from '..';
 
 describe('resolveRouteOptions', () => {

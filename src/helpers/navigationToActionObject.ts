@@ -4,14 +4,16 @@ import {
 	NavigationActionsObject,
 	NavitionActionRouteNamePayload,
 } from '@bluebase/components';
-
 import { StackActions } from '@react-navigation/native';
 
 /**
  * Convert a react-navigation's navigation prop to NavigationActionsObject
  * @param navigation
  */
-export const navigationToActionObject = (navigation: any, inputRoute: any): NavigationActionsObject => {
+export const navigationToActionObject = (
+	navigation: any,
+	inputRoute: any
+): NavigationActionsObject => {
 	const { navigate, goBack, setParams, dispatch } = navigation as any;
 
 	const push = (routeName: string, params: any) => {
@@ -46,13 +48,14 @@ export const navigationToActionObject = (navigation: any, inputRoute: any): Navi
 	const otherParams: any = { ...route.params };
 
 	// Extract internal variables
-	const url = otherParams.__path_url__ ? `/${otherParams.__path_url__}` : undefined;
+	const url = otherParams.__path_url__
+		? `/${otherParams.__path_url__}`
+		: undefined;
 	const search = otherParams.__path_search__;
 
 	// Delete internal flags
 	delete otherParams.__path_url__;
 	delete otherParams.__path_search__;
-
 
 	const actions: NavigationActionsObject = {
 		goBack: () => goBack(),
@@ -64,7 +67,8 @@ export const navigationToActionObject = (navigation: any, inputRoute: any): Navi
 
 		navigate: (routeName: NavigationActionPayload, params?: any) =>
 			execAction(navigate, routeName, params),
-		push: (routeName: NavigationActionPayload, params?: any) => execAction(push, routeName, params),
+		push: (routeName: NavigationActionPayload, params?: any) =>
+			execAction(push, routeName, params),
 		replace: (routeName: NavigationActionPayload, params?: any) =>
 			execAction(replace, routeName, params),
 

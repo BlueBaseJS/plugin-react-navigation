@@ -1,7 +1,7 @@
-import { Body1, NavigationActions } from '@bluebase/components';
+import { NavigationActions } from '@bluebase/components';
+import React from 'react';
 import { Button, View } from 'react-native';
 
-import React from 'react';
 import { ThemeMode } from '../components/ThemeMode';
 
 export class SettingsScreen extends React.Component {

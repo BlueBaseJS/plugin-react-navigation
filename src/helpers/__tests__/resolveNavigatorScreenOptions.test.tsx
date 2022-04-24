@@ -1,5 +1,5 @@
-import { isIosModalScreen } from '../resolveNavigatorScreenOptions';
 import { resolveNavigatorScreenOptions } from '..';
+import { isIosModalScreen } from '../resolveNavigatorScreenOptions';
 
 describe('resolveNavigatorScreenOptions', () => {
 	it('should resolve defaultNavigationOptions', async () => {

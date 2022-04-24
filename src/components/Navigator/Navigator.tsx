@@ -1,13 +1,8 @@
-import React, { useState } from 'react';
-import {
-	preparePaths,
-	resolveNavigatorScreenOptions,
-	resolveRouteOptions,
-	useScreenProps,
-} from '../../helpers';
-import { resolveThunk, useBlueBase, useNavigation } from '@bluebase/core';
-
 import { NavigatorProps as BBNavigatorProps } from '@bluebase/components';
+import { resolveThunk, useBlueBase, useNavigation } from '@bluebase/core';
+import React, { useState } from 'react';
+
+import { preparePaths, resolveNavigatorScreenOptions, resolveRouteOptions, useScreenProps } from '../../helpers';
 import { RouteConfigWithResolveSubRoutes } from '../../types';
 
 export interface NavigatorProps extends BBNavigatorProps {

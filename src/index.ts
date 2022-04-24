@@ -1,10 +1,10 @@
 import './enableScreens';
 
-import { DrawerActions, Navigation, Navigator, ScreenView } from './components';
-
-import { HeaderBackButton } from '@react-navigation/stack';
-import { VERSION } from './version';
 import { createPlugin } from '@bluebase/core';
+import { HeaderBackButton } from '@react-navigation/stack';
+
+import { DrawerActions, Navigation, Navigator, ScreenView } from './components';
+import { VERSION } from './version';
 
 export default createPlugin({
 	description: 'Use React Navigation in BlueBase apps!',

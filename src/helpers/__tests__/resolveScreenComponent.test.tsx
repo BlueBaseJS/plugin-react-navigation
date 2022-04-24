@@ -1,6 +1,7 @@
 import { BlueBase } from '@bluebase/core';
 import React from 'react';
 import { Text } from 'react-native';
+
 import { resolveScreenComponent } from '..';
 
 describe('resolveScreenComponent', () => {

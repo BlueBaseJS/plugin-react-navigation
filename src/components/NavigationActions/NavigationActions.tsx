@@ -1,5 +1,6 @@
 import { NavigationActionsProps } from '@bluebase/components';
 import { useNavigation } from '@bluebase/core';
+import React from 'react';
 
 /**
  * NavigationActions (Legacy)

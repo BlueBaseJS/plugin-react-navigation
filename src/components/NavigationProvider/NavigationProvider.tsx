@@ -1,7 +1,7 @@
-import { useNavigation, useRoute } from '@react-navigation/native';
-
 import { NavigationContext } from '@bluebase/core';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import React from 'react';
+
 import { navigationToActionObject } from '../../helpers';
 
 /**

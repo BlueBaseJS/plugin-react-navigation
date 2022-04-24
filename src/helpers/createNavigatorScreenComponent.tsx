@@ -1,8 +1,8 @@
-import { NavigationProvider, Navigator } from '../components';
-
+import { RouteConfig } from '@bluebase/components';
 import { BlueBase } from '@bluebase/core';
 import React from 'react';
-import { RouteConfig } from '@bluebase/components';
+
+import { NavigationProvider, Navigator } from '../components';
 import { resolveScreenComponent } from './resolveScreenComponent';
 
 /**
