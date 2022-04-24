@@ -1,3 +1,17 @@
+# [2.0.0](https://github.com/BlueBaseJS/plugin-react-navigation/compare/v1.7.0...v2.0.0) (2022-04-24)
+
+### Bug Fixes
+
+*   Fixed deprecation warnings ([5985442](https://github.com/BlueBaseJS/plugin-react-navigation/commit/5985442e10bdbb0cf6305c956f565b730fdb2a84))
+
+### Build System
+
+*   Expo 44 ([5b6080e](https://github.com/BlueBaseJS/plugin-react-navigation/commit/5b6080ea775b5f112c8d93723a5897a0d8d55802))
+
+### BREAKING CHANGES
+
+*   Updated project setup to Expo 44
+
 # [1.7.0](https://github.com/BlueBaseJS/plugin-react-navigation/compare/v1.6.0...v1.7.0) (2020-10-29)
 
 ### Features
