@@ -20,3 +20,5 @@ export const NavigationProvider = (props: { children: React.ReactNode }) => {
 		</NavigationContext.Provider>
 	);
 };
+
+NavigationProvider.displayName = 'NavigationProvider';

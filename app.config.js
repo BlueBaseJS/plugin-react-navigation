@@ -1,13 +1,6 @@
-let VERSION = '1.0.0', VERSION_NUMBER = 100000000;
-
-try {
-	const data = require('./dist/version');
-
-	VERSION = data.VERSION;
-	VERSION_NUMBER = data.VERSION_NUMBER;
-} catch (e) {
-	//
-}
+// Versions are auto updated during release process. Please don't edit manually.
+export const VERSION = '1.0.0';
+export const VERSION_CODE = 100000000;
 
 export default {
 	name: 'BlueBase Boilerplate',
@@ -33,7 +26,7 @@ export default {
 		supportsTablet: true
 	},
 	android: {
-		versionCode: VERSION_NUMBER,
+		versionCode: VERSION_CODE,
 		adaptiveIcon: {
 			foregroundImage: './assets/adaptive-icon.png',
 			backgroundColor: '#FFFFFF'

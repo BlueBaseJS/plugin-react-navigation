@@ -1,7 +1,8 @@
-import { NavigationProps } from '@bluebase/components';
 import { useComponent, useTheme } from '@bluebase/core';
 import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
+
+import { NavigationProps, NavigatorProps, } from '../../new-types';
 
 /**
  * Navigation (V5)
@@ -11,7 +12,7 @@ import React from 'react';
 export const Navigation = (props: NavigationProps) => {
 	const { navigator, ...rest } = props;
 	const { theme } = useTheme();
-	const Navigator = useComponent('Navigator');
+	const Navigator = useComponent<NavigatorProps>('Navigator');
 
 	return (
 		<NavigationContainer
@@ -33,3 +34,5 @@ export const Navigation = (props: NavigationProps) => {
 		</NavigationContainer>
 	);
 };
+
+Navigation.displayName = 'Navigation';

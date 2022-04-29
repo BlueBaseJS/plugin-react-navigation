@@ -1,13 +1,8 @@
-import { NavigatorProps as BBNavigatorProps } from '@bluebase/components';
-import { resolveThunk, useBlueBase, useNavigation } from '@bluebase/core';
+import { resolveThunk, useBlueBase } from '@bluebase/core';
 import React, { useState } from 'react';
 
-import { preparePaths, resolveNavigatorScreenOptions, resolveRouteOptions, useScreenProps } from '../../helpers';
-import { RouteConfigWithResolveSubRoutes } from '../../types';
-
-export interface NavigatorProps extends BBNavigatorProps {
-	// standalone?: boolean;
-}
+import { preparePaths, useScreenProps } from '../../helpers';
+import { NavigatorProps, RouteConfig } from '../../new-types';
 
 /**
  * Navigator (V5)
@@ -16,30 +11,28 @@ export interface NavigatorProps extends BBNavigatorProps {
  */
 export const Navigator = (inputProps: NavigatorProps) => {
 	const BB = useBlueBase();
-	const navigation = useNavigation();
 	const screenProps = useScreenProps();
 
 	const [props] = useState(preparePaths(inputProps, screenProps, BB));
-
 	// eslint-disable-next-line react/prop-types
-	const { type, routes, NavigatorComponent, ...rest } = props;
+	const { routes, NavigatorComponent, screenOptions, defaultScreenOptions, ...rest } = props;
 
 	if (!NavigatorComponent) {
 		return null;
 	}
 
 	// If routes is a thunk, resolve it
-	const resolvedRoutes = resolveThunk<RouteConfigWithResolveSubRoutes[]>(
-		routes as any,
+	const resolvedRoutes = resolveThunk<RouteConfig[]>(
+		routes,
 		screenProps
 	);
 
-	const renderRoute = (route: RouteConfigWithResolveSubRoutes) => {
-		// We're not able to resovle navigation object here. Open to better ideas.
-		const options = resolveRouteOptions(route, {
-			navigation,
-			screenProps,
-		});
+	const renderRoute = (route: RouteConfig) => {
+		let options = route.options;
+
+		if (route.options !== undefined && typeof route.options === 'function') {
+			options = (props: any) => (route.options as any)(props, screenProps);
+		}
 
 		return (
 			<NavigatorComponent.Screen
@@ -51,8 +44,26 @@ export const Navigator = (inputProps: NavigatorProps) => {
 		);
 	};
 
+	// Screen Options
+	let resolvedScreenOptions = screenOptions;
+
+	if (screenOptions !== undefined && typeof screenOptions === 'function') {
+		resolvedScreenOptions = (props: any) => (screenOptions as any)(props, screenProps);
+	}
+
+	// Default Screen Options
+	let resolvedDefaultScreenOptions = defaultScreenOptions;
+
+	if (defaultScreenOptions !== undefined && typeof defaultScreenOptions === 'function') {
+		resolvedDefaultScreenOptions = (props: any) => (defaultScreenOptions as any)(props, screenProps);
+	}
+
 	return (
-		<NavigatorComponent.Navigator screenOptions={resolveNavigatorScreenOptions(props)} {...rest}>
+		<NavigatorComponent.Navigator
+			screenOptions={resolvedScreenOptions}
+			defaultScreenOptions={resolvedDefaultScreenOptions}
+			{...rest}
+		>
 			{resolvedRoutes.map(renderRoute)}
 		</NavigatorComponent.Navigator>
 	);

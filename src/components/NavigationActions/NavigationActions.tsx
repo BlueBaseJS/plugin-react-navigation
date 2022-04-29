@@ -16,3 +16,5 @@ export const NavigationActions: React.ComponentType<NavigationActionsProps> = ({
 
 	return children(navigation) as any;
 };
+
+NavigationActions.displayName = 'NavigationActions';

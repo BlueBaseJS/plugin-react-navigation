@@ -47,8 +47,8 @@ const plugin = createPlugin({
 				</View>
 			),
 
-			navigationOptions: {
-				header: null,
+			options: {
+				header: () => null,
 			},
 
 			navigator: {
@@ -63,7 +63,7 @@ const plugin = createPlugin({
 						// eslint-disable-next-line react/display-name
 						screen: () => <ComponentState title="Wrapped" description="This screen is wrapped" />,
 
-						navigationOptions: {
+						options: {
 							title: 'Wrapped Screen',
 						},
 					},
@@ -84,7 +84,6 @@ const plugin = createPlugin({
 
 			navigator: {
 				type: 'native-stack',
-				// mode: 'modal',
 
 				routes: [
 					{
@@ -102,7 +101,7 @@ const plugin = createPlugin({
 							/>
 						),
 
-						navigationOptions: {
+						options: {
 							// stackPresentation: 'modal',
 							title: 'Native Stack 1 Screen',
 						},
@@ -117,7 +116,7 @@ const plugin = createPlugin({
 							<ComponentState title="Title 2" description="This screen is in a modal" />
 						),
 
-						navigationOptions: {
+						options: {
 							stackPresentation: 'modal',
 							title: 'Native Stack 2 Screen',
 						} as any,
@@ -135,50 +134,18 @@ const plugin = createPlugin({
 				contentStyle: {
 					backgroundColor: 'black',
 				},
+				presentation: 'modal'
 			},
 
-			navigator: {
-				type: 'stack',
-				mode: 'modal',
+			screen: (props: any) => (
+				<ComponentState
+					title="Title 1"
+					description="This screen is in a modal"
+					actionTitle="Modal 2"
+					actionOnPress={() => props.navigation.navigate('Modal2')}
+				/>
+			),
 
-				routes: [
-					{
-						name: 'Modal1',
-						path: 'modal1',
-						exact: true,
-
-						// eslint-disable-next-line react/display-name
-						screen: (props: any) => (
-							<ComponentState
-								title="Title 1"
-								description="This screen is in a modal"
-								actionTitle="Modal 2"
-								actionOnPress={() => props.navigation.navigate('Modal2')}
-							/>
-						),
-
-						navigationOptions: {
-							// stackPresentation: 'modal',
-							title: 'Modal 1 Screen',
-						},
-					},
-					{
-						name: 'Modal2',
-						path: 'modal2',
-						exact: true,
-
-						// eslint-disable-next-line react/display-name
-						screen: () => (
-							<ComponentState title="Title 2" description="This screen is in a modal" />
-						),
-
-						navigationOptions: {
-							stackPresentation: 'modal',
-							title: 'Modal 2 Screen',
-						} as any,
-					},
-				],
-			},
 		},
 
 		{
@@ -186,7 +153,7 @@ const plugin = createPlugin({
 			path: '/params',
 			exact: true,
 			screen: ParamsScreen,
-			navigationOptions: () => {
+			options: () => {
 				return {
 					title: 'Params',
 				};
@@ -207,7 +174,7 @@ const plugin = createPlugin({
 						path: 't1',
 						exact: true,
 						screen: Tab1Screen,
-						navigationOptions: {
+						options: {
 							title: 'Tab A',
 						},
 					},
@@ -216,13 +183,13 @@ const plugin = createPlugin({
 						path: 't2',
 						exact: true,
 						screen: Tab2Screen,
-						navigationOptions: {
+						options: {
 							title: 'Tab B',
 						},
 					},
 				],
 			},
-			navigationOptions: {
+			options: {
 				title: 'Settings Tabs',
 			},
 		},
@@ -237,7 +204,7 @@ const plugin = createPlugin({
 						path: 'bt1',
 						exact: true,
 						screen: Tab1Screen,
-						navigationOptions: {
+						options: {
 							title: 'BTab A',
 						},
 					},
@@ -246,13 +213,13 @@ const plugin = createPlugin({
 						path: 'bt2',
 						exact: true,
 						screen: Tab2Screen,
-						navigationOptions: {
+						options: {
 							title: 'BTab B',
 						},
 					},
 				],
 			},
-			navigationOptions: {
+			options: {
 				title: 'Settings Tabs',
 			},
 		},
@@ -260,7 +227,7 @@ const plugin = createPlugin({
 			name: 'SettingsDrawer',
 			path: 'drawer',
 
-			navigationOptions: {
+			options: {
 				title: 'Drawer Demo',
 			},
 
@@ -285,7 +252,7 @@ const plugin = createPlugin({
 						path: 'dt1',
 						exact: true,
 						screen: DrawerTab1Screen,
-						navigationOptions: {
+						options: {
 							title: 'DTab A',
 							// drawerLockMode: 'locked-open',
 						},
@@ -295,7 +262,7 @@ const plugin = createPlugin({
 						path: 'Dt2',
 						exact: true,
 						screen: DrawerTab2Screen,
-						navigationOptions: {
+						options: {
 							title: 'DTab B',
 						},
 					},
@@ -306,7 +273,7 @@ const plugin = createPlugin({
 			name: 'SettingsDetail',
 			path: '/:id',
 			screen: SettingsDetailScreen,
-			navigationOptions: {
+			options: {
 				title: 'Settings Detail',
 			},
 		},

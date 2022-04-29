@@ -1,8 +1,9 @@
-import { RouteConfig } from '@bluebase/components';
 import { BlueBase } from '@bluebase/core';
 import React from 'react';
 
-import { NavigationProvider, Navigator } from '../components';
+import { NavigationProvider } from '../components/NavigationProvider';
+import { Navigator } from '../components/Navigator';
+import { RouteConfig } from '../new-types';
 import { resolveScreenComponent } from './resolveScreenComponent';
 
 /**
@@ -32,7 +33,10 @@ export const createNavigatorScreenComponent = (route: RouteConfig, BB: BlueBase)
 			return WrappedNavigator;
 		}
 
-		return () => navigatorNode;
+		const NavigatorScreenComponent = () => navigatorNode;
+		NavigatorScreenComponent.displayName = 'NavigatorScreenComponent';
+
+		return NavigatorScreenComponent;
 	}
 
 	const Screen = (props: any) => (
@@ -40,6 +44,7 @@ export const createNavigatorScreenComponent = (route: RouteConfig, BB: BlueBase)
 			<ScreenComponent {...props} route={route} ScreenComponent={ScreenComponent} />
 		</NavigationProvider>
 	);
+	Screen.displayName = 'NavigatorScreenComponent';
 
 	return Screen;
 };
