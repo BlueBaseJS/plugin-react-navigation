@@ -6,8 +6,8 @@ import { waitForElement } from 'enzyme-async-helpers';
 import React from 'react';
 import { Text, View } from 'react-native';
 
-import { createNavigatorScreenComponent } from '../../../helpers';
 import Plugin from '../../../index';
+import { createNavigatorScreenComponent } from '../Navigator';
 
 describe('createNavigatorScreenComponent', () => {
 	it('should return create and render a screen component', async () => {
