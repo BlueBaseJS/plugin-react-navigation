@@ -1,8 +1,7 @@
 
 import { BlueBase, makeId, resolveThunk } from '@bluebase/core';
 
-import { NavigatorProps, RouteConfig } from '../new-types';
-import { ScreenProps } from '../types';
+import { BlueBaseContextPack, NavigatorProps, RouteConfig } from '../../new-types';
 import { createNavigatorScreenComponent } from './createNavigatorScreenComponent';
 import { getNavigatorFn } from './getNavigatorFn';
 
@@ -17,7 +16,7 @@ export type PreparedNavigatorProps = NavigatorProps & {
  */
 export const preparePaths = (
 	navigatorProps: NavigatorProps,
-	screenProps: ScreenProps,
+	contextPack: BlueBaseContextPack,
 	BB: BlueBase
 ): PreparedNavigatorProps => {
 	const navigator = { ...navigatorProps };
@@ -32,11 +31,11 @@ export const preparePaths = (
 	// Then map it to have new paths
 	const routes: any = resolveThunk(
 		navigator?.routes || [],
-		screenProps
+		contextPack
 	).map((r: RouteConfig) => {
 		// Do we have a navigator here? If yes then recurcively prepare its paths as well
 		const resolvedNavigator = r.navigator
-			? preparePaths(r.navigator, screenProps, BB)
+			? preparePaths(r.navigator, contextPack, BB)
 			: undefined;
 
 		// Do we have a screen here? If yes then resolve the screen component

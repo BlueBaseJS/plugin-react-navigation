@@ -1,8 +1,9 @@
 import { resolveThunk, useBlueBase } from '@bluebase/core';
 import React, { useState } from 'react';
 
-import { preparePaths, useScreenProps } from '../../helpers';
 import { NavigatorProps, RouteConfig } from '../../new-types';
+import { useBlueBaseContextPack } from '../../useBlueBaseContextPack';
+import { preparePaths } from './preparePaths';
 
 /**
  * Navigator (V5)
@@ -11,9 +12,9 @@ import { NavigatorProps, RouteConfig } from '../../new-types';
  */
 export const Navigator = (inputProps: NavigatorProps) => {
 	const BB = useBlueBase();
-	const screenProps = useScreenProps();
+	const contextPack = useBlueBaseContextPack();
 
-	const [props] = useState(preparePaths(inputProps, screenProps, BB));
+	const [props] = useState(preparePaths(inputProps, contextPack, BB));
 	// eslint-disable-next-line react/prop-types
 	const { routes, NavigatorComponent, screenOptions, defaultScreenOptions, ...rest } = props;
 
@@ -24,14 +25,14 @@ export const Navigator = (inputProps: NavigatorProps) => {
 	// If routes is a thunk, resolve it
 	const resolvedRoutes = resolveThunk<RouteConfig[]>(
 		routes,
-		screenProps
+		contextPack
 	);
 
 	const renderRoute = (route: RouteConfig) => {
 		let options = route.options;
 
 		if (route.options !== undefined && typeof route.options === 'function') {
-			options = (props: any) => (route.options as any)(props, screenProps);
+			options = (props: any) => (route.options as any)(props, contextPack);
 		}
 
 		return (
@@ -48,14 +49,14 @@ export const Navigator = (inputProps: NavigatorProps) => {
 	let resolvedScreenOptions = screenOptions;
 
 	if (screenOptions !== undefined && typeof screenOptions === 'function') {
-		resolvedScreenOptions = (props: any) => (screenOptions as any)(props, screenProps);
+		resolvedScreenOptions = (props: any) => (screenOptions as any)(props, contextPack);
 	}
 
 	// Default Screen Options
 	let resolvedDefaultScreenOptions = defaultScreenOptions;
 
 	if (defaultScreenOptions !== undefined && typeof defaultScreenOptions === 'function') {
-		resolvedDefaultScreenOptions = (props: any) => (defaultScreenOptions as any)(props, screenProps);
+		resolvedDefaultScreenOptions = (props: any) => (defaultScreenOptions as any)(props, contextPack);
 	}
 
 	return (

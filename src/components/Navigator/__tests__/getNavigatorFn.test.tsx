@@ -1,4 +1,4 @@
-import { getNavigatorFn } from '..';
+import { getNavigatorFn } from '../../../helpers';
 
 describe('getNavigatorFn', () => {
 	it('should return undefined for unknown navigators', async () => {

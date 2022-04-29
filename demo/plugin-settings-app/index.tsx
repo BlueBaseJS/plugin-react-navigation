@@ -57,7 +57,7 @@ const plugin = createPlugin({
 				routes: [
 					{
 						name: 'Tab1',
-						path: 't1',
+						path: 'wt1',
 						exact: true,
 
 						// eslint-disable-next-line react/display-name

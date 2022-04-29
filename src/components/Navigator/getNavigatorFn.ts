@@ -8,23 +8,13 @@ import { createStackNavigator } from '@react-navigation/stack';
 import createSwitchNavigator from './createSwitchNavigator';
 
 const NavigatorMap: { [key: string]: any } = {
-	'bottom-tab': createBottomTabNavigator,
 	'bottom-tabs': createBottomTabNavigator,
-
-	drawer: createDrawerNavigator,
-
-	'bottom-navigation': createBottomTabNavigator,
-	'material-bottom-tab': createMaterialBottomTabNavigator,
+	'drawer': createDrawerNavigator,
 	'material-bottom-tabs': createMaterialBottomTabNavigator,
-
-	tab: createMaterialTopTabNavigator,
-	tabs: createMaterialTopTabNavigator,
-
+	'material-top-tabs': createMaterialTopTabNavigator,
 	'native-stack': createNativeStackNavigator,
-
-	stack: createStackNavigator,
-
-	switch: createSwitchNavigator,
+	'stack': createStackNavigator,
+	'switch': createSwitchNavigator,
 };
 
 const ComponentMap: { [key: string]: any } = {};

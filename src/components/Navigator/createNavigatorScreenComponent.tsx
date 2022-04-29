@@ -1,9 +1,9 @@
 import { BlueBase } from '@bluebase/core';
 import React from 'react';
 
-import { NavigationProvider } from '../components/NavigationProvider';
-import { Navigator } from '../components/Navigator';
-import { RouteConfig } from '../new-types';
+import { RouteConfig } from '../../new-types';
+import { NavigationProvider } from '../NavigationProvider';
+import { Navigator } from './Navigator';
 import { resolveScreenComponent } from './resolveScreenComponent';
 
 /**

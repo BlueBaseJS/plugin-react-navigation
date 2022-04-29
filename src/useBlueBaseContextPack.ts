@@ -1,12 +1,12 @@
 import { useBlueBase, useIntl, useTheme } from '@bluebase/core';
 
-import { ScreenProps } from '../types';
+import { BlueBaseContextPack } from './new-types';
 
-export const useScreenProps = () => {
+export const useBlueBaseContextPack = () => {
 	const BB = useBlueBase();
 	const themes = useTheme();
 	const intl = useIntl();
-	const screenProps: ScreenProps = { BB, intl, themes, theme: themes.theme };
+	const screenProps: BlueBaseContextPack = { BB, intl, themes };
 
 	return screenProps;
 };
