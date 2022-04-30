@@ -1,3 +1,13 @@
+# [3.0.0-alpha.1](https://github.com/BlueBaseJS/plugin-react-navigation/compare/v2.0.0...v3.0.0-alpha.1) (2022-04-30)
+
+### Features
+
+*   React Navigation 6 ([#381](https://github.com/BlueBaseJS/plugin-react-navigation/issues/381)) ([3a91675](https://github.com/BlueBaseJS/plugin-react-navigation/commit/3a916758d310b65718c42f2eb7e7e40249138eb2))
+
+### BREAKING CHANGES
+
+*   Updated library to use React Navigation 6, as well as BlueBase 8
+
 # [2.0.0](https://github.com/BlueBaseJS/plugin-react-navigation/compare/v1.7.0...v2.0.0) (2022-04-24)
 
 ### Bug Fixes
