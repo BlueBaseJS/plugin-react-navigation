@@ -1,10 +1,12 @@
-import { useComponent, useTheme } from '@bluebase/core';
-import { NavigationContainer } from '@react-navigation/native';
+import { LoadingState, NavigationProps, NavigatorProps } from '@bluebase/components';
+import { useComponent, useConfig, useTheme } from '@bluebase/core';
+import { LinkingOptions, NavigationContainer } from '@react-navigation/native';
+import * as Linking from 'expo-linking';
 import React from 'react';
 
-import { NavigationProps, NavigatorProps, } from '../../new-types';
 import { useBlueBaseContextPack } from '../../useBlueBaseContextPack';
 import { createLinkingConfigs } from './createLinkingConfigs';
+import { usePersistentState } from './usePersistentState';
 
 /**
  * Navigation (V5)
@@ -12,19 +14,28 @@ import { createLinkingConfigs } from './createLinkingConfigs';
  * configs to this component.
  */
 export const Navigation = (props: NavigationProps) => {
-	const contextPack = useBlueBaseContextPack();
 	const { navigator, ...rest } = props;
 	const { theme } = useTheme();
 
+	const contextPack = useBlueBaseContextPack();
 	const Navigator = useComponent<NavigatorProps>('Navigator');
+	const [prefixes] = useConfig<string[]>('navigation.linking.prefixes');
 
-	const linking = {
+	const { initialState, isReady, onStateChange } = usePersistentState();
+
+	if (!isReady) {
+		return <LoadingState />;
+	}
+
+	const linking: LinkingOptions<any> = {
 		config: createLinkingConfigs(navigator.routes, contextPack),
-		prefixes: [],
+		prefixes: [Linking.createURL('/'), ...prefixes]
 	};
 
 	return (
 		<NavigationContainer
+			initialState={initialState}
+			onStateChange={onStateChange}
 			theme={{
 				dark: theme.mode === 'dark',
 				colors: {

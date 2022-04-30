@@ -1,7 +1,6 @@
+import { BlueBaseContextPack, RouteConfig, } from '@bluebase/components';
 import { MaybeThunk, resolveThunk } from '@bluebase/core';
 import { ParamListBase, PathConfigMap } from '@react-navigation/core';
-
-import { BlueBaseContextPack, RouteConfig, } from '../../new-types';
 
 export function createLinkingConfigs(routes: MaybeThunk<RouteConfig[]>, contextPack: BlueBaseContextPack): any {
 

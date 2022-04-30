@@ -1,5 +1,3 @@
-import 'react-native-gesture-handler';
-
 import { BlueBaseApp } from '@bluebase/core';
 import Constants from 'expo-constants';
 import React from 'react';

@@ -1,7 +1,7 @@
+import { BlueBaseContextPack, NavigatorProps, RouteConfig } from '@bluebase/components';
 import { BlueBase, makeId, resolveThunk, useBlueBase } from '@bluebase/core';
 import React, { useState } from 'react';
 
-import { BlueBaseContextPack, NavigatorProps, RouteConfig } from '../../new-types';
 import { useBlueBaseContextPack } from '../../useBlueBaseContextPack';
 import { NavigationProvider } from '../NavigationProvider';
 import { getNavigatorFn } from './getNavigatorFn';
@@ -18,7 +18,7 @@ export const Navigator = (inputProps: NavigatorProps) => {
 
 	const [props] = useState(preparePaths(inputProps, contextPack, BB));
 	// eslint-disable-next-line react/prop-types
-	const { routes, NavigatorComponent, screenOptions, defaultScreenOptions, ...rest } = props;
+	const { routes, NavigatorComponent, ...rest } = props;
 
 	if (!NavigatorComponent) {
 		return null;
@@ -48,24 +48,24 @@ export const Navigator = (inputProps: NavigatorProps) => {
 	};
 
 	// Screen Options
-	let resolvedScreenOptions = screenOptions;
+	let resolvedScreenOptions = (inputProps as any).screenOptions;
 
-	if (screenOptions !== undefined && typeof screenOptions === 'function') {
-		resolvedScreenOptions = (props: any) => (screenOptions as any)(props, contextPack);
+	if (resolvedScreenOptions !== undefined && typeof resolvedScreenOptions === 'function') {
+		resolvedScreenOptions = (props: any) => (resolvedScreenOptions as any)(props, contextPack);
 	}
 
 	// Default Screen Options
-	let resolvedDefaultScreenOptions = defaultScreenOptions;
+	let resolvedDefaultScreenOptions = (inputProps as any).defaultScreenOptions;
 
-	if (defaultScreenOptions !== undefined && typeof defaultScreenOptions === 'function') {
-		resolvedDefaultScreenOptions = (props: any) => (defaultScreenOptions as any)(props, contextPack);
+	if (resolvedDefaultScreenOptions !== undefined && typeof resolvedDefaultScreenOptions === 'function') {
+		resolvedDefaultScreenOptions = (props: any) => (resolvedDefaultScreenOptions as any)(props, contextPack);
 	}
 
 	return (
 		<NavigatorComponent.Navigator
+			{...rest}
 			screenOptions={resolvedScreenOptions}
 			defaultScreenOptions={resolvedDefaultScreenOptions}
-			{...rest}
 		>
 			{resolvedRoutes.map(renderRoute)}
 		</NavigatorComponent.Navigator>

@@ -1,3 +1,4 @@
+import BlueBasePluginConfigPersist from '@bluebase/plugin-config-persist';
 import BlueBasePluginJsonSchemaComponents from '@bluebase/plugin-json-schema-components';
 import BlueBasePluginLauncher from '@bluebase/plugin-launcher';
 import BlueBasePluginReactNativePaper from '@bluebase/plugin-react-native-paper';
@@ -14,6 +15,7 @@ import DemoApp from './demo/plugin-settings-app';
 import Plugin from './src';
 
 export const plugins = [
+	BlueBasePluginConfigPersist,
 	BlueBasePluginJsonSchemaComponents,
 	BlueBasePluginLauncher,
 	BlueBasePluginReactNativePaper,

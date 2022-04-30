@@ -1871,12 +1871,26 @@
     deepmerge "^3.2.0"
     tslib "^1.9.3"
 
-"@bluebase/core@^7.1.0":
-  version "7.1.0"
-  resolved "https://registry.yarnpkg.com/@bluebase/core/-/core-7.1.0.tgz#2c1b1dd707ca60cd7c77c3fb052e24b41b18cd40"
-  integrity sha512-T3GI74OUIIT8EpJ3rgn+UfSnexViA4evCKFR7Kg+38S6pMMgDquHW7okRHY4zsU/KyWVH3MBxJ1x/zRW48tZ1Q==
+"@bluebase/components@^8.0.0-alpha.5":
+  version "8.0.0-alpha.5"
+  resolved "https://registry.yarnpkg.com/@bluebase/components/-/components-8.0.0-alpha.5.tgz#19460aa6d8dbab5ba1995d61fb34772b9d2cf675"
+  integrity sha512-PxBZoYG21qF39c7L8Ondpo2wwz0yPu6SSJhu4aOF/5W4PdflRkDix3Q3XA85kl9fvRhbsb9FXJW0luHaMskz6g==
   dependencies:
-    "@bluebase/components" "^6.4.0"
+    "@react-navigation/bottom-tabs" "^6.3.1"
+    "@react-navigation/drawer" "^6.4.1"
+    "@react-navigation/material-bottom-tabs" "^6.2.1"
+    "@react-navigation/material-top-tabs" "^6.2.1"
+    "@react-navigation/native" "^6.0.10"
+    "@react-navigation/native-stack" "^6.6.2"
+    "@react-navigation/stack" "^6.2.1"
+    deepmerge "^3.2.0"
+
+"@bluebase/core@^8.0.0-alpha.2":
+  version "8.0.0-alpha.2"
+  resolved "https://registry.yarnpkg.com/@bluebase/core/-/core-8.0.0-alpha.2.tgz#4bf9efd65431f385384aef5413968f06b8d98e69"
+  integrity sha512-/myBudWrnY7GW6rqqrvNnpkZ/DgimGBa3aNJclaO9eiOqhuSDq1pjR7hFQY+E4qfuYv+HyQ9xx2r8lfLFTq4lQ==
+  dependencies:
+    "@bluebase/components" "^8.0.0-alpha.5"
     deepmerge "^4.2.2"
     hoist-non-react-statics "^3.3.2"
     is-plain-object "^3.0.0"
@@ -1888,6 +1902,14 @@
     lodash.kebabcase "^4.1.1"
     react-loadable "^5.5.0"
     rtl-detect "^1.0.2"
+
+"@bluebase/plugin-config-persist@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@bluebase/plugin-config-persist/-/plugin-config-persist-2.0.0.tgz#9563f8b770e6c4af7a45a32be72faf611a3fded5"
+  integrity sha512-QAdgrGPI2rMcKSenPM0rNuhYWjqad+E1xXTz6i+Okh3n/DVtJ7s10zv8FwRIn0SbJMDup7rASa3vnWqW6xcmkQ==
+  dependencies:
+    "@react-native-async-storage/async-storage" "^1.17.3"
+    crypto-js "^3.1.9-1"
 
 "@bluebase/plugin-json-schema-components@^4.0.0-beta.6":
   version "4.0.1"
@@ -3058,6 +3080,13 @@
     invariant "^2.2.3"
     prop-types "^15.6.1"
     react-lifecycles-compat "^3.0.4"
+
+"@react-native-async-storage/async-storage@^1.17.3":
+  version "1.17.3"
+  resolved "https://registry.yarnpkg.com/@react-native-async-storage/async-storage/-/async-storage-1.17.3.tgz#fa7010aa9b6a811ff653df3698a90d3c173dd6a6"
+  integrity sha512-2dxdlGwBjBP2qYu6F72U7cRRFshISYiNEWCaQNOJtxUERCMaYRWcniYqhL248KSbGUMpRhFCEtliztsiGoYYMA==
+  dependencies:
+    merge-options "^3.0.4"
 
 "@react-native-community/cli-debugger-ui@^5.0.1":
   version "5.0.1"
@@ -8382,6 +8411,11 @@ crypto-browserify@^3.11.0:
     randombytes "^2.0.0"
     randomfill "^1.0.3"
 
+crypto-js@^3.1.9-1:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/crypto-js/-/crypto-js-3.3.0.tgz#846dd1cce2f68aacfa156c8578f926a609b7976b"
+  integrity sha512-DIT51nX0dCfKltpRiXV+/TVZq+Qq2NgF4644+K7Ttnla7zEzqc+kjJyiB96BHNyUTBxyjzRcZYpUdZa+QAqi6Q==
+
 crypto-random-string@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/crypto-random-string/-/crypto-random-string-1.0.0.tgz#a230f64f568310e1498009940790ec99545bca7e"
@@ -10189,7 +10223,7 @@ expo-asset@~8.4.6:
     path-browserify "^1.0.0"
     url-parse "^1.4.4"
 
-expo-constants@~13.0.2:
+expo-constants@~13.0.0, expo-constants@~13.0.2:
   version "13.0.2"
   resolved "https://registry.yarnpkg.com/expo-constants/-/expo-constants-13.0.2.tgz#b489ecd575cc82a9a0b3dfbf2385d45a44300eb1"
   integrity sha512-vGs/kI65vplPFvG8z4W1ariGEtVHHp9Avl28G0zJprt2v/q1E/BnXjwvFSBPc1GB+Zb/7crWSHWRwjaFULBjsg==
@@ -10221,6 +10255,16 @@ expo-keep-awake@~10.0.2:
   version "10.0.2"
   resolved "https://registry.yarnpkg.com/expo-keep-awake/-/expo-keep-awake-10.0.2.tgz#706bda839782bb3e8ad4cbe43bde471a56368813"
   integrity sha512-Ro1lgyKldbFs4mxhWM+goX9sg0S2SRR8FiJJeOvaRzf8xNhrZfWA00Zpr+/3ocCoWQ3eEL+X9UF4PXXHf0KoOg==
+
+expo-linking@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/expo-linking/-/expo-linking-3.0.0.tgz#67f06b0be4ac1da911c46535a704d24eca34e344"
+  integrity sha512-TgRB4JTdhMRo79rTu9E9zwzWyBUJxHpSbHFlv0ZfMAwU+qFCsL9zZsL44R/yj7xrvcLOjqbCVmBszLQ0pFOt1g==
+  dependencies:
+    expo-constants "~13.0.0"
+    invariant "^2.2.4"
+    qs "^6.9.1"
+    url-parse "^1.4.4"
 
 expo-modules-autolinking@0.5.5:
   version "0.5.5"
@@ -12928,7 +12972,7 @@ is-plain-obj@^1.0.0, is-plain-obj@^1.1.0:
   resolved "https://registry.yarnpkg.com/is-plain-obj/-/is-plain-obj-1.1.0.tgz#71a50c8429dfca773c92a390a4a03b39fcd51d3e"
   integrity sha1-caUMhCnfync8kqOQpKA7OfzVHT4=
 
-is-plain-obj@^2.0.0:
+is-plain-obj@^2.0.0, is-plain-obj@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/is-plain-obj/-/is-plain-obj-2.1.0.tgz#45e42e37fccf1f40da8e5f76ee21515840c09287"
   integrity sha512-YWnfyRwxL/+SsrWYfOpUtz5b3YD+nyfkHvjbcanzk8zgyO4ASD67uVMRt8k5bM4lLMDnXfriRhOpemw+NfT1eA==
@@ -15267,6 +15311,13 @@ merge-descriptors@1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/merge-descriptors/-/merge-descriptors-1.0.1.tgz#b00aaa556dd8b44568150ec9d1b953f3f90cbb61"
   integrity sha1-sAqqVW3YtEVoFQ7J0blT8/kMu2E=
+
+merge-options@^3.0.4:
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/merge-options/-/merge-options-3.0.4.tgz#84709c2aa2a4b24c1981f66c179fe5565cc6dbb7"
+  integrity sha512-2Sug1+knBjkaMsMgf1ctR1Ujx+Ayku4EdJN4Z+C2+JzoeF7A3OZ9KM2GY0CpQS51NR61LTurMJrRKPhSs3ZRTQ==
+  dependencies:
+    is-plain-obj "^2.1.0"
 
 merge-stream@^2.0.0:
   version "2.0.0"
@@ -18392,7 +18443,7 @@ qs@6.9.7:
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.9.7.tgz#4610846871485e1e048f44ae3b94033f0e675afe"
   integrity sha512-IhMFgUmuNpyRfxA90umL7ByLlgRXu6tIfKPpF5TmcfRLlLCckfP/g3IQmju6jjpu+Hh8rA+2p6A27ZSPOOHdKw==
 
-qs@^6.10.0, qs@^6.6.0:
+qs@^6.10.0, qs@^6.6.0, qs@^6.9.1:
   version "6.10.3"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.10.3.tgz#d6cde1b2ffca87b5aa57889816c5f81535e22e8e"
   integrity sha512-wr7M2E0OFRfIfJZjKGieI8lBKb7fRCH4Fv5KNPEs7gJ8jadvotdsS08PzOKR7opXhZ/Xkjtt3WF9g38drmyRqQ==

@@ -2,7 +2,7 @@ import { Noop } from '@bluebase/components';
 import { BlueBase } from '@bluebase/core';
 import React from 'react';
 
-import { RouteConfig } from '../../new-types';
+import { RouteConfig } from '@bluebase/components';
 
 /**
  * Given a route object, resolves and returns a screen component

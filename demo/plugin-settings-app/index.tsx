@@ -19,7 +19,7 @@ import { DrawerTab1Screen } from './Screens/DrawerTab1';
 import { DrawerTab2Screen } from './Screens/DrawerTab2';
 import { ParamsScreen } from './Screens/Params';
 
-const plugin = createPlugin({
+export default createPlugin({
 	key: 'settings',
 	name: 'Settings',
 
@@ -166,8 +166,7 @@ const plugin = createPlugin({
 
 			// TODO: test initial route here
 			navigator: {
-				headerMode: 'none',
-				type: 'tab',
+				type: 'material-top-tabs',
 				routes: [
 					{
 						name: 'Tab1',
@@ -197,7 +196,7 @@ const plugin = createPlugin({
 			name: 'SettingsBottomTabs',
 			path: 'btabs',
 			navigator: {
-				type: 'bottom-tab',
+				type: 'bottom-tabs',
 				routes: [
 					{
 						name: 'BTab1',
@@ -234,17 +233,17 @@ const plugin = createPlugin({
 			navigator: {
 				type: 'drawer',
 
-				drawerType: 'slide',
+				// drawerType: 'slide',
 
-				contentOptions: {
-					activeTintColor: '#e91e63',
-					itemsContainerStyle: {
-						marginVertical: 0,
-					},
-					iconContainerStyle: {
-						opacity: 1,
-					},
-				},
+				// contentOptions: {
+				// 	activeTintColor: '#e91e63',
+				// 	itemsContainerStyle: {
+				// 		marginVertical: 0,
+				// 	},
+				// 	iconContainerStyle: {
+				// 		opacity: 1,
+				// 	},
+				// },
 
 				routes: [
 					{
@@ -279,7 +278,3 @@ const plugin = createPlugin({
 		},
 	],
 });
-
-export default {
-	...plugin,
-};

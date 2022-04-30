@@ -11,6 +11,12 @@ export default createPlugin({
 	name: 'React Navigation',
 	version: VERSION,
 
+	defaultConfigs: {
+		'navigation.linking.prefixes': [],
+		'navigation.persist.enabled': false,
+		'navigation.persist.key': 'bluebase-navigation',
+	},
+
 	components: {
 		// HeaderBackButton: HeaderBackButton,
 

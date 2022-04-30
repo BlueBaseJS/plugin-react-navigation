@@ -2,7 +2,7 @@ import { BlueBase } from '@bluebase/core';
 import React from 'react';
 import { Text } from 'react-native';
 
-import { resolveScreenComponent } from '../../../helpers';
+import { resolveScreenComponent } from '../resolveScreenComponent';
 
 describe('resolveScreenComponent', () => {
 	it('should resolve component from "component" prop', async () => {
