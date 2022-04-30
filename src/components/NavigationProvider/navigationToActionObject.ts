@@ -20,7 +20,7 @@ export const navigationToActionObject = (
 		getId,
 		getParent,
 		reset,
-		isFocused
+		isFocused,
 	} = navigation;
 
 	const actions: NavigationActionsObject = {

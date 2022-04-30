@@ -9,12 +9,12 @@ import createSwitchNavigator from './createSwitchNavigator';
 
 const NavigatorMap: { [key: string]: any } = {
 	'bottom-tabs': createBottomTabNavigator,
-	'drawer': createDrawerNavigator,
+	drawer: createDrawerNavigator,
 	'material-bottom-tabs': createMaterialBottomTabNavigator,
 	'material-top-tabs': createMaterialTopTabNavigator,
 	'native-stack': createNativeStackNavigator,
-	'stack': createStackNavigator,
-	'switch': createSwitchNavigator,
+	stack: createStackNavigator,
+	switch: createSwitchNavigator,
 };
 
 const ComponentMap: { [key: string]: any } = {};
