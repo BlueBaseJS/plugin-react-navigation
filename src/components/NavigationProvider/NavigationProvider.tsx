@@ -2,7 +2,7 @@ import { NavigationContext } from '@bluebase/core';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import React from 'react';
 
-import { navigationToActionObject } from '../../helpers';
+import { navigationToActionObject } from './navigationToActionObject';
 
 /**
  * Converted navigation object to one that is recognized by BlueBase
@@ -20,3 +20,5 @@ export const NavigationProvider = (props: { children: React.ReactNode }) => {
 		</NavigationContext.Provider>
 	);
 };
+
+NavigationProvider.displayName = 'NavigationProvider';

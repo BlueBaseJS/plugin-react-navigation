@@ -40,7 +40,7 @@ describe('Navigator', () => {
 			<BlueBaseApp components={{ Navigator }}>
 				<NavigationContainer>
 					<Navigator
-						type="unknown"
+						type={'unknown' as any}
 						routes={[
 							{
 								name: 'Settings',

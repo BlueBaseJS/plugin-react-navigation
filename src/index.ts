@@ -1,7 +1,6 @@
 import './enableScreens';
 
 import { createPlugin } from '@bluebase/core';
-import { HeaderBackButton } from '@react-navigation/stack';
 
 import { DrawerActions, Navigation, Navigator, ScreenView } from './components';
 import { VERSION } from './version';
@@ -12,8 +11,14 @@ export default createPlugin({
 	name: 'React Navigation',
 	version: VERSION,
 
+	defaultConfigs: {
+		'navigation.linking.prefixes': [],
+		'navigation.persist.enabled': false,
+		'navigation.persist.key': 'bluebase-navigation',
+	},
+
 	components: {
-		HeaderBackButton: HeaderBackButton,
+		// HeaderBackButton: HeaderBackButton,
 
 		DrawerActions: {
 			applyStyles: false,
