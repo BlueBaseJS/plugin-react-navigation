@@ -1,5 +1,11 @@
 import { BlueBaseContextPack, NavigatorProps, RouteConfig } from '@bluebase/components';
-import { BlueBase, makeId, resolveThunk, useBlueBase } from '@bluebase/core';
+import {
+	BlueBase,
+	makeId,
+	resolveThunk,
+	useBlueBase,
+	useComponent
+} from '@bluebase/core';
 import React, { useState } from 'react';
 
 import { useBlueBaseContextPack } from '../../useBlueBaseContextPack';
@@ -124,26 +130,32 @@ export const preparePaths = (
 export const createNavigatorScreenComponent = (route: RouteConfig, BB: BlueBase) => {
 	const { navigator, screen } = route;
 
-	// const Navigator = BB.Components.resolveFromCache('Navigator');
 	// const ScreenView = BB.Components.resolveFromCache('ScreenView');
 	const ScreenComponent = resolveScreenComponent(route, BB);
 
 	if (navigator) {
-		const navigatorNode = <Navigator {...(navigator)} />;
-
 		if (screen) {
-			const WrappedNavigator = (props: any) => (
-				<NavigationProvider {...props}>
-					<ScreenComponent {...props} route={route} ScreenComponent={ScreenComponent}>
-						{navigatorNode}
-					</ScreenComponent>
-				</NavigationProvider>
-			);
+			const WrappedNavigator = (props: any) => {
+				const BBNavigator = useComponent('Navigator');
+				return (
+					<NavigationProvider {...props}>
+						<ScreenComponent {...props} route={route} ScreenComponent={ScreenComponent}>
+							<BBNavigator {...(navigator)} />
+						</ScreenComponent>
+					</NavigationProvider>
+				);
+			};
 
 			return WrappedNavigator;
 		}
 
-		const NavigatorScreenComponent = () => navigatorNode;
+		const NavigatorScreenComponent = () => {
+			const BBNavigator = useComponent('Navigator');
+			return (
+				<BBNavigator {...(navigator)} />
+			);
+
+		};
 		NavigatorScreenComponent.displayName = 'NavigatorScreenComponent';
 
 		return NavigatorScreenComponent;
