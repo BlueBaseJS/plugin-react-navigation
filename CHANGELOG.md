@@ -1,3 +1,14 @@
+# [3.0.0-alpha.2](https://github.com/BlueBaseJS/plugin-react-navigation/compare/v3.0.0-alpha.1...v3.0.0-alpha.2) (2022-09-13)
+
+### Bug Fixes
+
+*   Fixed nested route paths ([f27d9e0](https://github.com/BlueBaseJS/plugin-react-navigation/commit/f27d9e088ba2342392a7f306fae3aaf105aa86f8))
+*   Fixed nested route paths ([898e1ae](https://github.com/BlueBaseJS/plugin-react-navigation/commit/898e1aebb33c552362d2f90a2d9882155eb82f79))
+
+### Features
+
+*   Linking prop is customizable via configs ([08dbe76](https://github.com/BlueBaseJS/plugin-react-navigation/commit/08dbe76062ca6e32755a215e862ba2f0bb5e0923))
+
 # [3.0.0-alpha.1](https://github.com/BlueBaseJS/plugin-react-navigation/compare/v2.0.0...v3.0.0-alpha.1) (2022-04-30)
 
 ### Features
