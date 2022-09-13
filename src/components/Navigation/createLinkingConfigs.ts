@@ -5,28 +5,22 @@ import { ParamListBase, PathConfigMap } from '@react-navigation/core';
 export function createLinkingConfigs(
 	routes: MaybeThunk<RouteConfig[]>,
 	contextPack: BlueBaseContextPack,
-	parent?: RouteConfig,
+	// parent?: RouteConfig,
 ): any {
 	const screens: PathConfigMap<ParamListBase> = {};
 	const resolvedRoutes = resolveThunk(routes, contextPack);
 
 	resolvedRoutes.forEach((route) => {
-		if (route.navigator !== undefined) {
-			screens[route.name] = createLinkingConfigs(
+		const pathObject = route.navigator !== undefined
+			? createLinkingConfigs(
 				route.navigator.routes,
 				contextPack,
-				route
-			);
-			return;
-		}
+			)
+			: {};
 
-		if (route.path === undefined) {
-			return;
+		if (route.path !== undefined) {
+			pathObject.path = route.path;
 		}
-
-		const pathObject: any = {
-			path: parent?.path ? `${parent?.path}/${route.path}` : route.path,
-		};
 
 		if (route.exact !== undefined) {
 			pathObject.exact = route.exact;
