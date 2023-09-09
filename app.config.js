@@ -3,14 +3,12 @@ export const VERSION = '1.0.0';
 export const VERSION_CODE = 100000000;
 
 export default {
-	name: 'BlueBase Boilerplate',
-	slug: 'plugin-boilerplate',
-	description: '🍛 A boilerplate to create BlueBase plugins or apps',
+	name: 'BlueBase React Navigation',
+	slug: 'plugin-react-navigation',
 	version: VERSION,
-	githubUrl: 'https://github.com/BlueBaseJS/plugin-boilerplate',
+	githubUrl: 'https://github.com/BlueBaseJS/plugin-react-navigation',
 	orientation: 'portrait',
 	icon: './assets/icon.png',
-	entryPoint: './node_modules/expo/AppEntry.js',
 	scheme: 'bluebase',
 	splash: {
 		image: './assets/splash.png',

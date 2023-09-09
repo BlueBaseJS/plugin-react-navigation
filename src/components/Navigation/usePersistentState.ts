@@ -37,7 +37,7 @@ export function usePersistentState() {
 	}, [isReady]);
 
 	const onStateChange = useCallback(
-		(newState) => {
+		(newState: any) => {
 			if (enabled) {
 				AsyncStorage.setItem(key, JSON.stringify(newState));
 			}

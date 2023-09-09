@@ -58,7 +58,7 @@ import { ScreenView } from '../ScreenView';
 describe('ScreenView', () => {
 	it('should render SettingsScreen', async () => {
 		const SettingsScreen = () => <Text>Settings</Text>;
-		const children = jest.fn().mockReturnValue(null);
+		const children: any = jest.fn().mockReturnValue(null);
 
 		const wrapper = mount(
 			<BlueBaseApp plugins={[Plugin]}>
