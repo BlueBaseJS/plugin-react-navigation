@@ -1,3 +1,20 @@
+# [3.0.0](https://github.com/BlueBaseJS/plugin-react-navigation/compare/v2.0.0...v3.0.0) (2023-09-09)
+
+### Bug Fixes
+
+*   Fixed nested route paths ([f27d9e0](https://github.com/BlueBaseJS/plugin-react-navigation/commit/f27d9e088ba2342392a7f306fae3aaf105aa86f8))
+*   Fixed nested route paths ([898e1ae](https://github.com/BlueBaseJS/plugin-react-navigation/commit/898e1aebb33c552362d2f90a2d9882155eb82f79))
+
+### Features
+
+*   Expo 49 ([17bdce5](https://github.com/BlueBaseJS/plugin-react-navigation/commit/17bdce56e7f9ebf7b5e1d25db39c83f20c77a2fc))
+*   Linking prop is customizable via configs ([08dbe76](https://github.com/BlueBaseJS/plugin-react-navigation/commit/08dbe76062ca6e32755a215e862ba2f0bb5e0923))
+*   React Navigation 6 ([#381](https://github.com/BlueBaseJS/plugin-react-navigation/issues/381)) ([3a91675](https://github.com/BlueBaseJS/plugin-react-navigation/commit/3a916758d310b65718c42f2eb7e7e40249138eb2))
+
+### BREAKING CHANGES
+
+*   Updated library to use React Navigation 6, as well as BlueBase 8
+
 # [3.0.0-alpha.2](https://github.com/BlueBaseJS/plugin-react-navigation/compare/v3.0.0-alpha.1...v3.0.0-alpha.2) (2022-09-13)
 
 ### Bug Fixes
