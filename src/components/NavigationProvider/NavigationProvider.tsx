@@ -15,7 +15,7 @@ export const NavigationProvider = (props: { children: React.ReactNode }) => {
 	const route = useRoute();
 
 	return (
-		<NavigationContext.Provider value={navigationToActionObject(navigation, route)}>
+		<NavigationContext.Provider value={navigationToActionObject(navigation as any, route)}>
 			{children}
 		</NavigationContext.Provider>
 	);
