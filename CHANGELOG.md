@@ -1,3 +1,9 @@
+# [3.2.0](https://github.com/BlueBaseJS/plugin-react-navigation/compare/v3.1.0...v3.2.0) (2024-04-01)
+
+### Features
+
+*   Upgraded Expo 50 ([acf7f60](https://github.com/BlueBaseJS/plugin-react-navigation/commit/acf7f60fe2398fd9e7269304de76837e8a813389))
+
 # [3.1.0](https://github.com/BlueBaseJS/plugin-react-navigation/compare/v3.0.0...v3.1.0) (2024-04-01)
 
 ### Features
