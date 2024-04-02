@@ -1,3 +1,9 @@
+## [3.2.2](https://github.com/BlueBaseJS/plugin-react-navigation/compare/v3.2.1...v3.2.2) (2024-04-02)
+
+### Bug Fixes
+
+*   Revert to Expo 49 ([1f488f7](https://github.com/BlueBaseJS/plugin-react-navigation/commit/1f488f78c0f53459568fe0ae6c3d0e329243bd98))
+
 ## [3.2.1](https://github.com/BlueBaseJS/plugin-react-navigation/compare/v3.2.0...v3.2.1) (2024-04-02)
 
 ### Bug Fixes
