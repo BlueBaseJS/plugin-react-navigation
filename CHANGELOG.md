@@ -1,3 +1,9 @@
+# [3.3.0](https://github.com/BlueBaseJS/plugin-react-navigation/compare/v3.2.2...v3.3.0) (2024-11-10)
+
+### Features
+
+*   Updated to Expo 51 ([b923b9d](https://github.com/BlueBaseJS/plugin-react-navigation/commit/b923b9d4bb6cfb51ddcb44c1ecdf8c25ad8d03f2))
+
 ## [3.2.2](https://github.com/BlueBaseJS/plugin-react-navigation/compare/v3.2.1...v3.2.2) (2024-04-02)
 
 ### Bug Fixes
